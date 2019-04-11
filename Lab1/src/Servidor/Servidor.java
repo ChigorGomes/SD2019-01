@@ -20,13 +20,6 @@ public class Servidor {
 
         ServerSocket serverSocket = new ServerSocket(4444);
         System.out.println("Servidor executando porta 4444..");
-        /*
-        while(true){
-            Socket socket = serverSocket.accept();
-           
-            new SocketPatrimonio(socket).patrimonio();
-        }
-         */
 
         do {
             Socket socket = null;
