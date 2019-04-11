@@ -20,17 +20,11 @@ import java.rmi.server.UnicastRemoteObject;
 public class AplicacaoServidor {
 
     public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException {
-        /*
-		String IP = "localhost";
-		Servidor servidor = new Servidor();
-		Naming.rebind("rmi://"+ IP + "/Example", servidor);
-		
-         */
+
         int porta = 4444;
         InterfaceServidor server = new Servidor();
         InterfaceServidor stub = (InterfaceServidor) UnicastRemoteObject.exportObject(server, porta);
 
-//        System.setProperty("java.rmi.server.hostname", "localhost");
         Registry r = LocateRegistry.createRegistry(porta);
         r.rebind("InterfaceServidor", stub);
         System.out.println(r.REGISTRY_PORT);
