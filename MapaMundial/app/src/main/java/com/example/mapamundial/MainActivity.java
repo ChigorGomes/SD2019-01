@@ -6,12 +6,16 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Parcelable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import android.widget.AdapterView;
@@ -23,20 +27,35 @@ import com.example.mapamundial.Adapter.Adapter;
 import com.example.mapamundial.Model.Paises;
 import com.example.mapamundial.Model.Repositorio;
 import com.example.mapamundial.Util.HttpRetro;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class MainActivity extends AppCompatActivity implements Serializable, SwipeRefreshLayout.OnRefreshListener {
     private Adapter adapter;
     private List<Paises> paisesList;
     private ListView listView;
-    private  SwipeRefreshLayout swipeRefreshLayout;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private double latitude = 0;
+    private double longitude = 0;
+    private HashMap<Double, Double> points = new HashMap<>();
     Repositorio db;
+
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +65,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         setContentView(R.layout.activity_main);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
 
-        swipeRefreshLayout.setColorScheme(R.color.colorPrimary,R.color.colorAccent);
+        swipeRefreshLayout.setColorScheme(R.color.colorPrimary, R.color.colorAccent);
         swipeRefreshLayout.setOnRefreshListener(this);
         listView = (ListView) findViewById(R.id.listView);
-        paisesList= new ArrayList<Paises>();
-        adapter = new Adapter(this,paisesList);
+        paisesList = new ArrayList<Paises>();
+        adapter = new Adapter(this, paisesList);
         getDataRetro();
         listView.setAdapter(adapter);
 
@@ -59,19 +78,23 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 hasPermission();
+                if(isConnected()) {
 
-                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
-                intent.putExtra("paises",paisesList.get(position));
-                startActivity(intent);
+                    Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+                    intent.putExtra("paises", paisesList.get(position));
+                    startActivity(intent);
+                }
             }
         });
 
     }
 
+
     private void getDataSqlite() {
         paisesList.clear();
         paisesList.addAll(db.listarPaises());
         adapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -79,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         getDataRetro();
 
     }
+
 
     public void getDataRetro() {
 
@@ -95,6 +119,12 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                         for (Paises paises : ubsBody) {
                             paisesList.add(paises);
                             db.inserir(paises);
+                            if (paises.region2.equals("South America")) {
+                                latitude = Double.parseDouble(paises.latlng.get(0));
+                                longitude = Double.parseDouble(paises.latlng.get(1));
+                                points.put(latitude, longitude);
+                            }
+
                         }
                         adapter.notifyDataSetChanged();
                     } else {
@@ -109,32 +139,50 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 }
 
             });
-
-        }else {
+        } else {
             swipeRefreshLayout.setRefreshing(false);
-            Toast.makeText(this,"Sem Conexão, listando Ubs do banco...",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Sem Conexão, listando Ubs do banco...", Toast.LENGTH_SHORT).show();
             getDataSqlite();
         }
 
     }
 
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
 
-    public Boolean isConnected(){
+        switch (menuItem.getItemId()) {
+            case R.id.mostrarAmerica:
+
+                hasPermission();
+                if (isConnected()) {
+                    Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+
+
+                    intent.putExtra("points", points);
+                    startActivity(intent);
+                    return true;
+
+                }
+
+            default:
+                return super.onOptionsItemSelected(menuItem);
+        }
+
+    }
+
+    public Boolean isConnected() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        if ( cm != null ) {
+        if (cm != null) {
             NetworkInfo ni = cm.getActiveNetworkInfo();
             return ni != null && ni.isConnected();
 
         }
-        Log.i("msg","Entrou 2");
 
         return false;
     }
 
 
-
-    void hasPermission(){
+    void hasPermission() {
         //pede permissao de localizacao
         if (ContextCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
@@ -152,7 +200,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             }
         }
     }
-
 
 
 }

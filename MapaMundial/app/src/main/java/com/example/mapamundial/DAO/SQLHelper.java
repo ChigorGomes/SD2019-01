@@ -13,9 +13,15 @@ public class SQLHelper extends SQLiteOpenHelper {
     public static final String COLUNA_REGION ="region";
     public static final String  COLUNA_POPULATION = "population";
     public static final String COLUNA_AREA ="area";
+    public static  final String COLUNA_SUBREGIAO= "subregiao";
+    public static  final String COLUNA_NUMERICCODE = "numerico";
 
-//    public static  final String COLUNA_LATITUDE = "lati";
-//    public static  final String COLUNA_LONGITUDE = "long";
+
+
+    /*
+      public Paises(String name, String capital, String region, String population, String area, String numericCode , String subregion)
+     */
+
 
 
 
@@ -29,10 +35,10 @@ public class SQLHelper extends SQLiteOpenHelper {
                         COLUNA_NAME +  " TEXT NOT NULL, "+
                         COLUNA_CAPITAL + " TEXT, " +
                         COLUNA_REGION + " TEXT, " +
-//                       COLUNA_LATITUDE + " TEXT, " +
-//                       COLUNA_LONGITUDE + " TEXT, " +
-                        COLUNA_POPULATION + " TEXT, " +
-                        COLUNA_AREA + " TEXT)"
+                       COLUNA_POPULATION + " TEXT, " +
+                       COLUNA_SUBREGIAO + " TEXT, " +
+                       COLUNA_NUMERICCODE + " TEXT, " +
+                       COLUNA_AREA + " TEXT)"
         );
     }
 

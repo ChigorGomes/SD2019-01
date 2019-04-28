@@ -3,6 +3,7 @@ package com.example.mapamundial.Model;
 import java.io.Serializable;
 import java.util.List;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.annotations.SerializedName;
 
 
@@ -33,7 +34,7 @@ public class Paises implements Serializable {
     public String region;
 
     @SerializedName("subregion")
-    public String subregion;
+    public String region2;
 
     @SerializedName("population")
     public String population;
@@ -49,6 +50,9 @@ public class Paises implements Serializable {
 
     @SerializedName("gini")
     public String gini;
+
+
+
 //
 //    @SerializedName("timezones")
 //    public List<String> timezones;
@@ -74,23 +78,21 @@ public class Paises implements Serializable {
     @SerializedName("relevance")
     public String relevance;
 
-    public Paises(String name, String capital, String region, String population, String area) {
+    public Paises(String name, String region2) {
+        this.name = name;
+        this.region2 = region2;
+    }
+
+    public Paises(String name, String capital, String region, String region2, String population, String area, String numericCode) {
         this.name = name;
         this.capital = capital;
         this.region = region;
+        this.region2 = region2;
         this.population = population;
         this.area = area;
+        this.numericCode = numericCode;
     }
-//
-//    public Paises(String name, String capital, String region, String population, List<String> latlng, String area) {
-//        this.name = name;
-//        this.capital = capital;
-//        this.region = region;
-//        this.population = population;
-//        this.latlng = latlng;
-//        this.area = area;
-//    }
-//
+
     @Override
     public String toString() {
         return "Paises{" +
@@ -99,5 +101,59 @@ public class Paises implements Serializable {
                 '}';
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public String getAlpha2Code() {
+        return alpha2Code;
+    }
+
+    public String getAlpha3Code() {
+        return alpha3Code;
+    }
+
+    public String getCapital() {
+        return capital;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public String getRegion2() {
+        return region2;
+    }
+
+    public String getPopulation() {
+        return population;
+    }
+
+    public List<String> getLatlng() {
+        return latlng;
+    }
+
+    public String getDemonym() {
+        return demonym;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public String getGini() {
+        return gini;
+    }
+
+    public String getNativeName() {
+        return nativeName;
+    }
+
+    public String getNumericCode() {
+        return numericCode;
+    }
+
+    public String getRelevance() {
+        return relevance;
+    }
 }

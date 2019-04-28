@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.mapamundial.DAO.SQLHelper;
 
@@ -18,7 +19,7 @@ public class Repositorio {
         helper = new SQLHelper(context);
     }
 
-    public void inserir(Paises paises){
+    public void inserir(Paises paises) {
 
         db = helper.getReadableDatabase();
         ContentValues cv = new ContentValues();
@@ -26,16 +27,17 @@ public class Repositorio {
         cv.put(SQLHelper.COLUNA_CAPITAL, paises.capital);
         cv.put(SQLHelper.COLUNA_REGION, paises.region);
         cv.put(SQLHelper.COLUNA_POPULATION, paises.population);
-//        cv.put(SQLHelper.COLUNA_LATITUDE,paises.latlng.get(0) );
-//        cv.put(SQLHelper.COLUNA_LONGITUDE,paises.latlng.get(1) );
         cv.put(SQLHelper.COLUNA_AREA, paises.area);
+        cv.put(SQLHelper.COLUNA_SUBREGIAO, paises.region2);
+        cv.put(SQLHelper.COLUNA_NUMERICCODE, paises.numericCode);
 
-        db.insert(SQLHelper.TABELA_PAISES,null,cv);
+
+        db.insert(SQLHelper.TABELA_PAISES, null, cv);
 
         db.close();
     }
 
-    public void excluirAll(){
+    public void excluirAll() {
         db = helper.getWritableDatabase();
         db.delete(SQLHelper.TABELA_PAISES, null, null);
         db.close();
@@ -46,7 +48,6 @@ public class Repositorio {
         db = helper.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
         List<Paises> list = new ArrayList();
-
         while (cursor.moveToNext()) {
             String name = cursor.getString(
                     cursor.getColumnIndex(SQLHelper.COLUNA_NAME)
@@ -64,15 +65,19 @@ public class Repositorio {
             String area = cursor.getString(
                     cursor.getColumnIndex(SQLHelper.COLUNA_AREA)
             );
-//            List<String> ltd= null;
-//            ltd.add(cursor.getString(
-//                    cursor.getColumnIndex(SQLHelper.COLUNA_LATITUDE)),cursor.getString(
-//                    cursor.getColumnIndex(SQLHelper.COLUNA_LONGITUDE)));
+            String numericCode = cursor.getString(
+                    cursor.getColumnIndex(SQLHelper.COLUNA_NUMERICCODE)
+            );
+            String subregion = cursor.getString(
+                    cursor.getColumnIndex(SQLHelper.COLUNA_SUBREGIAO)
+            );
 
 
+            Paises paises = new Paises(name, capital, region, subregion, population, area, numericCode);
 
-            Paises paises= new Paises( name,  capital,  region,  population, area);
             list.add(paises);
+
+
         }
         cursor.close();
         return list;

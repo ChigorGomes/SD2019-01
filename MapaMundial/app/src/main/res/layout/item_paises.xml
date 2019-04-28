@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:textSize="12sp"
         android:layout_below="@+id/name"
-        android:text="Localização" />
+        android:text="Região" />
     <TextView
         android:id="@+id/capital"
         android:layout_width="wrap_content"
@@ -25,10 +25,45 @@
         android:textSize="12sp"
         android:layout_below="@+id/region"
         android:text="Capital" />
+
+    <TextView
+        android:id="@+id/subregion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_below="@+id/capital"
+        android:text="SubRegião" />
+
+    <TextView
+        android:id="@+id/population"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_below="@+id/subregion"
+        android:text="População" />
+
+    <TextView
+        android:id="@+id/area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_below="@+id/population"
+        android:text="Área" />
+
+    <TextView
+        android:id="@+id/numericCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_below="@+id/area"
+        android:text="DDD" />
+
+
     <View
         android:layout_width="0dp"
         android:layout_height="0.5dp"
         android:layout_marginTop="8dp"
         android:background="@color/grey"/>
+
 </RelativeLayout>
 
