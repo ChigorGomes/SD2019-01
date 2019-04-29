@@ -71,10 +71,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         //coordenadas da capital
         if (paises == null) {
-            addPolyObject();
-            LatLng ubslatlng = new LatLng(latitude, longitude);
-            mMap.addMarker(new MarkerOptions().position(ubslatlng).title("South America"));
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubslatlng, 3));
+//            addPolyObject();
+            for (int i = 0; i < MAPA.length; i++) {
+                LatLng ubslatlng = new LatLng(MAPA[i].latitude, MAPA[i].longitude);
+                mMap.addMarker(new MarkerOptions().position(ubslatlng).title("South America"));
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubslatlng, 3));
+
+            }
 
 
         } else if (paises != null) {
@@ -90,16 +93,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
-    private void addPolyObject() {
-        mMap.addPolygon(new PolygonOptions()
-                .add(MAPA)
-                .fillColor(Color.CYAN)
-
-                .strokeColor(Color.BLUE)
-                .strokeWidth(5)
-        );
-
-    }
+//    private void addPolyObject() {
+//        mMap.addPolygon(new PolygonOptions()
+//                .add(MAPA)
+//                .fillColor(Color.CYAN)
+//
+//
+//                .strokeColor(Color.BLUE)
+//                .strokeWidth(10)
+//        );
+//
+//    }
 
 
 }

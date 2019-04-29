@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements Serializable, Swi
             });
         } else {
             swipeRefreshLayout.setRefreshing(false);
-            Toast.makeText(this, "Sem Conexão, listando Ubs do banco...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Sem Conexão, listando Países do banco...", Toast.LENGTH_SHORT).show();
             getDataSqlite();
         }
 
