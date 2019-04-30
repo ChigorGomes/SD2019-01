@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.mapamundial.Model.LatiLong;
 import com.example.mapamundial.Model.Paises;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,11 +26,11 @@ import java.util.Vector;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private Paises paises;
-    private HashMap<Double, Double> points;
     double latitude;
     double longitude;
     private GoogleMap mMap;
-    private LatLng[] MAPA = new LatLng[12];
+    private LatLng[] MAPA;
+    private ArrayList<LatiLong> nomeCapital;
 
 
     @Override
@@ -39,19 +40,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //pega ubs passada pela main
         paises = (Paises) getIntent().getSerializableExtra("paises");
-        points = (HashMap<Double, Double>) getIntent().getSerializableExtra("points");
-        if (points != null) {
-            int cont = 0;
-            for (Map.Entry<Double, Double> entrada : points.entrySet()) {
-
-                latitude = Double.parseDouble(String.valueOf(entrada.getKey()));
-                longitude = Double.parseDouble(String.valueOf(entrada.getValue()));
-
-                MAPA[cont] = new LatLng(latitude, longitude);
-
-                cont++;
+        nomeCapital = (ArrayList<LatiLong>) getIntent().getSerializableExtra("nome");
 
 
+        if (nomeCapital != null) {
+            int tamanho = nomeCapital.size();
+            MAPA = new LatLng[nomeCapital.size()];
+            for (int i = 0; i < tamanho; i++) {
+
+                latitude = Double.parseDouble(String.valueOf(nomeCapital.get(i).getLatitude()));
+                longitude = Double.parseDouble(String.valueOf(nomeCapital.get(i).getLongitude()));
+                MAPA[i] = new LatLng(latitude, longitude);
             }
 
 
@@ -71,12 +70,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         //coordenadas da capital
         if (paises == null) {
-//            addPolyObject();
             for (int i = 0; i < MAPA.length; i++) {
                 LatLng ubslatlng = new LatLng(MAPA[i].latitude, MAPA[i].longitude);
-                mMap.addMarker(new MarkerOptions().position(ubslatlng).title("South America"));
+                mMap.addMarker(new MarkerOptions().position(ubslatlng).title(nomeCapital.get(i).getCapital()));
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubslatlng, 3));
-
             }
 
 
@@ -91,19 +88,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     }
-
-
-//    private void addPolyObject() {
-//        mMap.addPolygon(new PolygonOptions()
-//                .add(MAPA)
-//                .fillColor(Color.CYAN)
-//
-//
-//                .strokeColor(Color.BLUE)
-//                .strokeWidth(10)
-//        );
-//
-//    }
 
 
 }

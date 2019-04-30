@@ -6,11 +6,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Parcelable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,17 +22,15 @@ import android.widget.Toast;
 
 import com.example.mapamundial.Adapter.Adapter;
 
+import com.example.mapamundial.Model.LatiLong;
 import com.example.mapamundial.Model.Paises;
 import com.example.mapamundial.Model.Repositorio;
 import com.example.mapamundial.Util.HttpRetro;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,9 +41,9 @@ public class MainActivity extends AppCompatActivity implements Serializable, Swi
     private List<Paises> paisesList;
     private ListView listView;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private double latitude = 0;
-    private double longitude = 0;
-    private HashMap<Double, Double> points = new HashMap<>();
+    private ArrayList<LatiLong> latiArrayList;
+
+
     Repositorio db;
 
 
@@ -78,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements Serializable, Swi
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 hasPermission();
-                if(isConnected()) {
+                if (isConnected()) {
 
                     Intent intent = new Intent(MainActivity.this, MapsActivity.class);
                     intent.putExtra("paises", paisesList.get(position));
@@ -108,24 +104,31 @@ public class MainActivity extends AppCompatActivity implements Serializable, Swi
 
         swipeRefreshLayout.setRefreshing(true);
         if (isConnected()) {
+            latiArrayList = new ArrayList<>();
+
             HttpRetro.getCountryClient().getCountry().enqueue(new Callback<List<Paises>>() {
                 public void onResponse(Call<List<Paises>> call, Response<List<Paises>> response) {
                     if (response.isSuccessful()) {
-                        List<Paises> ubsBody = response.body();
+                        List<Paises> bodyPaises = response.body();
                         paisesList.clear();
 
                         db.excluirAll();
 
-                        for (Paises paises : ubsBody) {
+                        for (Paises paises : bodyPaises) {
                             paisesList.add(paises);
                             db.inserir(paises);
                             if (paises.region2.equals("South America")) {
-                                latitude = Double.parseDouble(paises.latlng.get(0));
-                                longitude = Double.parseDouble(paises.latlng.get(1));
-                                points.put(latitude, longitude);
-                            }
+                                String capital = paises.capital;
+                                Double lat = Double.parseDouble(paises.latlng.get(0));
+                                Double lgt = Double.parseDouble(paises.latlng.get(1));
+                                LatiLong latiLong = new LatiLong(capital, lat, lgt);
 
+                                latiArrayList.add(latiLong);
+
+                            }
                         }
+
+
                         adapter.notifyDataSetChanged();
                     } else {
                         System.out.println(response.errorBody());
@@ -156,8 +159,8 @@ public class MainActivity extends AppCompatActivity implements Serializable, Swi
                 if (isConnected()) {
                     Intent intent = new Intent(MainActivity.this, MapsActivity.class);
 
+                    intent.putExtra("nome", latiArrayList);
 
-                    intent.putExtra("points", points);
                     startActivity(intent);
                     return true;
 
