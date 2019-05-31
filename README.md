@@ -1,2 +1,4 @@
 # SD2019-01
-# Versão Final com ícone
+# Adicionando o Projeto Final LEAF GARDEN 
+# BD e os esquemas já feitos
+# Diagrama de classe
