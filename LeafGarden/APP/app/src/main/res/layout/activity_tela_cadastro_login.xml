@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TelaCadastroLogin">
+
+    <Button
+        android:id="@+id/buttonCriarUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="107dp"
+        android:layout_marginEnd="107dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/criar" />
+
+    <Spinner
+        android:id="@+id/spinnerRegiao"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonCriarUsuario"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="37dp"
+        android:entries="@array/regiao" />
+
+    <EditText
+        android:id="@+id/editTextIdade"
+        android:layout_width="301dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/spinnerRegiao"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="30dp"
+        android:ems="10"
+        android:hint="@string/idade"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editTextSenha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editTextIdade"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="30dp"
+        android:ems="10"
+        android:hint="@string/senha"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="293dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editTextSenha"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="30dp"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/editTextNome"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:layout_above="@+id/editTextEmail"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="30dp"
+        android:ems="10"
+        android:hint="@string/nome"
+        android:inputType="textPersonName" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="199dp"
+        android:layout_above="@+id/editTextNome"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginBottom="36dp"
+        app:srcCompat="@drawable/user" />
+
+</RelativeLayout>

@@ -5,7 +5,25 @@
     <string name="novaConta">Criar Conta</string>
     <string name="email">Email</string>
     <string name="senha">Senha</string>
+    <string name="nome">Nome</string>
+    <string name="idade">Idade</string>
+    <string name="Regiao">Região</string>
+    <string name="criar">Criar</string>
+    <string name="conta">Conta</string>
+    <string name="jardim">Meu Jardim</string>
+    <string name="plantas">Plantas</string>
+    <string name="config">Consfigurações</string>
+    <string name="escolha">Escolha uma planta</string>
+    <string name="adcJardim">+ Jardim</string>
+    <string name="desc">Descrição</string>
+    <string name="local">Local Adequado</string>
+    <string name="temperatura">Temperatura</string>
+    <string name="adc">Adicionar planta</string>
+    <string name="plus">+</string>
+    <string name="minhasPlantas">Minhas Plantas</string>
 
+
+    <string-array name="regiao">Região</string-array>
 
 
 </resources>

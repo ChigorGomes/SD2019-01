@@ -1,5 +1,6 @@
 package com.app.leafgarden;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
     class custonOnclickNovaConta extends ClickableSpan {
         @Override
         public void onClick(View texView) {
+            Intent intent= new Intent(MainActivity.this,TelaCadastroLogin.class);
+            startActivity(intent);
 
         }
 
