@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     class customOnclickGoogle extends ClickableSpan {
         @Override
         public void onClick(View texView) {
+            Intent intent= new Intent(MainActivity.this,InfoPlanta.class);
+            startActivity(intent);
 
         }
 
