@@ -21,13 +21,6 @@
     <string name="adc">Adicionar planta</string>
     <string name="plus">+</string>
     <string name="minhasPlantas">Minhas Plantas</string>
-
-    <!--Região Norte. ...-->
-    <!--Região Nordeste. ...-->
-    <!--Região Centro-Oeste. ...-->
-    <!--Região Sudeste. ...-->
-    <!--Região Sul.-->
-
     <string-array name="regiao">
         <item></item>
         <item>Norte</item>
@@ -37,5 +30,19 @@
         <item>Sul</item>
     </string-array>
 
+    <!--PLANTA -->
+    <string name="nomePlant">Nome da Planta</string>
+    <string name="descricao">Descrição</string>
+    <string name="locAdequado">Local Adequado</string>
+    <string name="tempAmbiente">Temperatura Ambiente</string>
+    <string name="umidadeAmbiente">Umidade Ambiente</string>
+    <string name="tempSolo">Temperatura Solo</string>
+    <string name="umidadeSolo">Umidade Solo</string>
+    <string name="lumi">Luminosidade</string>
+    <string name="cadastrarPlanta">Cadastrar</string>
+    <string name="adcFoto">Foto</string>
+    <!--<string name=""></string>-->
+    <!--<string name=""></string>-->
+    <!--<string name=""></string>-->
 
 </resources>

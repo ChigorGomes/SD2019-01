@@ -24,7 +24,7 @@ import DAO.UsuarioDAO;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView entrarComGoogle;
+    TextView cadastroPlanta;
     TextView novaConta;
     private BancoDeDados bancoDeDados;
     private SQLiteDatabase database;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        entrarComGoogle = (TextView) findViewById(R.id.textViewGoogle);
+        cadastroPlanta = (TextView) findViewById(R.id.textViewCadastroPlanta);
         novaConta = (TextView) findViewById(R.id.textViewNovaConta);
         email = (EditText) findViewById(R.id.editTextEmailLogin);
         senha = (EditText) findViewById(R.id.editTextSenhaLogin);
@@ -57,15 +57,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-//        /*Link para criar conta com o Google*/
-//        SpannableString spannableString = new SpannableString("Entrar com o Google");
-//        spannableString.setSpan(new customOnclickGoogle(), 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-//        entrarComGoogle.setText(spannableString);
-//        entrarComGoogle.setMovementMethod(LinkMovementMethod.getInstance());
+        /*Link para criar conta com o Google*/
+        SpannableString spannableString = new SpannableString("Cadastrar Planta");
+        spannableString.setSpan(new custonOnclickCadastroPlanta(), 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        cadastroPlanta.setText(spannableString);
+        cadastroPlanta.setMovementMethod(LinkMovementMethod.getInstance());
 
         /*Link para criar conta normal*/
 
-         SpannableString spannableString = new SpannableString("Criar Conta");
+        spannableString = new SpannableString("Criar Conta");
         spannableString.setSpan(new custonOnclickNovaConta(), 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         novaConta.setText(spannableString);
         novaConta.setMovementMethod(LinkMovementMethod.getInstance());
@@ -101,6 +101,21 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View texView) {
             Intent intent= new Intent(MainActivity.this,TelaCadastroLogin.class);
+            startActivity(intent);
+
+        }
+
+        public void updateDrawState(TextPaint textPaint) {
+            textPaint.setColor(Color.BLUE);
+            textPaint.setUnderlineText(true);
+        }
+    }
+
+
+    class custonOnclickCadastroPlanta extends ClickableSpan {
+        @Override
+        public void onClick(View texView) {
+            Intent intent= new Intent(MainActivity.this,CadastraPlanta.class);
             startActivity(intent);
 
         }

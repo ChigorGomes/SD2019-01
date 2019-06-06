@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.app.leafgarden">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SensorPlanta"></activity>
+        <activity android:name=".CadastraPlanta"></activity>
+        <activity android:name=".SensorPlanta" />
         <activity android:name=".MeuJardim" />
         <activity android:name=".AdcPlanta" />
         <activity android:name=".InfoPlanta" />

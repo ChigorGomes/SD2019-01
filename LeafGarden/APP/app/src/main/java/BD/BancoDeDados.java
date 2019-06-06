@@ -9,6 +9,8 @@ public class BancoDeDados  extends SQLiteOpenHelper {
 
     public static  final int DATABASE_VERSION=1;
     public static final String DATABASE_NAME="LeaFGarden.db";
+
+
     private static final String TABELA_USUARIO="CREATE TABLE usuario(" +
             "idUsuario  INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "nome VARCHAR (45)," +
@@ -16,7 +18,22 @@ public class BancoDeDados  extends SQLiteOpenHelper {
             "senha VARCHAR (50) ," +
             "idade INTEGER ," +
             "IdRegiao INTEGER);";
+
+
+    private static final String TABELA_PLANTA="CREATE TABLE planta(" +
+            "idPlanta INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+            "nome TEXT," +
+            "descricao TEXT," +
+            "localAdequado  TEXT," +
+            "tempAmbiente REAL," +
+            "umidadeAmbiente REAL," +
+            "tempSolo REAL," +
+            "umidadeSolo REAL," +
+            "luminosidade REAL," +
+            "foto BLOB );";
+
     private static final String SQL_DELETE_TABELA_USUARIO="DROP TABLE IF EXISTS usuario";
+    private static final String SQL_DELETE_TABELA_PLANTA="DROP TABLE IF EXISTS planta";
 
 
     public BancoDeDados(Context context){
@@ -27,6 +44,8 @@ public class BancoDeDados  extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABELA_USUARIO);
+        db.execSQL(TABELA_PLANTA);
+
 
 
     }
@@ -34,6 +53,8 @@ public class BancoDeDados  extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_TABELA_USUARIO);
+        db.execSQL(SQL_DELETE_TABELA_PLANTA);
+
         onCreate(db);
     }
 }
