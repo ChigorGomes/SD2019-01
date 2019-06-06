@@ -45,7 +45,7 @@
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/editTextSenha"
+        android:id="@+id/editTextSenhaLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/editTextIdade"
@@ -59,10 +59,10 @@
         android:inputType="textPassword" />
 
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/editTextEmailLogin"
         android:layout_width="293dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editTextSenha"
+        android:layout_above="@+id/editTextSenhaLogin"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="50dp"
@@ -76,7 +76,7 @@
         android:id="@+id/editTextNome"
         android:layout_width="300dp"
         android:layout_height="55dp"
-        android:layout_above="@+id/editTextEmail"
+        android:layout_above="@+id/editTextEmailLogin"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="50dp"

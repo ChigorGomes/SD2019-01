@@ -22,8 +22,20 @@
     <string name="plus">+</string>
     <string name="minhasPlantas">Minhas Plantas</string>
 
+    <!--Região Norte. ...-->
+    <!--Região Nordeste. ...-->
+    <!--Região Centro-Oeste. ...-->
+    <!--Região Sudeste. ...-->
+    <!--Região Sul.-->
 
-    <string-array name="regiao">Região</string-array>
+    <string-array name="regiao">
+        <item></item>
+        <item>Norte</item>
+        <item>Nordeste</item>
+        <item>Centro-Oeste</item>
+        <item>Sudeste</item>
+        <item>Sul</item>
+    </string-array>
 
 
 </resources>
