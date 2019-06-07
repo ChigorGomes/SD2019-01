@@ -34,11 +34,14 @@ public class UsuarioDAO {
 
     public boolean addUsuario(Usuario usuario){
         try{
-                String sql="INSERT INTO usuario VALUES (NULL,'"+ usuario.getNome()+"','"+usuario.getEmail()+"','"+usuario.getSenha()+"',"
-                        +usuario.getIdade()+","+usuario.getIdRegiao()+")";
+            if(verificaUsuario(usuario)){
+                return false;
+            }else {
+                String sql = "INSERT INTO usuario VALUES (NULL,'" + usuario.getNome() + "','" + usuario.getEmail() + "','" + usuario.getSenha() + "',"
+                        + usuario.getIdade() + "," + usuario.getIdRegiao() + ")";
                 this.database.execSQL(sql);
-                return  true;
-
+                return true;
+            }
         }catch (SQLException e){
             Log.e("erro",e.getMessage());
             return  false;
@@ -55,6 +58,15 @@ public class UsuarioDAO {
         }cursor.close();
         return usuario;
 
+    }
+
+    public boolean verificaUsuario(Usuario usuario){
+        String sql= "SELECT * FROM usuario WHERE email='"+ usuario.getEmail()+"'";
+        Cursor cursor=  this.database.rawQuery(sql,null);
+        if(cursor.moveToFirst()){
+            return  true;
+        }cursor.close();
+        return false;
     }
 
 

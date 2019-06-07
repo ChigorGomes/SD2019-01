@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -17,12 +18,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -55,15 +58,6 @@ public class CadastraPlanta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastra_planta);
 
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-            if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.READ_EXTERNAL_STORAGE)){
-
-            }else{
-                ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},PERMISSAO_REQUEST);
-            }
-        }
-
-
         nomePlanta = (EditText) findViewById(R.id.editTextNomePlanta);
         descricaoPlanta = (EditText) findViewById(R.id.editTextDescricaoPlanta);
         localAdequado = (EditText) findViewById(R.id.editTextLocAdequado);
@@ -75,6 +69,17 @@ public class CadastraPlanta extends AppCompatActivity {
         cadastrarPlanta = (Button) findViewById(R.id.buttonCadastrarPlanta);
         imagemPlanta = (ImageView) findViewById(R.id.imageViewPlanta);
         adcImagemPlanta = (Button) findViewById(R.id.buttonImagemPlanta);
+
+
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.READ_EXTERNAL_STORAGE)){
+
+            }else{
+                ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},PERMISSAO_REQUEST);
+            }
+        }
+
+
 
         cadastrarPlanta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,6 +153,7 @@ public class CadastraPlanta extends AppCompatActivity {
             Bitmap bitmap= (BitmapFactory.decodeFile(picturePath));
             imagemPlanta.setImageBitmap(bitmap);
 
+
         }
     }
 
@@ -163,6 +169,14 @@ public class CadastraPlanta extends AppCompatActivity {
             }
             return;
         }
+    }
+
+    public static byte[] ImageViewToByte(ImageView imageView){
+        Bitmap bitmap= ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
+        byte[] bytesArray=  stream.toByteArray();
+        return  bytesArray;
     }
 
 

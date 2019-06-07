@@ -80,7 +80,7 @@ public class TelaCadastroLogin extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }else{
-                        Toast.makeText(TelaCadastroLogin.this,"Erro ao cadastrar!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TelaCadastroLogin.this,"Email já cadastrado!",Toast.LENGTH_SHORT).show();
 
                     }
                 }

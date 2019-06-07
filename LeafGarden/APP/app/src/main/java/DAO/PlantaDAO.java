@@ -1,6 +1,7 @@
 package DAO;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -9,7 +10,8 @@ import BD.BancoDeDados;
 import Classe.Planta;
 
 public class PlantaDAO {
-    private SQLiteDatabase database;
+    private SQLiteDatabase database; //db
+    private BancoDeDados bancoDeDados; //banco
 
     public PlantaDAO(Context context) {
         this.database = (new BancoDeDados(context)).getWritableDatabase();
@@ -29,5 +31,12 @@ public class PlantaDAO {
             return  false;
         }
     }
+
+    public Cursor getPlanta(){
+        String sql="SELECT rowid as _id, nome,foto FROM  planta ";
+
+        return this.database.rawQuery(sql,null);
+    }
+
 
 }
