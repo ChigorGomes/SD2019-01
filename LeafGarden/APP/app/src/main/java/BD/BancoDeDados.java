@@ -22,15 +22,15 @@ public class BancoDeDados  extends SQLiteOpenHelper {
 
     private static final String TABELA_PLANTA="CREATE TABLE planta(" +
             "idPlanta INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-            "nome TEXT," +
-            "descricao TEXT," +
+            "nome  TEXT," +
+            "descricao  TEXT," +
             "localAdequado  TEXT," +
             "tempAmbiente REAL," +
             "umidadeAmbiente REAL," +
             "tempSolo REAL," +
             "umidadeSolo REAL," +
             "luminosidade REAL," +
-            "foto BLOB );";
+            "foto TEXT );";
 
     private static final String SQL_DELETE_TABELA_USUARIO="DROP TABLE IF EXISTS usuario";
     private static final String SQL_DELETE_TABELA_PLANTA="DROP TABLE IF EXISTS planta";
@@ -45,9 +45,6 @@ public class BancoDeDados  extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABELA_USUARIO);
         db.execSQL(TABELA_PLANTA);
-
-
-
     }
 
     @Override

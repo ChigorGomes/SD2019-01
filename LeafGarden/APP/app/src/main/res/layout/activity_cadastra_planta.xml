@@ -35,16 +35,14 @@
 
     <EditText
         android:id="@+id/editTextSensorTempAmbiente"
-        android:layout_width="173dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView9"
         android:layout_alignParentStart="true"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="25dp"
         android:layout_marginBottom="10dp"
-        android:layout_toStartOf="@+id/editTextSensorTempSolo"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="numberDecimal" />
 
     <TextView
         android:id="@+id/textView13"
@@ -60,14 +58,14 @@
 
     <EditText
         android:id="@+id/editTextSensorTempSolo"
-        android:layout_width="173dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView9"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="numberDecimal" />
 
     <TextView
         android:id="@+id/textView15"
@@ -81,25 +79,25 @@
 
     <EditText
         android:id="@+id/editTextSensorUmidadeSolo"
-        android:layout_width="173dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView13"
         android:layout_alignParentStart="true"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="10dp"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="numberDecimal" />
 
     <EditText
         android:id="@+id/editTextSensorUmidadeAmbiente"
-        android:layout_width="173dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView15"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="numberDecimal" />
 
     <TextView
         android:id="@+id/textView16"
@@ -170,7 +168,7 @@
         android:layout_marginBottom="10dp"
         android:layout_toEndOf="@+id/imageViewPlanta"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="numberDecimal" />
 
     <TextView
         android:id="@+id/textView19"

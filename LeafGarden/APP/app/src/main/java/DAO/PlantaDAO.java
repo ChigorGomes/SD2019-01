@@ -18,8 +18,9 @@ public class PlantaDAO {
 
     public boolean addPlanta(Planta planta){
         try{
-            String sql="INSERT INTO planta VALUES (NULL,'"+ planta.getNomePlanta()+"','"+planta.getDescricao()+"','"+planta.getLocalAdequado()+"',"
-                    +planta.getTempAmbiente()+","+planta.getUmidadeAmbiente()+","+ planta.getTempSolo()+","+planta.getUmidadeSolo()+","+planta.getLuminosidade()+","+ planta.getFoto()+")";
+            String sql="INSERT INTO planta VALUES(NULL,'"+ planta.getNomePlanta()+"','"+planta.getDescricao()+"','"+
+                    planta.getLocalAdequado()+"',"+planta.getTempAmbiente()+","+planta.getUmidadeAmbiente()+","+
+                    planta.getTempSolo()+","+planta.getUmidadeSolo()+","+planta.getLuminosidade()+",'"+planta.getFoto()+"')";
             this.database.execSQL(sql);
             return  true;
 

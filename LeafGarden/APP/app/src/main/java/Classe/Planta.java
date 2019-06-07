@@ -14,10 +14,9 @@ public class Planta implements Serializable {
     private float tempSolo;
     private float umidadeSolo;
     private float luminosidade;
-    private byte[] foto;
+    private String foto;
 
-
-    public Planta(String nomePlanta, String descricao, String localAdequado, float tempAmbiente, float umidadeAmbiente, float tempSolo, float umidadeSolo, float luminosidade, byte[] foto) {
+    public Planta(String nomePlanta, String descricao, String localAdequado, float tempAmbiente, float umidadeAmbiente, float tempSolo, float umidadeSolo, float luminosidade, String foto) {
         this.nomePlanta = nomePlanta;
         this.descricao = descricao;
         this.localAdequado = localAdequado;
@@ -29,14 +28,13 @@ public class Planta implements Serializable {
         this.foto = foto;
     }
 
-    public byte[] getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(byte[] foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
-
 
     public int getIdPlanta() {
         return idPlanta;
