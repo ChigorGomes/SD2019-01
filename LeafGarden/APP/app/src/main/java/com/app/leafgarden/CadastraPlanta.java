@@ -125,9 +125,6 @@ public class CadastraPlanta extends AppCompatActivity {
                         luminosidade.setText("");
                         imagemPlanta.setImageBitmap(null);
 
-
-
-
                     }else{
                         Toast.makeText(CadastraPlanta.this,"erro ao cadastrar!",Toast.LENGTH_SHORT).show();
 
@@ -143,7 +140,7 @@ public class CadastraPlanta extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK && requestCode== GALERIA_IMAGENS){
-           Uri uri= data.getData();
+            Uri uri= data.getData();
             String[] filePath={MediaStore.Images.Media.DATA};
             Cursor cursor= getContentResolver().query(uri,filePath,null,null,null);
             cursor.moveToFirst();
@@ -154,11 +151,7 @@ public class CadastraPlanta extends AppCompatActivity {
 
             Bitmap bitmap= (BitmapFactory.decodeFile(picturePath));
             imagemPlanta.setImageBitmap(bitmap);
-           Toast.makeText(this,picturePath,Toast.LENGTH_SHORT).show();
-
-
-
-
+            Toast.makeText(this,picturePath,Toast.LENGTH_SHORT).show();
 
         }
     }

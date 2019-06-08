@@ -40,10 +40,10 @@ public class JardimDAO {
         try{
             Jardim jardim=null;
             String sql= "SELECT DISTINCT jardim.idJardim,jardim.idPlanta,jardim.idUsuario, planta.nome, planta.tempAmbiente,planta.umidadeAmbiente," +
-                        "planta.tempSolo,planta.umidadeSolo,planta.luminosidade,planta.foto " +
-                        "FROM jardim,planta,usuario " +
-                        "WHERE jardim.idPlanta = planta.idPlanta" +//+ planta.getIdPlanta()+
-                        " AND jardim.idUsuario="+usuario.getIdUsuario();
+                    "planta.tempSolo,planta.umidadeSolo,planta.luminosidade,planta.foto " +
+                    "FROM jardim,planta,usuario " +
+                    "WHERE jardim.idPlanta = planta.idPlanta" +//+ planta.getIdPlanta()+
+                    " AND jardim.idUsuario="+usuario.getIdUsuario();
 
             Cursor cursor = this.database.rawQuery (sql,null);
 

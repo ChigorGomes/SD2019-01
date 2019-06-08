@@ -21,6 +21,8 @@
         <activity android:name=".InfoPlanta" />
         <activity android:name=".Plantas" />
         <activity android:name=".TelaMenu" />
+        <activity android:name=".EditarUsuario" />
+
         <activity android:name=".TelaCadastroLogin" />
         <activity android:name=".MainActivity">
             <intent-filter>

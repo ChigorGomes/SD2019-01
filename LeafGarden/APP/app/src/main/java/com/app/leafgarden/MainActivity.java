@@ -18,8 +18,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import BD.BancoDeDados;
-import Classe.Planta;
 import Classe.Usuario;
 import DAO.UsuarioDAO;
 
@@ -38,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         cadastroPlanta = (TextView) findViewById(R.id.textViewCadastroPlanta);
         novaConta = (TextView) findViewById(R.id.textViewNovaConta);
-        email = (EditText) findViewById(R.id.editTextEmailLogin);
-        senha = (EditText) findViewById(R.id.editTextSenhaLogin);
+        email = (EditText) findViewById(R.id.editTextEmailLoginEditar);
+        senha = (EditText) findViewById(R.id.editTextSenhaLoginEditar);
         buttonEntrar= (Button) findViewById(R.id.buttonEntrar);
 
         try{
@@ -82,17 +85,17 @@ public class MainActivity extends AppCompatActivity {
 
                 }else{
                     UsuarioDAO usuarioDAO= new UsuarioDAO(MainActivity.this);
-                    Usuario usuario= usuarioDAO.getUsuario(email.getText().toString().trim(),senha.getText().toString().trim());
+                    String senhaMD5= convertPassMd5(senha.getText().toString().trim());
+                    Usuario usuario= usuarioDAO.getUsuario(email.getText().toString().trim(),senhaMD5);
                     if(usuario!=null){
-                        Planta planta= new Planta();
-
                         Intent intent= new Intent(MainActivity.this, TelaMenu.class);
                         intent.putExtra("usuario",usuario);
-                        if(planta!=null)
-                            intent.putExtra("planta",planta);
 
 
                         startActivity(intent);
+                        finish();
+
+
                     }else{
                         Toast.makeText(MainActivity.this,"Usuário e/ou Senha inválidos",Toast.LENGTH_SHORT).show();
 
@@ -131,5 +134,22 @@ public class MainActivity extends AppCompatActivity {
             textPaint.setColor(Color.BLUE);
             textPaint.setUnderlineText(true);
         }
+    }
+
+    public static String convertPassMd5(String pass) {
+        String password = null;
+        MessageDigest mdEnc;
+        try {
+            mdEnc = MessageDigest.getInstance("MD5");
+            mdEnc.update(pass.getBytes(), 0, pass.length());
+            pass = new BigInteger(1, mdEnc.digest()).toString(16);
+            while (pass.length() < 32) {
+                pass = "0" + pass;
+            }
+            password = pass;
+        } catch (NoSuchAlgorithmException e1) {
+            e1.printStackTrace();
+        }
+        return password;
     }
 }

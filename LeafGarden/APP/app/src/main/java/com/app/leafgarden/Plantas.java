@@ -29,15 +29,13 @@ public class Plantas extends AppCompatActivity{
 
         usuario= (Usuario) getIntent().getSerializableExtra("usuario");
 
-
-
         try{
 
-                plantaDAO= new PlantaDAO(this);
-                plantaVector= new ArrayList<>(plantaDAO.getPlanta());
+            plantaDAO= new PlantaDAO(this);
+            plantaVector= new ArrayList<>(plantaDAO.getPlanta());
 
-                ListAdapterPlantas listAdapterPlantas= new ListAdapterPlantas(Plantas.this,R.layout.activity_plantas,plantaVector);
-                listView.setAdapter(listAdapterPlantas);
+            ListAdapterPlantas listAdapterPlantas= new ListAdapterPlantas(Plantas.this,R.layout.activity_plantas,plantaVector);
+            listView.setAdapter(listAdapterPlantas);
 
         }catch (Exception e){
             Log.e("erro",e.getMessage());
@@ -63,27 +61,4 @@ public class Plantas extends AppCompatActivity{
 
 
 
-    }
-
-
-
-
-
-//     plantaDAO= new PlantaDAO(Plantas.this);
-//        cursor = plantaDAO.getPlanta();
-//
-//
-//        String[] nomeCampos= new String[]{"nome","foto"};
-//        int[] idVies= new int[]{R.id.nomePlantList,R.id.textViewTeste};
-//        if(cursor.getCount()>0){
-//
-//            try{
-//                cursorAdapter= new SimpleCursorAdapter(this,R.layout.activity_plantas,plantaDAO.getPlanta(),nomeCampos,idVies,0);
-//                setListAdapter(cursorAdapter);
-//            }catch (Exception e){
-//                Log.e("erro",e.getMessage());
-//            }
-//
-//        }else{
-//            Toast.makeText(this,"Nenhum registro encontrado!",Toast.LENGTH_SHORT).show();
-//        }
+}

@@ -28,7 +28,7 @@ public class PlantaDAO {
             FileInputStream stream= new FileInputStream(name);
             byte[] imBytes= new byte[stream.available()];
             stream.read(imBytes);
-           ContentValues contentValues= new ContentValues();
+            ContentValues contentValues= new ContentValues();
             contentValues.put("nome",planta.getNomePlanta());
             contentValues.put("descricao", planta.getDescricao());
             contentValues.put("localAdequado",planta.getLocalAdequado());
@@ -49,8 +49,6 @@ public class PlantaDAO {
     }
 
 
-
-
     public ArrayList<Planta> getPlanta(){
         ArrayList<Planta> plantaVector= new ArrayList<>();
 
@@ -61,10 +59,10 @@ public class PlantaDAO {
             Cursor cursor = this.database.rawQuery (sql,null);
 
             while (cursor.moveToNext()){
-                    planta = new Planta(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),
-                            cursor.getFloat(4),cursor.getFloat(5),cursor.getFloat(6),cursor.getFloat(7),cursor.getFloat(8),cursor.getBlob(9));
-                    plantaVector.add(planta);
-                }
+                planta = new Planta(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),
+                        cursor.getFloat(4),cursor.getFloat(5),cursor.getFloat(6),cursor.getFloat(7),cursor.getFloat(8),cursor.getBlob(9));
+                plantaVector.add(planta);
+            }
 
 
             return  plantaVector;
@@ -81,7 +79,7 @@ public class PlantaDAO {
 
 
 
-    }
+}
 
 
 

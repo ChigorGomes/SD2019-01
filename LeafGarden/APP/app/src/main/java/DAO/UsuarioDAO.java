@@ -1,9 +1,11 @@
 package DAO;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
 import BD.BancoDeDados;
@@ -15,8 +17,6 @@ public class UsuarioDAO {
     public UsuarioDAO(Context context) {
         this.database = (new BancoDeDados(context)).getWritableDatabase();
     }
-
-
 
     public boolean addUsuario(Usuario usuario){
         try{
@@ -31,6 +31,20 @@ public class UsuarioDAO {
         }catch (SQLException e){
             Log.e("erro",e.getMessage());
             return  false;
+        }
+    }
+
+    public  boolean editarUsuario(Usuario usuario){
+        try{
+            ContentValues contentValues= new ContentValues();
+            contentValues.put("nome",usuario.getNome());
+            contentValues.put("senha",usuario.getSenha());
+            contentValues.put("idRegiao",usuario.getIdRegiao());
+            database.update("usuario",contentValues,"idUsuario="+usuario.getIdUsuario(),null);
+            return true;
+        }catch (SQLiteException e){
+            Log.e("erro",e.getMessage());
+            return false;
         }
     }
 

@@ -42,7 +42,7 @@
     <string name="cadastrarPlanta">Cadastrar</string>
     <string name="adcFoto">Foto</string>
     <string name="dica">Dica</string>
-    <!--<string name=""></string>-->
+    <string name="editar">Editar</string>
     <!--<string name=""></string>-->
 
 </resources>

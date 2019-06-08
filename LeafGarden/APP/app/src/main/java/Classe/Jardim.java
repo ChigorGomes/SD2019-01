@@ -14,11 +14,11 @@ public class Jardim implements Serializable {
     private float luminosidade;
     private byte[] foto;
 
-    public Jardim(int idJardim, int idUsuario, int idPlanta) {
-        this.idJardim = idJardim;
-        this.idUsuario = idUsuario;
-        this.idPlanta = idPlanta;
-    }
+//    public Jardim(int idJardim, int idUsuario, int idPlanta) {
+//        this.idJardim = idJardim;
+//        this.idUsuario = idUsuario;
+//        this.idPlanta = idPlanta;
+//    }
 
     public Jardim(int idJardim, int idUsuario, int idPlanta, String nomePlanta, float tempAmbiente, float umidadeAmbiente, float tempSolo, float umidadeSolo, float luminosidade, byte[] foto) {
         this.idJardim = idJardim;

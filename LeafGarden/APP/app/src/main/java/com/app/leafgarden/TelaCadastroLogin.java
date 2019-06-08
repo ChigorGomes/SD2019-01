@@ -10,6 +10,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import Classe.Usuario;
 import DAO.UsuarioDAO;
 
@@ -27,12 +31,12 @@ public class TelaCadastroLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_cadastro_login);
-        nome = (EditText) findViewById(R.id.editTextNome);
-        senha = (EditText) findViewById(R.id.editTextSenhaLogin);
-        idade = (EditText) findViewById(R.id.editTextIdade);
-        email = (EditText) findViewById(R.id.editTextEmailLogin);
-        cadastrar = (Button) findViewById(R.id.buttonCriarUsuario);
-        spinner = (Spinner)  findViewById(R.id.spinnerRegiao);
+        nome = (EditText) findViewById(R.id.editTextNomeEditar);
+        senha = (EditText) findViewById(R.id.editTextSenhaLoginEditar);
+        idade = (EditText) findViewById(R.id.editTextIdadeEditar);
+        email = (EditText) findViewById(R.id.editTextEmailLoginEditar);
+        cadastrar = (Button) findViewById(R.id.buttonEditarUsuario);
+        spinner = (Spinner)  findViewById(R.id.spinnerRegiaoEditar);
 
 
 
@@ -70,8 +74,9 @@ public class TelaCadastroLogin extends AppCompatActivity {
                 }
                 else{
                     int idad= Integer.parseInt(idade.getText().toString());
-                    Usuario usu= new Usuario(nome.getText().toString(),email.getText().toString().trim(),senha.getText().toString().trim(),idad,posicao);
-                   UsuarioDAO usuarioDAO= new UsuarioDAO(TelaCadastroLogin.this);
+                    String senhaMD5= convertPassMd5(senha.getText().toString().trim());
+                    Usuario usu= new Usuario(nome.getText().toString(),email.getText().toString().trim(),senhaMD5,idad,posicao);
+                    UsuarioDAO usuarioDAO= new UsuarioDAO(TelaCadastroLogin.this);
 
                     if(usuarioDAO.addUsuario(usu)){
                         Toast.makeText(TelaCadastroLogin.this,"Cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
@@ -91,8 +96,22 @@ public class TelaCadastroLogin extends AppCompatActivity {
         });
 
 
-
-
+    }
+    public static String convertPassMd5(String pass) {
+        String password = null;
+        MessageDigest mdEnc;
+        try {
+            mdEnc = MessageDigest.getInstance("MD5");
+            mdEnc.update(pass.getBytes(), 0, pass.length());
+            pass = new BigInteger(1, mdEnc.digest()).toString(16);
+            while (pass.length() < 32) {
+                pass = "0" + pass;
+            }
+            password = pass;
+        } catch (NoSuchAlgorithmException e1) {
+            e1.printStackTrace();
+        }
+        return password;
     }
 
 }

@@ -10,7 +10,7 @@ import Classe.Usuario;
 
 public class TelaMenu extends AppCompatActivity {
     private Usuario usuario;
-    Button buttonPlanta, buttomMeuJardim;
+    Button buttonPlanta, buttomMeuJardim, buttonEditarConta;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +18,7 @@ public class TelaMenu extends AppCompatActivity {
         usuario= (Usuario) getIntent().getSerializableExtra("usuario");
         buttonPlanta = (Button) findViewById(R.id.buttonPlantas);
         buttomMeuJardim= findViewById(R.id.buttonMeuJardim);
+        buttonEditarConta = findViewById(R.id.buttonConta);
 
         buttonPlanta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +36,14 @@ public class TelaMenu extends AppCompatActivity {
                 intent.putExtra("usuario",usuario);
                 startActivity(intent);
 
+            }
+        });
+        buttonEditarConta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(TelaMenu.this, EditarUsuario.class);
+                intent.putExtra("usuario",usuario);
+                startActivity(intent);
             }
         });
 
