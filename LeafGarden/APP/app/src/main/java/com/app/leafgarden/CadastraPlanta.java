@@ -115,6 +115,18 @@ public class CadastraPlanta extends AppCompatActivity {
 
                     if(plantaDAO.addPlanta(caminhoImagem,planta)){
                         Toast.makeText(CadastraPlanta.this,"Cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
+                        nomePlanta.setText("");
+                        descricaoPlanta.setText("");
+                        localAdequado.setText("");
+                        tempAmbiente.setText("");
+                        umidadeAmbiente.setText(""); ;
+                        tempSolo.setText("");
+                        umidadeSolo.setText("");
+                        luminosidade.setText("");
+                        imagemPlanta.setImageBitmap(null);
+
+
+
 
                     }else{
                         Toast.makeText(CadastraPlanta.this,"erro ao cadastrar!",Toast.LENGTH_SHORT).show();

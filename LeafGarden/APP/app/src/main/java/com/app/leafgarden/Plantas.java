@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -19,10 +18,8 @@ import DAO.PlantaDAO;
 public class Plantas extends AppCompatActivity{
 
    PlantaDAO plantaDAO;
-  ImageView imageView;
     ListView listView;
     ArrayList<Planta> plantaVector;
-    Planta planta;
     Usuario usuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +48,15 @@ public class Plantas extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent= new Intent(Plantas.this,InfoPlanta.class);
-                intent.putExtra("usuario",usuario);
-                intent.putExtra("planta",plantaVector.get(position));
-                startActivity(intent);
+                try{
+                    Intent intent= new Intent(Plantas.this,InfoPlanta.class);
+                    intent.putExtra("usuario",usuario);
+                    intent.putExtra("planta",plantaVector.get(position));
+                    startActivity(intent);
+                }catch (Exception e){
+                    Log.e("erro",e.getMessage());
+                }
+
             }
         });
     }

@@ -1,56 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout4"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SensorPlanta">
+    android:layout_height="match_parent">
 
     <ListView
-        android:id="@+id/listDicas"
-        android:layout_width="100dp"
+        android:id="@+id/listViewDica"
+        android:layout_width="395dp"
         android:layout_height="200dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="82dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textViewDicas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/listDicas"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="314dp"
-        android:layout_marginBottom="30dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="37dp"
+        app:layout_constraintBottom_toTopOf="@+id/listViewDica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="115dp"
-        android:text="TextView" />
+        android:id="@+id/textViewSensorLuminosidade"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewDicas"
+        app:layout_constraintEnd_toStartOf="@+id/textViewSendorUmidadeSolo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewSendorUmidadeSolo"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="30dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/textViewDicas"
+        app:layout_constraintEnd_toStartOf="@+id/textViewSendorTempSolo"
+        app:layout_constraintStart_toEndOf="@+id/textViewSensorLuminosidade" />
+
+    <TextView
+        android:id="@+id/textViewSensorUmidadeAmbiente"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginBottom="20dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/textViewSendorUmidadeSolo"
+        app:layout_constraintStart_toEndOf="@+id/imageView5" />
+
+    <TextView
+        android:id="@+id/textViewSendorTempSolo"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="30dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/textViewDicas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewSendorUmidadeSolo" />
+
+    <TextView
+        android:id="@+id/textViewSensorTempAmbiente"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="20dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/textViewSendorTempSolo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewSensorUmidadeAmbiente" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:srcCompat="@tools:sample/avatars[1]" />
+        android:id="@+id/imageView5"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewSensorLuminosidade"
+        app:layout_constraintEnd_toStartOf="@+id/textViewSensorUmidadeAmbiente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/light" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="91dp"
-        android:layout_height="73dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="188dp"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewSensorUmidadeAmbiente"
+        app:layout_constraintEnd_toStartOf="@+id/imageView7"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:srcCompat="@drawable/gota" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewSensorTempAmbiente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:srcCompat="@drawable/temperatura" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="120dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/buttonshape" />
+
+    <TextView
+        android:id="@+id/textViewNomePlantaSensor"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="56dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView8"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

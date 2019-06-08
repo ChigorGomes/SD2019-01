@@ -1,8 +1,8 @@
 package com.app.leafgarden;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -76,6 +76,7 @@ public class TelaCadastroLogin extends AppCompatActivity {
                     if(usuarioDAO.addUsuario(usu)){
                         Toast.makeText(TelaCadastroLogin.this,"Cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
                         Intent intent= new Intent(TelaCadastroLogin.this,TelaMenu.class);
+
                         intent.putExtra("usuario",usu);
                         startActivity(intent);
                         finish();

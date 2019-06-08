@@ -1,5 +1,6 @@
 package com.app.leafgarden;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -8,14 +9,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import Classe.Jardim;
 import Classe.Planta;
+import Classe.Usuario;
+import DAO.JardimDAO;
 
 public class InfoPlanta extends AppCompatActivity {
     TextView nomePlanta,descricaoPlanta,localAdequado,temperaturasIdeais;
     ImageView imageView;
     Planta planta;
     Button buttonCadastroJardim;
+    Usuario usuario;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +30,7 @@ public class InfoPlanta extends AppCompatActivity {
         setContentView(R.layout.activity_info_planta);
 
         planta= (Planta) getIntent().getSerializableExtra("planta");
+        usuario= (Usuario) getIntent().getSerializableExtra("usuario");
         nomePlanta =  findViewById(R.id.textViewNomeInfoPlanta);
         descricaoPlanta = findViewById(R.id.textViewDescricaoPlanta);
         localAdequado = findViewById(R.id.textViewLocalAdequadoInfoPlant);
@@ -37,10 +45,22 @@ public class InfoPlanta extends AppCompatActivity {
         String temp="Umidade: "+"Solo: "+planta.getUmidadeSolo()+" | Ambiente: "+planta.getUmidadeAmbiente()+"\n"+
                 "Temperatura: "+"Solo: " +planta.getTempSolo()+" |Ambiente: "+planta.getTempAmbiente();
         temperaturasIdeais.setText(temp);
-
+        imageView.setImageBitmap(bitmap);
         buttonCadastroJardim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Jardim jardim= new Jardim(usuario.getIdUsuario(),planta.getIdPlanta());
+                JardimDAO jardimDAO =  new JardimDAO(InfoPlanta.this);
+                if(jardimDAO.addJardim(jardim)){
+                    Toast.makeText(InfoPlanta.this,"Cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
+                    Intent intent= new Intent(InfoPlanta.this,TelaMenu.class);
+                    intent.putExtra("usuario",usuario);
+                    startActivity(intent);
+
+
+                }else{
+                    Toast.makeText(InfoPlanta.this,"Erro",Toast.LENGTH_SHORT).show();
+                }
 
             }
         });

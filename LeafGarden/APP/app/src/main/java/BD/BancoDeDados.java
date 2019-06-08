@@ -41,8 +41,16 @@ public class BancoDeDados  extends SQLiteOpenHelper {
             "luminosidade REAL," +
             "foto BLOB );";
 
+    private static  final String TABELA_JARDIM="CREATE TABLE jardim (" +
+            "idJardim INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+            "idUsuario INTEGER NOT NULL," +
+            "idPlanta INTEGER NOT NULL," +
+            "FOREIGN KEY(idPlanta) REFERENCES planta(idPlanta) ON DELETE CASCADE ON UPDATE CASCADE," +
+            "FOREIGN KEY(idUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE ON UPDATE CASCADE);";
+
     private static final String SQL_DELETE_TABELA_USUARIO="DROP TABLE IF EXISTS usuario";
     private static final String SQL_DELETE_TABELA_PLANTA="DROP TABLE IF EXISTS planta";
+    private static  final String SQL_DELETE_TABELA_JARDIM= "DROP TABLE IF EXISTS jardim";
 
 
     public BancoDeDados(Context context){
@@ -54,6 +62,7 @@ public class BancoDeDados  extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABELA_USUARIO);
         db.execSQL(TABELA_PLANTA);
+        db.execSQL(TABELA_JARDIM);
 
     }
 
@@ -61,6 +70,7 @@ public class BancoDeDados  extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_TABELA_USUARIO);
         db.execSQL(SQL_DELETE_TABELA_PLANTA);
+        db.execSQL(SQL_DELETE_TABELA_JARDIM);
         onCreate(db);
 
     }

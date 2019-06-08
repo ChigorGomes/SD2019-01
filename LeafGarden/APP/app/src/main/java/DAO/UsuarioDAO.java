@@ -39,7 +39,7 @@ public class UsuarioDAO {
         String sql="SELECT * FROM usuario WHERE email='"+email+"' AND senha='"+senha+"'";
         Cursor cursor= this.database.rawQuery(sql,null);
         if(cursor.moveToNext()){
-            usuario= new Usuario(cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getInt(4),
+            usuario= new Usuario(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getInt(4),
                     cursor.getInt(5));
         }cursor.close();
         return usuario;

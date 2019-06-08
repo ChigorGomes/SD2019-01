@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import BD.BancoDeDados;
+import Classe.Planta;
 import Classe.Usuario;
 import DAO.UsuarioDAO;
 
@@ -83,8 +84,14 @@ public class MainActivity extends AppCompatActivity {
                     UsuarioDAO usuarioDAO= new UsuarioDAO(MainActivity.this);
                     Usuario usuario= usuarioDAO.getUsuario(email.getText().toString().trim(),senha.getText().toString().trim());
                     if(usuario!=null){
+                        Planta planta= new Planta();
+
                         Intent intent= new Intent(MainActivity.this, TelaMenu.class);
                         intent.putExtra("usuario",usuario);
+                        if(planta!=null)
+                            intent.putExtra("planta",planta);
+
+
                         startActivity(intent);
                     }else{
                         Toast.makeText(MainActivity.this,"Usuário e/ou Senha inválidos",Toast.LENGTH_SHORT).show();
