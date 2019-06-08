@@ -7,7 +7,7 @@
     tools:context=".InfoPlanta">
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textViewNomeInfoPlanta"
         android:layout_width="154dp"
         android:layout_height="40dp"
         android:layout_above="@+id/buttonAdcPlantaNoJardim"
@@ -15,13 +15,12 @@
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:text="TextView"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textViewTemperaturaPlanta"
+        android:id="@+id/textViewTemperaturaInfoPlanta"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
@@ -36,7 +35,7 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textViewTemperaturaPlanta"
+        android:layout_above="@+id/textViewTemperaturaInfoPlanta"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="25dp"
@@ -47,7 +46,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textViewLocalAdequado"
+        android:id="@+id/textViewLocalAdequadoInfoPlant"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_above="@+id/textView8"
@@ -62,7 +61,7 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textViewLocalAdequado"
+        android:layout_above="@+id/textViewLocalAdequadoInfoPlant"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="25dp"
@@ -111,7 +110,7 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/imageViewInfoPlanta"
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_above="@+id/textViewDescricaoPlanta"

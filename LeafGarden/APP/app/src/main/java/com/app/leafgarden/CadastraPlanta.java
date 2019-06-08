@@ -151,18 +151,6 @@ public class CadastraPlanta extends AppCompatActivity {
         }
     }
 
-//    public String getPath(Uri uri){
-//        if(uri==null) return null;
-//        String[] projection= {MediaStore.Images.Media.DATA};
-//        Cursor cursor= managedQuery(uri,projection,null,null,null);
-//        if(cursor!=null){
-//            int column= cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-//            cursor.moveToFirst();
-//            return  cursor.getString(column);
-//        }
-//        return uri.getPath();
-//    }
-
 
 
     @Override
