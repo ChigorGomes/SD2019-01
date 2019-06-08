@@ -1,33 +1,22 @@
 package com.app.leafgarden;
 
 import android.Manifest;
-import android.app.Activity;
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
 
 import Classe.Planta;
 import DAO.PlantaDAO;
@@ -47,7 +36,6 @@ public class CadastraPlanta extends AppCompatActivity {
     Button adcImagemPlanta;
     private final int GALERIA_IMAGENS=1;
     private final int PERMISSAO_REQUEST=2;
-
     String caminhoImagem="";
 
 
@@ -70,7 +58,6 @@ public class CadastraPlanta extends AppCompatActivity {
         imagemPlanta = (ImageView) findViewById(R.id.imageViewPlanta);
         adcImagemPlanta = (Button) findViewById(R.id.buttonImagemPlanta);
 
-
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.READ_EXTERNAL_STORAGE)){
 
@@ -78,6 +65,15 @@ public class CadastraPlanta extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},PERMISSAO_REQUEST);
             }
         }
+
+        adcImagemPlanta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(Intent.ACTION_PICK,Uri.parse("content://media/internal/images/media"));
+                startActivityForResult(intent,GALERIA_IMAGENS);
+            }
+
+        });
 
 
 
@@ -104,7 +100,6 @@ public class CadastraPlanta extends AppCompatActivity {
                     Toast.makeText(CadastraPlanta.this,"Coloque uma foto!",Toast.LENGTH_SHORT).show();
 
                 }else{
-
                     String plantaAux= nomePlanta.getText().toString();
                     String descAux= descricaoPlanta.getText().toString();
                     String locAdequadoAux= localAdequado.getText().toString();
@@ -115,10 +110,10 @@ public class CadastraPlanta extends AppCompatActivity {
                     float lumi=Float.parseFloat(luminosidade.getText().toString());
 
 
-                    Planta planta= new Planta(plantaAux,descAux,locAdequadoAux,tempAmbienteAux,umidadeAmb,tempSoloAux,umidadeSoloAux,lumi, caminhoImagem);
+                    Planta planta= new Planta(plantaAux,descAux,locAdequadoAux,tempAmbienteAux,umidadeAmb,tempSoloAux,umidadeSoloAux,lumi);
                     PlantaDAO plantaDAO= new PlantaDAO(CadastraPlanta.this);
 
-                    if(plantaDAO.addPlanta(planta)){
+                    if(plantaDAO.addPlanta(caminhoImagem,planta)){
                         Toast.makeText(CadastraPlanta.this,"Cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
 
                     }else{
@@ -129,33 +124,46 @@ public class CadastraPlanta extends AppCompatActivity {
             }
         });
 
-        adcImagemPlanta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent,GALERIA_IMAGENS);
-            }
-        });
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK && requestCode== GALERIA_IMAGENS){
-            Uri selectUri= data.getData();
+           Uri uri= data.getData();
             String[] filePath={MediaStore.Images.Media.DATA};
-            Cursor cursor= getContentResolver().query(selectUri,filePath,null,null,null);
+            Cursor cursor= getContentResolver().query(uri,filePath,null,null,null);
             cursor.moveToFirst();
             int columnIndex= cursor.getColumnIndex(filePath[0]);
             String picturePath= cursor.getString(columnIndex);
             caminhoImagem= String.valueOf(picturePath);
             cursor.close();
+
             Bitmap bitmap= (BitmapFactory.decodeFile(picturePath));
             imagemPlanta.setImageBitmap(bitmap);
+           Toast.makeText(this,picturePath,Toast.LENGTH_SHORT).show();
+
+
+
 
 
         }
     }
+
+//    public String getPath(Uri uri){
+//        if(uri==null) return null;
+//        String[] projection= {MediaStore.Images.Media.DATA};
+//        Cursor cursor= managedQuery(uri,projection,null,null,null);
+//        if(cursor!=null){
+//            int column= cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+//            cursor.moveToFirst();
+//            return  cursor.getString(column);
+//        }
+//        return uri.getPath();
+//    }
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -171,13 +179,6 @@ public class CadastraPlanta extends AppCompatActivity {
         }
     }
 
-    public static byte[] ImageViewToByte(ImageView imageView){
-        Bitmap bitmap= ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
-        byte[] bytesArray=  stream.toByteArray();
-        return  bytesArray;
-    }
 
 
 

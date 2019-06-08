@@ -1,7 +1,5 @@
 package Classe;
 
-import android.graphics.Bitmap;
-
 import java.io.Serializable;
 
 public class Planta implements Serializable {
@@ -14,9 +12,10 @@ public class Planta implements Serializable {
     private float tempSolo;
     private float umidadeSolo;
     private float luminosidade;
-    private String foto;
+    private byte[] foto;
 
-    public Planta(String nomePlanta, String descricao, String localAdequado, float tempAmbiente, float umidadeAmbiente, float tempSolo, float umidadeSolo, float luminosidade, String foto) {
+    public Planta(int idPlanta, String nomePlanta, String descricao, String localAdequado, float tempAmbiente, float umidadeAmbiente, float tempSolo, float umidadeSolo, float luminosidade, byte[] foto) {
+        this.idPlanta = idPlanta;
         this.nomePlanta = nomePlanta;
         this.descricao = descricao;
         this.localAdequado = localAdequado;
@@ -28,11 +27,27 @@ public class Planta implements Serializable {
         this.foto = foto;
     }
 
-    public String getFoto() {
+    public Planta(String nomePlanta, String descricao, String localAdequado, float tempAmbiente, float umidadeAmbiente, float tempSolo, float umidadeSolo, float luminosidade) {
+        this.nomePlanta = nomePlanta;
+        this.descricao = descricao;
+        this.localAdequado = localAdequado;
+        this.tempAmbiente = tempAmbiente;
+        this.umidadeAmbiente = umidadeAmbiente;
+        this.tempSolo = tempSolo;
+        this.umidadeSolo = umidadeSolo;
+        this.luminosidade = luminosidade;
+    }
+
+    public Planta(String nomePlanta, byte[] foto) {
+        this.nomePlanta = nomePlanta;
+        this.foto = foto;
+    }
+
+    public byte[] getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(byte[] foto) {
         this.foto = foto;
     }
 

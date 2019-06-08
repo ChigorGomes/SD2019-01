@@ -1,42 +1,87 @@
 package DAO;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.util.Log;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import BD.BancoDeDados;
 import Classe.Planta;
 
 public class PlantaDAO {
     private SQLiteDatabase database; //db
-    private BancoDeDados bancoDeDados; //banco
+
 
     public PlantaDAO(Context context) {
         this.database = (new BancoDeDados(context)).getWritableDatabase();
 
     }
 
-    public boolean addPlanta(Planta planta){
+    public boolean addPlanta(String name,Planta planta){
         try{
-            String sql="INSERT INTO planta VALUES(NULL,'"+ planta.getNomePlanta()+"','"+planta.getDescricao()+"','"+
-                    planta.getLocalAdequado()+"',"+planta.getTempAmbiente()+","+planta.getUmidadeAmbiente()+","+
-                    planta.getTempSolo()+","+planta.getUmidadeSolo()+","+planta.getLuminosidade()+",'"+planta.getFoto()+"')";
-            this.database.execSQL(sql);
-            return  true;
+            FileInputStream stream= new FileInputStream(name);
+            byte[] imBytes= new byte[stream.available()];
+            stream.read(imBytes);
+           ContentValues contentValues= new ContentValues();
+            contentValues.put("nome",planta.getNomePlanta());
+            contentValues.put("descricao", planta.getDescricao());
+            contentValues.put("localAdequado",planta.getLocalAdequado());
+            contentValues.put("tempAmbiente",planta.getTempAmbiente());
+            contentValues.put("umidadeAmbiente",planta.getUmidadeAmbiente());
+            contentValues.put("tempSolo",planta.getTempSolo());
+            contentValues.put("umidadeSolo",planta.getUmidadeSolo());
+            contentValues.put("luminosidade",planta.getLuminosidade());
+            contentValues.put("foto",imBytes);
+            database.insert("planta",null,contentValues);
 
-        }catch (SQLException e){
-            Log.e("erro",e.getMessage());
+            stream.close();
+            return  true;
+        }catch (IOException e){
+            e.printStackTrace();
             return  false;
         }
     }
 
-    public Cursor getPlanta(){
-        String sql="SELECT rowid as _id, nome,foto FROM  planta ";
 
-        return this.database.rawQuery(sql,null);
+
+
+    public ArrayList<Planta> getPlanta(){
+        ArrayList<Planta> plantaVector= new ArrayList<>();
+
+        try{
+            Planta planta= null;
+            String sql= "SELECT * from planta ORDER BY nome";
+
+            Cursor cursor = this.database.rawQuery (sql,null);
+
+            while (cursor.moveToNext()){
+                    planta = new Planta(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),
+                            cursor.getFloat(4),cursor.getFloat(5),cursor.getFloat(6),cursor.getFloat(7),cursor.getFloat(8),cursor.getBlob(9));
+                    plantaVector.add(planta);
+                }
+
+
+            return  plantaVector;
+
+        }catch (SQLiteException e){
+            Log.e("Erro", e.getMessage());
+
+
+        }
+        return plantaVector;
+
+
     }
 
 
-}
+
+    }
+
+
+

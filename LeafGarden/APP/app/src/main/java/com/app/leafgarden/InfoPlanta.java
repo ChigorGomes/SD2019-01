@@ -1,11 +1,14 @@
 package com.app.leafgarden;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import Classe.Planta;
 
 public class InfoPlanta extends AppCompatActivity {
     TextView infoPlanta;
+    Planta plantas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,9 +16,10 @@ public class InfoPlanta extends AppCompatActivity {
         setContentView(R.layout.activity_info_planta);
 
         infoPlanta = (TextView) findViewById(R.id.textViewTemperaturaPlanta);
+        plantas= (Planta) getIntent().getSerializableExtra("planta");
+        infoPlanta.setText(plantas.getDescricao());
 
-        infoPlanta.setText("Mantenha a temperatura em sua casa\n" +
-                "(ou pelo menos do local onde a\n" +
-                "samambaia está) próxima a 21° C.");
+
+
     }
 }
