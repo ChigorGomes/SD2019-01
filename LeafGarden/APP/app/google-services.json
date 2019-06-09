@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "431339515895",
+    "firebase_url": "https://leafgarden-8f8cc.firebaseio.com",
+    "project_id": "leafgarden-8f8cc",
+    "storage_bucket": "leafgarden-8f8cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431339515895:android:71c93126e868722c",
+        "android_client_info": {
+          "package_name": "com.app.leafgarden"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "431339515895-cdlfep1vg10p7gkku4jkq60fsii9kv2u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.leafgarden",
+            "certificate_hash": "52fd270f73b6411162a908782d89391bbaa04170"
+          }
+        },
+        {
+          "client_id": "431339515895-i5tjn1g0co5fc0481jpmfsbdkluhemtb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkUoheVeAWNjLNIjMDofSW5CbJAgDTCXs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "431339515895-i5tjn1g0co5fc0481jpmfsbdkluhemtb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
