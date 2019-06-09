@@ -9,11 +9,11 @@
     <ListView
         android:id="@+id/listViewDica"
         android:layout_width="395dp"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="10dp" />
 
     <TextView
         android:id="@+id/textViewDicas"
@@ -24,7 +24,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginStart="55dp"
         android:layout_marginEnd="55dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="30dp"
         android:gravity="center"
         android:text="@string/dica"
         android:textSize="18sp"

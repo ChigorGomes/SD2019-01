@@ -6,7 +6,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.FirebaseApp;
@@ -16,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 
 import Classe.Jardim;
@@ -33,8 +37,11 @@ public class SensorPlanta extends AppCompatActivity {
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
     ImageView sensorUmidade,sensorTemperatura,sensorLuminosidade;
+    ListView listViewDica;
     final Sensor[] sensor = {null};
     int TEMPERATURASOLO,UMIDADESOLO,UMIDADEAMBIENTE,TEMPERATURAAMBIENTE,LUMINOSIDADE=0;
+    private List<String> listaItens;
+    private ArrayAdapter<String> adapter;
 
 
     @Override
@@ -54,6 +61,7 @@ public class SensorPlanta extends AppCompatActivity {
         sensorTemperatura = findViewById(R.id.imageViewSensorTemperatura);
         sensorLuminosidade=  findViewById(R.id.imageViewSensorLuminosidade);
         nomePlanta.setText(jardim.getNomePlanta());
+        listViewDica = findViewById(R.id.listViewDica);
         Bitmap bitmap= (Bitmap) BitmapFactory.decodeByteArray(jardim.getFoto(),0,jardim.getFoto().length);
         imageView.setImageBitmap(bitmap);
 
@@ -63,46 +71,64 @@ public class SensorPlanta extends AppCompatActivity {
         UMIDADEAMBIENTE = (int) jardim.getUmidadeAmbiente();
         UMIDADESOLO = (int) jardim.getUmidadeSolo();
 
+        listaItens = new ArrayList<>();
+        adapter= new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listaItens);
+
         inicializarFirebase();
 
 
 
 
 
-    databaseReference.addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-            sensor[0] = dataSnapshot.getValue(Sensor.class);
-            luminosidade.setText(String.valueOf(sensor[0].getLuminosidade()));
-            tempAmbiente.setText(String.valueOf(sensor[0].getTemperatura()));
-            umidadeAmbiente.setText(String.valueOf(sensor[0].getUmidade()));
+                sensor[0] = dataSnapshot.getValue(Sensor.class);
+                luminosidade.setText(String.valueOf(sensor[0].getLuminosidade()));
+                tempAmbiente.setText(String.valueOf(sensor[0].getTemperatura()));
+                umidadeAmbiente.setText(String.valueOf(sensor[0].getUmidade()));
+                String msgTemperatura="";
+                String msgLuminosidade="";
+                String msgUmidade="";
+                listaItens.clear();
 
 
-            if(sensor[0].getTemperatura()> TEMPERATURAAMBIENTE){
-//                luminosidade.setText(String.valueOf(sensor[0].getTemperatura()));
-//                luminosidade.setTextColor(Color.BLUE);
+                if(sensor[0].getTemperatura()> TEMPERATURAAMBIENTE){
                     sensorTemperatura.setBackgroundColor(Color.RED);
+                    msgTemperatura="TEMPERATURA:\n O local que sua planta se encontra está com a temperatura muito acima do que ela suporta!\n";
+                    listaItens.add(msgTemperatura);
+                }else{
+                    sensorTemperatura.setBackgroundColor(Color.GREEN);
 
-            }else sensorTemperatura.setBackgroundColor(Color.GREEN);
-            if(sensor[0].getLuminosidade()> LUMINOSIDADE){
-                sensorLuminosidade.setBackgroundColor(Color.RED);
+                }
+                if(sensor[0].getLuminosidade()> LUMINOSIDADE){
+                    sensorLuminosidade.setBackgroundColor(Color.RED);
+                    msgLuminosidade="LUMINOSIDADE:\n Retira a planta do sol!\n";
+                    listaItens.add(msgLuminosidade);
+                }else{
+                    sensorLuminosidade.setBackgroundColor(Color.GREEN);
 
-            }else sensorLuminosidade.setBackgroundColor(Color.GREEN);
-            if(sensor[0].getUmidade()> UMIDADESOLO){
-//                luminosidade.setText(String.valueOf(sensor[0].getTemperatura()));
-//                luminosidade.setTextColor(Color.BLUE);
-                sensorUmidade.setBackgroundColor(Color.RED);
+                }
+                if(sensor[0].getUmidade()> UMIDADESOLO){
+                    sensorUmidade.setBackgroundColor(Color.RED);
+                    msgUmidade="UMIDADE:\n A umidade está muito alta!\n";
+                    listaItens.add(msgUmidade);
+                }else{
+                    sensorUmidade.setBackgroundColor(Color.GREEN);
 
-            }else sensorUmidade.setBackgroundColor(Color.GREEN);
+                }
 
-        }
 
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
+                listViewDica.setAdapter(adapter);
 
-        }
-    });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
 
