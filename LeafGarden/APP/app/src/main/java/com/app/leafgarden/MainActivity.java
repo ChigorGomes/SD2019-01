@@ -3,7 +3,6 @@ package com.app.leafgarden;
 import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -62,14 +61,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         /*Link para criar conta com o Google*/
-        SpannableString spannableString = new SpannableString("Cadastrar Planta");
+        SpannableString spannableString = new SpannableString("");
         spannableString.setSpan(new custonOnclickCadastroPlanta(), 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         cadastroPlanta.setText(spannableString);
         cadastroPlanta.setMovementMethod(LinkMovementMethod.getInstance());
 
         /*Link para criar conta normal*/
 
-        spannableString = new SpannableString("Criar Conta");
+        spannableString = new SpannableString("Cadastre-se");
         spannableString.setSpan(new custonOnclickNovaConta(), 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         novaConta.setText(spannableString);
         novaConta.setMovementMethod(LinkMovementMethod.getInstance());
@@ -116,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void updateDrawState(TextPaint textPaint) {
-            textPaint.setColor(Color.BLUE);
+//            textPaint.setColor(Color.BLACK);
             textPaint.setUnderlineText(true);
         }
     }
@@ -129,11 +128,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
 
         }
-
-        public void updateDrawState(TextPaint textPaint) {
-            textPaint.setColor(Color.BLUE);
-            textPaint.setUnderlineText(true);
-        }
+//
+//        public void updateDrawState(TextPaint textPaint) {
+//            textPaint.setColor(Color.BLUE);
+//            textPaint.setUnderlineText(true);
+//        }
     }
 
     public static String convertPassMd5(String pass) {

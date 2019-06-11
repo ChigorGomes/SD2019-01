@@ -2,7 +2,7 @@
     <string name="app_name">Leaf Garden</string>
     <string name="google">Entrar com o Google</string>
     <string name="entrar">Entrar</string>
-    <string name="novaConta">Criar Conta</string>
+    <string name="novaConta">Cadastre-se</string>
     <string name="email">Email</string>
     <string name="senha">Senha</string>
     <string name="nome">Nome</string>
@@ -41,8 +41,8 @@
     <string name="lumi">Luminosidade</string>
     <string name="cadastrarPlanta">Cadastrar</string>
     <string name="adcFoto">Foto</string>
-    <string name="dica">Dica</string>
+    <string name="dica">Dicas</string>
     <string name="editar">Editar</string>
-    <!--<string name=""></string>-->
+    <string name="nConta">Não tem uma conta?</string>
 
 </resources>
