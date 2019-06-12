@@ -21,7 +21,7 @@ public class BancoDeDados  extends SQLiteOpenHelper {
 
 
     private static final String TABELA_USUARIO="CREATE TABLE usuario(" +
-            "idUsuario  INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+            "idUsuario  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
             "nome VARCHAR (45)," +
             "email VARCHAR (60)," +
             "senha VARCHAR (50) ," +
@@ -30,7 +30,7 @@ public class BancoDeDados  extends SQLiteOpenHelper {
 
 
     private static final String TABELA_PLANTA="CREATE TABLE planta (" +
-            "idPlanta INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+            "idPlanta INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
             "nome  TEXT," +
             "descricao  TEXT," +
             "localAdequado  TEXT," +
@@ -42,16 +42,17 @@ public class BancoDeDados  extends SQLiteOpenHelper {
             "foto BLOB );";
 
     private static  final String TABELA_JARDIM="CREATE TABLE jardim (" +
-            "idJardim INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+            "idJardim INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
             "idUsuario INTEGER NOT NULL," +
             "idPlanta INTEGER NOT NULL," +
             "FOREIGN KEY(idPlanta) REFERENCES planta(idPlanta) ON DELETE CASCADE ON UPDATE CASCADE," +
             "FOREIGN KEY(idUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE ON UPDATE CASCADE);";
 
+
+
     private static final String SQL_DELETE_TABELA_USUARIO="DROP TABLE IF EXISTS usuario";
     private static final String SQL_DELETE_TABELA_PLANTA="DROP TABLE IF EXISTS planta";
     private static  final String SQL_DELETE_TABELA_JARDIM= "DROP TABLE IF EXISTS jardim";
-
 
     public BancoDeDados(Context context){
         super(context,DATABASE_NAME,null,DATABASE_VERSION);

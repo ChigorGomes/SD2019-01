@@ -78,22 +78,20 @@ public class SensorPlanta extends AppCompatActivity {
 
         inicializarFirebase();
 
-
-
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                String msgTemperatura="";
+                String msgLuminosidade="";
+                String msgUmidade="";
                 sensor[0] = dataSnapshot.getValue(SensorNodeMCU.class);
                 luminosidade.setText(String.valueOf(sensor[0].getLuminosidade()));
                 tempAmbiente.setText(String.valueOf(sensor[0].getTemperaturaambiente()));
                 tempSolo.setText(String.valueOf(sensor[0].getTemperaturasolo()));
                 umidadeAmbiente.setText(String.valueOf(sensor[0].getUmidadeambiente()));
                 umidadeSolo.setText(String.valueOf(sensor[0].getUmidadesolo()));
-                String msgTemperatura="";
-                String msgLuminosidade="";
-                String msgUmidade="";
                 listaItens.clear();
+
                 int valorUmidadeSolo= Integer.parseInt(sensor[0].getUmidadesolo().replace("\"","").replace(".",""));
                 int valorLuminosidade = Integer.parseInt(sensor[0].getLuminosidade().replace("\"","").replace(".",""));
                 int valorTempAmbiente= Integer.parseInt(sensor[0].getTemperaturaambiente().replace("\"","").replace(".",""));
