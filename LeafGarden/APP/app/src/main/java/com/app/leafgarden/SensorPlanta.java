@@ -86,20 +86,13 @@ public class SensorPlanta extends AppCompatActivity {
                 String msgUmidade="";
                 sensor[0] = dataSnapshot.getValue(SensorNodeMCU.class);
                 luminosidade.setText(String.valueOf(sensor[0].getLuminosidade()));
-                tempAmbiente.setText(String.valueOf(sensor[0].getTemperaturaambiente()));
-                tempSolo.setText(String.valueOf(sensor[0].getTemperaturasolo()));
-                umidadeAmbiente.setText(String.valueOf(sensor[0].getUmidadeambiente()));
-                umidadeSolo.setText(String.valueOf(sensor[0].getUmidadesolo()));
+                tempAmbiente.setText(String.valueOf(sensor[0].getTemperaturaambiente())+"°C");
+                tempSolo.setText(String.valueOf(sensor[0].getTemperaturasolo())+"°C");
+                umidadeAmbiente.setText(String.valueOf(sensor[0].getUmidadeambiente()+"%"));
+                umidadeSolo.setText(String.valueOf(sensor[0].getUmidadesolo())+"%");
                 listaItens.clear();
 
-                int valorUmidadeSolo= Integer.parseInt(sensor[0].getUmidadesolo().replace("\"","").replace(".",""));
-                int valorLuminosidade = Integer.parseInt(sensor[0].getLuminosidade().replace("\"","").replace(".",""));
-                int valorTempAmbiente= Integer.parseInt(sensor[0].getTemperaturaambiente().replace("\"","").replace(".",""));
-                int valorTempSolo=  Integer.parseInt(sensor[0].getTemperaturasolo().replace("\"","").replace(".",""));
-                int valorUmidadeAmbiente = Integer.parseInt(sensor[0].getUmidadeambiente().replace("\"","").replace(".",""));
-
-
-                if(valorLuminosidade > LUMINOSIDADE){
+                if(sensor[0].getLuminosidade() > LUMINOSIDADE){
                     sensorLuminosidade.setBackgroundColor(Color.RED);
                     msgLuminosidade="LUMINOSIDADE:\n Retire a planta do sol!\n";
                     listaItens.add(msgLuminosidade);
@@ -108,7 +101,7 @@ public class SensorPlanta extends AppCompatActivity {
                     sensorLuminosidade.setBackgroundColor(Color.GREEN);
 
                 }
-                if(valorTempAmbiente> TEMPERATURAAMBIENTE || valorTempSolo > TEMPERATURASOLO){
+                if(sensor[0].getTemperaturaambiente()> TEMPERATURAAMBIENTE || sensor[0].temperaturasolo > TEMPERATURASOLO){
                     sensorTemperatura.setBackgroundColor(Color.RED);
                     msgTemperatura="TEMPERATURA:\n O local que sua planta se encontra está com a temperatura muito acima do que ela suporta!\n";
                     listaItens.add(msgTemperatura);
@@ -116,7 +109,7 @@ public class SensorPlanta extends AppCompatActivity {
                     sensorTemperatura.setBackgroundColor(Color.GREEN);
 
                 }
-                if(valorUmidadeAmbiente> UMIDADEAMBIENTE ||  valorUmidadeSolo >UMIDADESOLO){
+                if(sensor[0].getUmidadeambiente()> UMIDADEAMBIENTE ||  sensor[0].getUmidadesolo() >UMIDADESOLO){
                     sensorUmidade.setBackgroundColor(Color.RED);
                     msgUmidade="UMIDADE:\n A umidade está muito alta!\n";
                     listaItens.add(msgUmidade);

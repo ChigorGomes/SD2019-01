@@ -1,14 +1,17 @@
 package Classe;
 
 public class SensorNodeMCU {
-    public String luminosidade;
-    public String temperaturaambiente;
-    public String temperaturasolo;
-    public String umidadeambiente;
-    public String umidadesolo;
-    public SensorNodeMCU(){}
+    public int luminosidade;
+    public int temperaturaambiente;
+    public int temperaturasolo;
+    public int umidadeambiente;
+    public int umidadesolo;
 
-    public SensorNodeMCU(String luminosidade, String temperaturaambiente, String temperaturasolo, String umidadeambiente, String umidadesolo) {
+
+    public SensorNodeMCU() {
+    }
+
+    public SensorNodeMCU(int luminosidade, int temperaturaambiente, int temperaturasolo, int umidadeambiente, int umidadesolo) {
         this.luminosidade = luminosidade;
         this.temperaturaambiente = temperaturaambiente;
         this.temperaturasolo = temperaturasolo;
@@ -16,43 +19,43 @@ public class SensorNodeMCU {
         this.umidadesolo = umidadesolo;
     }
 
-    public String getLuminosidade() {
+    public int getLuminosidade() {
         return luminosidade;
     }
 
-    public void setLuminosidade(String luminosidade) {
+    public void setLuminosidade(int luminosidade) {
         this.luminosidade = luminosidade;
     }
 
-    public String getTemperaturaambiente() {
+    public int getTemperaturaambiente() {
         return temperaturaambiente;
     }
 
-    public void setTemperaturaambiente(String temperaturaambiente) {
+    public void setTemperaturaambiente(int temperaturaambiente) {
         this.temperaturaambiente = temperaturaambiente;
     }
 
-    public String getTemperaturasolo() {
+    public int getTemperaturasolo() {
         return temperaturasolo;
     }
 
-    public void setTemperaturasolo(String temperaturasolo) {
+    public void setTemperaturasolo(int temperaturasolo) {
         this.temperaturasolo = temperaturasolo;
     }
 
-    public String getUmidadeambiente() {
+    public int getUmidadeambiente() {
         return umidadeambiente;
     }
 
-    public void setUmidadeambiente(String umidadeambiente) {
+    public void setUmidadeambiente(int umidadeambiente) {
         this.umidadeambiente = umidadeambiente;
     }
 
-    public String getUmidadesolo() {
+    public int getUmidadesolo() {
         return umidadesolo;
     }
 
-    public void setUmidadesolo(String umidadesolo) {
+    public void setUmidadesolo(int umidadesolo) {
         this.umidadesolo = umidadesolo;
     }
 }
