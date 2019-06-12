@@ -36,7 +36,7 @@
         android:layout_height="50dp"
         android:layout_alignBottom="@+id/textViewDicas"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="60dp"
         android:layout_marginBottom="20dp"
         android:textSize="18sp"
         android:textStyle="bold" />

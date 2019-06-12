@@ -86,10 +86,10 @@ public class SensorPlanta extends AppCompatActivity {
                 String msgUmidade="";
                 sensor[0] = dataSnapshot.getValue(SensorNodeMCU.class);
                 luminosidade.setText(String.valueOf(sensor[0].getLuminosidade()));
-                tempAmbiente.setText(String.valueOf(sensor[0].getTemperaturaambiente())+"°C");
-                tempSolo.setText(String.valueOf(sensor[0].getTemperaturasolo())+"°C");
-                umidadeAmbiente.setText(String.valueOf(sensor[0].getUmidadeambiente()+"%"));
-                umidadeSolo.setText(String.valueOf(sensor[0].getUmidadesolo())+"%");
+                tempAmbiente.setText(String.valueOf(sensor[0].getTemperaturaambiente())+"°C A");
+                tempSolo.setText(String.valueOf(sensor[0].getTemperaturasolo())+"°C S");
+                umidadeAmbiente.setText(String.valueOf(sensor[0].getUmidadeambiente()+"% A"));
+                umidadeSolo.setText(String.valueOf(sensor[0].getUmidadesolo())+"% S");
                 listaItens.clear();
 
                 if(sensor[0].getLuminosidade() > LUMINOSIDADE){

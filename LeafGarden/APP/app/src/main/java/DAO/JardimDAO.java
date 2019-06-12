@@ -39,7 +39,7 @@ public class JardimDAO {
 
         try{
             Jardim jardim=null;
-            String sql= "SELECT DISTINCT jardim.idJardim,jardim.idPlanta,jardim.idUsuario, planta.nome, planta.tempAmbiente,planta.umidadeAmbiente," +
+            String sql= "SELECT  jardim.idJardim,jardim.idPlanta,jardim.idUsuario, planta.nome, planta.tempAmbiente,planta.umidadeAmbiente," +
                     "planta.tempSolo,planta.umidadeSolo,planta.luminosidade,planta.foto " +
                     "FROM jardim,planta,usuario " +
                     "WHERE jardim.idPlanta = planta.idPlanta" +//+ planta.getIdPlanta()+
