@@ -18,12 +18,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 
 import Classe.Jardim;
-import Classe.Sensor;
+import Classe.SensorNodeMCU;
 import Classe.Usuario;
 
 public class SensorPlanta extends AppCompatActivity {
@@ -38,7 +41,7 @@ public class SensorPlanta extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     ImageView sensorUmidade,sensorTemperatura,sensorLuminosidade;
     ListView listViewDica;
-    final Sensor[] sensor = {null};
+    final SensorNodeMCU[] sensor = {null};
     int TEMPERATURASOLO,UMIDADESOLO,UMIDADEAMBIENTE,TEMPERATURAAMBIENTE,LUMINOSIDADE=0;
     private List<String> listaItens;
     private ArrayAdapter<String> adapter;
@@ -64,7 +67,6 @@ public class SensorPlanta extends AppCompatActivity {
         listViewDica = findViewById(R.id.listViewDica);
         Bitmap bitmap= (Bitmap) BitmapFactory.decodeByteArray(jardim.getFoto(),0,jardim.getFoto().length);
         imageView.setImageBitmap(bitmap);
-
         TEMPERATURAAMBIENTE = (int)jardim.getTempAmbiente();
         TEMPERATURASOLO = (int) jardim.getTempSolo();
         LUMINOSIDADE = (int) jardim.getLuminosidade();
@@ -78,23 +80,37 @@ public class SensorPlanta extends AppCompatActivity {
 
 
 
-
-
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                sensor[0] = dataSnapshot.getValue(Sensor.class);
+                sensor[0] = dataSnapshot.getValue(SensorNodeMCU.class);
                 luminosidade.setText(String.valueOf(sensor[0].getLuminosidade()));
-                tempAmbiente.setText(String.valueOf(sensor[0].getTemperatura()));
-                umidadeAmbiente.setText(String.valueOf(sensor[0].getUmidade()));
+                tempAmbiente.setText(String.valueOf(sensor[0].getTemperaturaambiente()));
+                tempSolo.setText(String.valueOf(sensor[0].getTemperaturasolo()));
+                umidadeAmbiente.setText(String.valueOf(sensor[0].getUmidadeambiente()));
+                umidadeSolo.setText(String.valueOf(sensor[0].getUmidadesolo()));
                 String msgTemperatura="";
                 String msgLuminosidade="";
                 String msgUmidade="";
                 listaItens.clear();
+                int valorUmidadeSolo= Integer.parseInt(sensor[0].getUmidadesolo().replace("\"","").replace(".",""));
+                int valorLuminosidade = Integer.parseInt(sensor[0].getLuminosidade().replace("\"","").replace(".",""));
+                int valorTempAmbiente= Integer.parseInt(sensor[0].getTemperaturaambiente().replace("\"","").replace(".",""));
+                int valorTempSolo=  Integer.parseInt(sensor[0].getTemperaturasolo().replace("\"","").replace(".",""));
+                int valorUmidadeAmbiente = Integer.parseInt(sensor[0].getUmidadeambiente().replace("\"","").replace(".",""));
 
 
-                if(sensor[0].getTemperatura()> TEMPERATURAAMBIENTE){
+                if(valorLuminosidade > LUMINOSIDADE){
+                    sensorLuminosidade.setBackgroundColor(Color.RED);
+                    msgLuminosidade="LUMINOSIDADE:\n Retire a planta do sol!\n";
+                    listaItens.add(msgLuminosidade);
+
+                }else{
+                    sensorLuminosidade.setBackgroundColor(Color.GREEN);
+
+                }
+                if(valorTempAmbiente> TEMPERATURAAMBIENTE || valorTempSolo > TEMPERATURASOLO){
                     sensorTemperatura.setBackgroundColor(Color.RED);
                     msgTemperatura="TEMPERATURA:\n O local que sua planta se encontra está com a temperatura muito acima do que ela suporta!\n";
                     listaItens.add(msgTemperatura);
@@ -102,15 +118,7 @@ public class SensorPlanta extends AppCompatActivity {
                     sensorTemperatura.setBackgroundColor(Color.GREEN);
 
                 }
-                if(sensor[0].getLuminosidade()> LUMINOSIDADE){
-                    sensorLuminosidade.setBackgroundColor(Color.RED);
-                    msgLuminosidade="LUMINOSIDADE:\n Retira a planta do sol!\n";
-                    listaItens.add(msgLuminosidade);
-                }else{
-                    sensorLuminosidade.setBackgroundColor(Color.GREEN);
-
-                }
-                if(sensor[0].getUmidade()> UMIDADESOLO){
+                if(valorUmidadeAmbiente> UMIDADEAMBIENTE ||  valorUmidadeSolo >UMIDADESOLO){
                     sensorUmidade.setBackgroundColor(Color.RED);
                     msgUmidade="UMIDADE:\n A umidade está muito alta!\n";
                     listaItens.add(msgUmidade);
@@ -119,9 +127,7 @@ public class SensorPlanta extends AppCompatActivity {
 
                 }
 
-
                 listViewDica.setAdapter(adapter);
-
             }
 
             @Override
@@ -144,6 +150,17 @@ public class SensorPlanta extends AppCompatActivity {
 //                }
 //            }
 //        },delay,interval);
+    }
+
+    private String retornaDadaHora(){
+        SimpleDateFormat simpleDateFormat= new SimpleDateFormat("dd-MM-yyyy-HH:mm");
+        Date date= new Date();
+        Calendar calendar= Calendar.getInstance();
+        calendar.setTime(date);
+        Date dataAtual= calendar.getTime();
+
+        String dataCompleta= simpleDateFormat.format(dataAtual);
+        return  dataCompleta;
     }
 
 

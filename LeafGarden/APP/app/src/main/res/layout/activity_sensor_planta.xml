@@ -9,11 +9,11 @@
     <ListView
         android:id="@+id/listViewDica"
         android:layout_width="395dp"
-        android:layout_height="150dp"
+        android:layout_height="160dp"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="20dp" />
 
     <TextView
         android:id="@+id/textViewDicas"
@@ -36,20 +36,21 @@
         android:layout_height="50dp"
         android:layout_alignBottom="@+id/textViewDicas"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="50dp" />
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewSensorUmidadeSolo"
         android:layout_width="80dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_above="@+id/textViewSensorUmidadeAmbiente"
         android:layout_marginStart="13dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:layout_toStartOf="@+id/textViewSensorTempSolo"
         android:gravity="center"
-        android:text="TextView"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -57,13 +58,12 @@
     <TextView
         android:id="@+id/textViewSensorUmidadeAmbiente"
         android:layout_width="80dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_above="@+id/textViewDicas"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:layout_toStartOf="@+id/textViewSensorTempAmbiente"
         android:gravity="center"
-        android:text="TextView"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -71,14 +71,13 @@
     <TextView
         android:id="@+id/textViewSensorTempSolo"
         android:layout_width="80dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_above="@+id/textViewSensorTempAmbiente"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="27dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:text="TextView"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -86,14 +85,13 @@
     <TextView
         android:id="@+id/textViewSensorTempAmbiente"
         android:layout_width="80dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_above="@+id/textViewDicas"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="31dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:text="TextView"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -104,7 +102,7 @@
         android:layout_height="80dp"
         android:layout_above="@+id/textViewSensorLuminosidade"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="40dp"
         android:layout_marginBottom="20dp"
         android:background="@color/cardview_light_background"
         app:srcCompat="@drawable/light" />
@@ -115,7 +113,7 @@
         android:layout_height="80dp"
         android:layout_above="@+id/textViewSensorUmidadeSolo"
         android:layout_marginStart="13dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="20dp"
         android:layout_toStartOf="@+id/imageViewSensorTemperatura"
         app:srcCompat="@drawable/gota" />
@@ -134,11 +132,11 @@
     <ImageView
         android:id="@+id/imageViewSensorImg"
         android:layout_width="100dp"
-        android:layout_height="150dp"
+        android:layout_height="130dp"
         android:layout_above="@+id/textViewDicas"
         android:layout_alignParentStart="true"
         android:layout_marginStart="19dp"
-        android:layout_marginBottom="223dp"
+        android:layout_marginBottom="210dp"
         app:srcCompat="@drawable/buttonshape" />
 
     <TextView
@@ -149,10 +147,9 @@
         android:layout_alignParentEnd="true"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="322dp"
+        android:layout_marginBottom="300dp"
         android:layout_toEndOf="@+id/imageViewSensorImg"
         android:gravity="center"
-        android:text="TextView"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold" />

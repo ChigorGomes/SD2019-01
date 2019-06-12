@@ -47,7 +47,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/config" />
+        android:background="@drawable/historico" />
 
     <Button
         android:id="@+id/buttonPlantas"
