@@ -15,6 +15,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".CadastraPlanta"></activity>
         <activity android:name=".SensorPlanta" />
+        <activity android:name=".HistoricoJardim"/>
         <activity android:name=".MeuJardim" />
         <activity android:name=".AdcPlanta" />
         <activity android:name=".InfoPlanta" />

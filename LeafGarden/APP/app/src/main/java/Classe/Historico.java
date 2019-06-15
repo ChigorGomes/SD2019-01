@@ -13,6 +13,11 @@ public class Historico  implements Serializable {
     public Historico() {
     }
 
+    public Historico(String dataHorario, String nomePlanta) {
+        this.dataHorario = dataHorario;
+        this.nomePlanta = nomePlanta;
+    }
+
     public Historico(int idHistorico, String dataHorario, String infoTemperatura, String infoUmidade, String infoLuminosidade, String nomePlanta) {
         this.idHistorico = idHistorico;
         this.dataHorario = dataHorario;

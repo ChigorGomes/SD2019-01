@@ -42,9 +42,9 @@ public class HistoricoDAO {
         ArrayList<Historico> historicoArrayList= new ArrayList<>();
         try{
             Historico historico=null;
-            String sql="SELECT historico.idHistorico,planta.nome,historico.infoLuminosidade,historico.infoTemperatura,historico.infoUmidade,historico.dataHorario " +
+            String sql="SELECT DISTINCT historico.idHistorico,planta.nome,historico.infoLuminosidade,historico.infoTemperatura,historico.infoUmidade,historico.dataHorario " +
                     "FROM jardim,usuario,planta,historico WHERE jardim.idPlanta= planta.idPlanta AND historico.idJardim = jardim.idJardim " +
-                    "AND jardim.idUsuario="+ usuario.getIdUsuario() +"order by historico.dataHorario";
+                    "AND jardim.idUsuario="+ usuario.getIdUsuario() +" order by historico.dataHorario";
 
             Cursor cursor= this.database.rawQuery(sql,null);
             while (cursor.moveToNext()){

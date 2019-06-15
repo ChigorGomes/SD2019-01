@@ -82,14 +82,16 @@ public class SensorPlanta extends AppCompatActivity {
         listaItens = new ArrayList<>();
         adapter= new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listaItens);
         final String[] inforPlanta = {"","",""};
+        final String[] infoSensor= {"","",""};
         inicializarFirebase();
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                inforPlanta[0]="";
-                inforPlanta[1]="";
-                inforPlanta[2]="";
+                inforPlanta[0]=inforPlanta[1]=inforPlanta[2]="";
+//                inforPlanta[1]="";
+//                inforPlanta[2]="";
+                infoSensor[0]=infoSensor[1]=infoSensor[2]="";
 
                 sensor[0] = dataSnapshot.getValue(SensorNodeMCU.class);
                 luminosidade.setText(String.valueOf(sensor[0].getLuminosidade()));
@@ -102,6 +104,7 @@ public class SensorPlanta extends AppCompatActivity {
                 if(sensor[0].getLuminosidade() > LUMINOSIDADE){
                     sensorLuminosidade.setBackgroundColor(Color.RED);
                     inforPlanta[0] ="LUMINOSIDADE:\n Retire a planta do sol!\n";
+                    infoSensor[0]= String.valueOf(sensor[0].getLuminosidade()+"%\n");
                     listaItens.add(inforPlanta[0]);
 
                 }else{
@@ -111,6 +114,7 @@ public class SensorPlanta extends AppCompatActivity {
                 if(sensor[0].getTemperaturaambiente()> TEMPERATURAAMBIENTE || sensor[0].temperaturasolo > TEMPERATURASOLO){
                     sensorTemperatura.setBackgroundColor(Color.RED);
                     inforPlanta[1] ="TEMPERATURA:\n O local que sua planta se encontra está com a temperatura muito acima do que ela suporta!\n";
+                    infoSensor[1]= String.valueOf("A: "+sensor[0].getTemperaturaambiente()+"|S: "+sensor[0].getTemperaturasolo()+"\n");
                     listaItens.add(inforPlanta[1]);
                 }else{
                     sensorTemperatura.setBackgroundColor(Color.GREEN);
@@ -119,6 +123,7 @@ public class SensorPlanta extends AppCompatActivity {
                 if(sensor[0].getUmidadeambiente()> UMIDADEAMBIENTE ||  sensor[0].getUmidadesolo() >UMIDADESOLO){
                     sensorUmidade.setBackgroundColor(Color.RED);
                     inforPlanta[2] ="UMIDADE:\n A umidade está muito alta!\n";
+                    infoSensor[2]= String.valueOf("A: "+sensor[0].getUmidadeambiente()+"|S: "+sensor[0].getUmidadesolo()+"\n");
                     listaItens.add(inforPlanta[2]);
                 }else{
                     sensorUmidade.setBackgroundColor(Color.GREEN);
@@ -144,7 +149,7 @@ public class SensorPlanta extends AppCompatActivity {
                 try {
                     String data= retornaDadaHora();
 
-                    historico= new Historico(data,inforPlanta[0],inforPlanta[1],inforPlanta[2]);
+                    historico= new Historico(data,inforPlanta[0]+infoSensor[0],inforPlanta[1]+infoSensor[1],inforPlanta[2]+infoSensor[2]);
                     historicoDAO= new HistoricoDAO(SensorPlanta.this);
                     if(historicoDAO.addHistorico(historico,jardim)){
                         Log.e("erro","salvado com sucesso!");
