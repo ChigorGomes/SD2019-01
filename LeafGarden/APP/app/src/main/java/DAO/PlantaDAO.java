@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import BD.BancoDeDados;
 import Classe.Planta;
+import Classe.Usuario;
 
 public class PlantaDAO {
     private SQLiteDatabase database; //db
@@ -49,12 +50,12 @@ public class PlantaDAO {
     }
 
 
-    public ArrayList<Planta> getPlanta(){
+    public ArrayList<Planta> getPlanta(Usuario usuario){
         ArrayList<Planta> plantaVector= new ArrayList<>();
 
         try{
             Planta planta= null;
-            String sql= "SELECT * from planta ORDER BY nome";
+            String sql= "SELECT  * FROM planta WHERE NOT EXISTS (SELECT  * FROM jardim,usuario WHERE planta.idPlanta=jardim.idPlanta and jardim.idUsuario="+usuario.getIdUsuario()+") ORDER BY nome";
 
             Cursor cursor = this.database.rawQuery (sql,null);
 

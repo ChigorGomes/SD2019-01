@@ -22,7 +22,7 @@
     <string name="plus">+</string>
     <string name="minhasPlantas">Minhas Plantas</string>
     <string-array name="regiao">
-        <item></item>
+        <item>Selecione sua Região</item>
         <item>Norte</item>
         <item>Nordeste</item>
         <item>Centro-Oeste</item>

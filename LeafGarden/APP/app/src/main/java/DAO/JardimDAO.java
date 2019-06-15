@@ -20,11 +20,11 @@ public class JardimDAO {
         this.database= (new BancoDeDados(context)).getWritableDatabase();
     }
 
-    public boolean addJardim(Jardim jardim){
+    public boolean addJardim(Jardim jardim,Usuario usuario){
         try{
             ContentValues contentValues= new ContentValues();
             contentValues.put("idPlanta",jardim.getIdPlanta());
-            contentValues.put("idUsuario",jardim.getIdUsuario());
+            contentValues.put("idUsuario",usuario.getIdUsuario());
             database.insert("jardim",null,contentValues);
             return  true;
         }catch (SQLiteException e){
@@ -39,7 +39,7 @@ public class JardimDAO {
 
         try{
             Jardim jardim=null;
-            String sql= "SELECT  jardim.idJardim,jardim.idPlanta,jardim.idUsuario, planta.nome, planta.tempAmbiente,planta.umidadeAmbiente," +
+            String sql= "SELECT DISTINCT jardim.idJardim,jardim.idPlanta,jardim.idUsuario, planta.nome, planta.tempAmbiente,planta.umidadeAmbiente," +
                     "planta.tempSolo,planta.umidadeSolo,planta.luminosidade,planta.foto " +
                     "FROM jardim,planta,usuario " +
                     "WHERE jardim.idPlanta = planta.idPlanta" +//+ planta.getIdPlanta()+

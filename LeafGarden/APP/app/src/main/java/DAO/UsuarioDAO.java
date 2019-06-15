@@ -23,10 +23,14 @@ public class UsuarioDAO {
             if(verificaUsuario(usuario)){
                 return false;
             }else {
-                String sql = "INSERT INTO usuario VALUES (NULL,'" + usuario.getNome() + "','" + usuario.getEmail() + "','" + usuario.getSenha() + "',"
-                        + usuario.getIdade() + "," + usuario.getIdRegiao() + ")";
-                this.database.execSQL(sql);
-                return true;
+                ContentValues contentValues= new ContentValues();
+                contentValues.put("nome",usuario.getNome());
+                contentValues.put("email", usuario.getEmail());
+                contentValues.put("senha",usuario.getSenha());
+                contentValues.put("idade",usuario.getIdade());
+                contentValues.put("idRegiao",usuario.getIdRegiao());
+                database.insert("usuario",null,contentValues);
+                return  true;
             }
         }catch (SQLException e){
             Log.e("erro",e.getMessage());

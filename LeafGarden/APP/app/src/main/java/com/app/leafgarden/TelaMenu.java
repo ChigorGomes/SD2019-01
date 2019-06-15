@@ -3,6 +3,7 @@ package com.app.leafgarden;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -19,6 +20,7 @@ public class TelaMenu extends AppCompatActivity {
         buttonPlanta = (Button) findViewById(R.id.buttonPlantas);
         buttomMeuJardim= findViewById(R.id.buttonMeuJardim);
         buttonEditarConta = findViewById(R.id.buttonConta);
+        Log.e("erro",String.valueOf(usuario.getIdUsuario()));
 
         buttonPlanta.setOnClickListener(new View.OnClickListener() {
             @Override

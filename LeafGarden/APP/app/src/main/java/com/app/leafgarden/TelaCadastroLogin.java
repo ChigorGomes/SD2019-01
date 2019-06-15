@@ -82,6 +82,7 @@ public class TelaCadastroLogin extends AppCompatActivity {
                         Toast.makeText(TelaCadastroLogin.this,"Cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
                         Intent intent= new Intent(TelaCadastroLogin.this,TelaMenu.class);
 
+                        usu=usuarioDAO.getUsuario(email.getText().toString().trim(),senhaMD5);
                         intent.putExtra("usuario",usu);
                         startActivity(intent);
                         finish();

@@ -51,11 +51,12 @@ public class InfoPlanta extends AppCompatActivity {
             public void onClick(View v) {
                 Jardim jardim= new Jardim(usuario.getIdUsuario(),planta.getIdPlanta());
                 JardimDAO jardimDAO =  new JardimDAO(InfoPlanta.this);
-                if(jardimDAO.addJardim(jardim)){
+                if(jardimDAO.addJardim(jardim,usuario)){
                     Toast.makeText(InfoPlanta.this,"Cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
                     Intent intent= new Intent(InfoPlanta.this,TelaMenu.class);
                     intent.putExtra("usuario",usuario);
                     startActivity(intent);
+                    finish();
 
 
                 }else{

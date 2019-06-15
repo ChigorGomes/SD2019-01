@@ -32,7 +32,7 @@ public class Plantas extends AppCompatActivity{
         try{
 
             plantaDAO= new PlantaDAO(this);
-            plantaVector= new ArrayList<>(plantaDAO.getPlanta());
+            plantaVector= new ArrayList<>(plantaDAO.getPlanta(usuario));
 
             ListAdapterPlantas listAdapterPlantas= new ListAdapterPlantas(Plantas.this,R.layout.activity_plantas,plantaVector);
             listView.setAdapter(listAdapterPlantas);
