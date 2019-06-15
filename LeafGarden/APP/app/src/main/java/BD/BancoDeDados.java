@@ -48,11 +48,21 @@ public class BancoDeDados  extends SQLiteOpenHelper {
             "FOREIGN KEY(idPlanta) REFERENCES planta(idPlanta) ON DELETE CASCADE ON UPDATE CASCADE," +
             "FOREIGN KEY(idUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE ON UPDATE CASCADE);";
 
+    private static  final String TABELA_HISTORICO="CREATE TABLE historico(" +
+            "idHistorico INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+            "dataHorario TEXT, " +
+            "infoTemperatura TEXT," +
+            "infoUmidade TEXT," +
+            "infoLuminosidade TEXT," +
+            "idJardim INTEGER," +
+            "FOREIGN KEY(idJardim) REFERENCES jardim(idJardim) ON DELETE CASCADE ON UPDATE CASCADE);";
+
 
 
     private static final String SQL_DELETE_TABELA_USUARIO="DROP TABLE IF EXISTS usuario";
     private static final String SQL_DELETE_TABELA_PLANTA="DROP TABLE IF EXISTS planta";
     private static  final String SQL_DELETE_TABELA_JARDIM= "DROP TABLE IF EXISTS jardim";
+    private  static  final String SQL_DELETE_TABELA_HISTORICO="DROP TABLE IF EXISTS historico";
 
     public BancoDeDados(Context context){
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
@@ -64,6 +74,7 @@ public class BancoDeDados  extends SQLiteOpenHelper {
         db.execSQL(TABELA_USUARIO);
         db.execSQL(TABELA_PLANTA);
         db.execSQL(TABELA_JARDIM);
+        db.execSQL(TABELA_HISTORICO);
 
     }
 
@@ -72,6 +83,7 @@ public class BancoDeDados  extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_TABELA_USUARIO);
         db.execSQL(SQL_DELETE_TABELA_PLANTA);
         db.execSQL(SQL_DELETE_TABELA_JARDIM);
+        db.execSQL(SQL_DELETE_TABELA_HISTORICO);
         onCreate(db);
 
     }

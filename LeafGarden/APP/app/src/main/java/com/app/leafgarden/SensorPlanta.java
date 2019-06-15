@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -24,18 +25,23 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Timer;
+import java.util.TimerTask;
 
+import Classe.Historico;
 import Classe.Jardim;
 import Classe.SensorNodeMCU;
 import Classe.Usuario;
+import DAO.HistoricoDAO;
 
 public class SensorPlanta extends AppCompatActivity {
     Usuario usuario;
     Jardim jardim;
+    Historico historico;
+    HistoricoDAO historicoDAO;
     TextView nomePlanta,tempAmbiente, luminosidade,tempSolo,umidadeAmbiente,umidadeSolo;
     ImageView imageView;
-    int delay= 0;
-    int interval= 1000;
+    int delay= 10000;
+    int interval= 100000;
     Timer time= new Timer();
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
@@ -75,15 +81,16 @@ public class SensorPlanta extends AppCompatActivity {
 
         listaItens = new ArrayList<>();
         adapter= new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listaItens);
-
+        final String[] inforPlanta = {"","",""};
         inicializarFirebase();
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String msgTemperatura="";
-                String msgLuminosidade="";
-                String msgUmidade="";
+                inforPlanta[0]="";
+                inforPlanta[1]="";
+                inforPlanta[2]="";
+
                 sensor[0] = dataSnapshot.getValue(SensorNodeMCU.class);
                 luminosidade.setText(String.valueOf(sensor[0].getLuminosidade()));
                 tempAmbiente.setText(String.valueOf(sensor[0].getTemperaturaambiente())+"°C A");
@@ -94,8 +101,8 @@ public class SensorPlanta extends AppCompatActivity {
 
                 if(sensor[0].getLuminosidade() > LUMINOSIDADE){
                     sensorLuminosidade.setBackgroundColor(Color.RED);
-                    msgLuminosidade="LUMINOSIDADE:\n Retire a planta do sol!\n";
-                    listaItens.add(msgLuminosidade);
+                    inforPlanta[0] ="LUMINOSIDADE:\n Retire a planta do sol!\n";
+                    listaItens.add(inforPlanta[0]);
 
                 }else{
                     sensorLuminosidade.setBackgroundColor(Color.GREEN);
@@ -103,16 +110,16 @@ public class SensorPlanta extends AppCompatActivity {
                 }
                 if(sensor[0].getTemperaturaambiente()> TEMPERATURAAMBIENTE || sensor[0].temperaturasolo > TEMPERATURASOLO){
                     sensorTemperatura.setBackgroundColor(Color.RED);
-                    msgTemperatura="TEMPERATURA:\n O local que sua planta se encontra está com a temperatura muito acima do que ela suporta!\n";
-                    listaItens.add(msgTemperatura);
+                    inforPlanta[1] ="TEMPERATURA:\n O local que sua planta se encontra está com a temperatura muito acima do que ela suporta!\n";
+                    listaItens.add(inforPlanta[1]);
                 }else{
                     sensorTemperatura.setBackgroundColor(Color.GREEN);
 
                 }
                 if(sensor[0].getUmidadeambiente()> UMIDADEAMBIENTE ||  sensor[0].getUmidadesolo() >UMIDADESOLO){
                     sensorUmidade.setBackgroundColor(Color.RED);
-                    msgUmidade="UMIDADE:\n A umidade está muito alta!\n";
-                    listaItens.add(msgUmidade);
+                    inforPlanta[2] ="UMIDADE:\n A umidade está muito alta!\n";
+                    listaItens.add(inforPlanta[2]);
                 }else{
                     sensorUmidade.setBackgroundColor(Color.GREEN);
 
@@ -131,20 +138,30 @@ public class SensorPlanta extends AppCompatActivity {
 
 
         /*Código que executa a thread*/
-//        time.scheduleAtFixedRate(new TimerTask() {
-//            @Override
-//            public void run() {
-//                if(sensor[0].getTemperatura()>10){
-//                    luminosidade.setText(String.valueOf(sensor[0].getTemperatura()));
-//                    luminosidade.setTextColor(Color.BLUE);
-//
-//                }
-//            }
-//        },delay,interval);
+        time.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    String data= retornaDadaHora();
+
+                    historico= new Historico(data,inforPlanta[0],inforPlanta[1],inforPlanta[2]);
+                    historicoDAO= new HistoricoDAO(SensorPlanta.this);
+                    if(historicoDAO.addHistorico(historico,jardim)){
+                        Log.e("erro","salvado com sucesso!");
+                    }else{
+                        Log.e("erro","ocorreu um erro");
+                    }
+
+
+                }catch (Exception e){
+                    Log.e("erro",e.getMessage());
+                }
+            }
+        },delay,interval);
     }
 
     private String retornaDadaHora(){
-        SimpleDateFormat simpleDateFormat= new SimpleDateFormat("dd-MM-yyyy-HH:mm");
+        SimpleDateFormat simpleDateFormat= new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss");
         Date date= new Date();
         Calendar calendar= Calendar.getInstance();
         calendar.setTime(date);
