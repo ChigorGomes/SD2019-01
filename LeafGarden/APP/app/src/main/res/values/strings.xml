@@ -44,5 +44,7 @@
     <string name="dica">Dicas</string>
     <string name="editar">Editar</string>
     <string name="nConta">Não tem uma conta?</string>
+    <string name="sair">Sair</string>
+    <string name="sobre">Sobre</string>
 
 </resources>
