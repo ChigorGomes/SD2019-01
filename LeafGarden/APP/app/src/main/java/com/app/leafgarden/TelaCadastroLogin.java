@@ -3,6 +3,7 @@ package com.app.leafgarden;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -10,15 +11,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 import Classe.Usuario;
 import DAO.UsuarioDAO;
 
 public class TelaCadastroLogin extends AppCompatActivity {
 
+    Usuario usuario;
     EditText nome;
     EditText senha;
     EditText idade;
@@ -73,17 +71,17 @@ public class TelaCadastroLogin extends AppCompatActivity {
 
                 }
                 else{
-                    int idad= Integer.parseInt(idade.getText().toString());
-                    String senhaMD5= convertPassMd5(senha.getText().toString().trim());
-                    Usuario usu= new Usuario(nome.getText().toString(),email.getText().toString().trim(),senhaMD5,idad,posicao);
+                    String senhaMD5= usuario.convertPassMd5(senha.getText().toString().trim());
+                    Log.e("erro",senhaMD5);
+                    int year= Integer.parseInt(idade.getText().toString());
+                    usuario= new Usuario(nome.getText().toString(),email.getText().toString().trim(),senhaMD5,year,posicao);
                     UsuarioDAO usuarioDAO= new UsuarioDAO(TelaCadastroLogin.this);
-
-                    if(usuarioDAO.addUsuario(usu)){
+                    if(usuarioDAO.addUsuario(usuario)){
                         Toast.makeText(TelaCadastroLogin.this,"Cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
                         Intent intent= new Intent(TelaCadastroLogin.this,TelaMenu.class);
 
-                        usu=usuarioDAO.getUsuario(email.getText().toString().trim(),senhaMD5);
-                        intent.putExtra("usuario",usu);
+                        usuario=usuarioDAO.getUsuario(email.getText().toString().trim(),senhaMD5);
+                        intent.putExtra("usuario",usuario);
                         startActivity(intent);
                         finish();
                     }else{
@@ -98,21 +96,4 @@ public class TelaCadastroLogin extends AppCompatActivity {
 
 
     }
-    public static String convertPassMd5(String pass) {
-        String password = null;
-        MessageDigest mdEnc;
-        try {
-            mdEnc = MessageDigest.getInstance("MD5");
-            mdEnc.update(pass.getBytes(), 0, pass.length());
-            pass = new BigInteger(1, mdEnc.digest()).toString(16);
-            while (pass.length() < 32) {
-                pass = "0" + pass;
-            }
-            password = pass;
-        } catch (NoSuchAlgorithmException e1) {
-            e1.printStackTrace();
-        }
-        return password;
-    }
-
 }

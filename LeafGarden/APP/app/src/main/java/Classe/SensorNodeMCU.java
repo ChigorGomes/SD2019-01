@@ -58,4 +58,6 @@ public class SensorNodeMCU {
     public void setUmidadesolo(int umidadesolo) {
         this.umidadesolo = umidadesolo;
     }
+
+
 }

@@ -12,11 +12,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
@@ -27,6 +24,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import Classe.Firebase;
 import Classe.Historico;
 import Classe.Jardim;
 import Classe.SensorNodeMCU;
@@ -43,14 +41,15 @@ public class SensorPlanta extends AppCompatActivity {
     int delay= 10000;
     int interval= 100000;
     Timer time= new Timer();
-    DatabaseReference databaseReference;
-    FirebaseDatabase firebaseDatabase;
     ImageView sensorUmidade,sensorTemperatura,sensorLuminosidade;
     ListView listViewDica;
     final SensorNodeMCU[] sensor = {null};
     int TEMPERATURASOLO,UMIDADESOLO,UMIDADEAMBIENTE,TEMPERATURAAMBIENTE,LUMINOSIDADE=0;
     private List<String> listaItens;
     private ArrayAdapter<String> adapter;
+    final String[] inforPlanta = {"","",""};
+    final String[] infoSensor= {"","",""};
+    Firebase firebase;
 
 
     @Override
@@ -81,18 +80,15 @@ public class SensorPlanta extends AppCompatActivity {
 
         listaItens = new ArrayList<>();
         adapter= new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listaItens);
-        final String[] inforPlanta = {"","",""};
-        final String[] infoSensor= {"","",""};
-        inicializarFirebase();
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        firebase= new Firebase(SensorPlanta.this);
+
+
+        firebase.getDatabaseReference().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 inforPlanta[0]=inforPlanta[1]=inforPlanta[2]="";
-//                inforPlanta[1]="";
-//                inforPlanta[2]="";
                 infoSensor[0]=infoSensor[1]=infoSensor[2]="";
-
                 sensor[0] = dataSnapshot.getValue(SensorNodeMCU.class);
                 luminosidade.setText(String.valueOf(sensor[0].getLuminosidade()));
                 tempAmbiente.setText(String.valueOf(sensor[0].getTemperaturaambiente())+"°C A");
@@ -140,22 +136,24 @@ public class SensorPlanta extends AppCompatActivity {
         });
 
 
-
-
         /*Código que executa a thread*/
         time.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 try {
-                    String data= retornaDadaHora();
+                    if((! inforPlanta[0].equals(""))||(!inforPlanta[1].equals("")) || (!inforPlanta[2].equals("")) ){
+                        String data= retornaDadaHora();
 
-                    historico= new Historico(data,inforPlanta[0]+infoSensor[0],inforPlanta[1]+infoSensor[1],inforPlanta[2]+infoSensor[2]);
-                    historicoDAO= new HistoricoDAO(SensorPlanta.this);
-                    if(historicoDAO.addHistorico(historico,jardim)){
-                        Log.e("erro","salvado com sucesso!");
-                    }else{
-                        Log.e("erro","ocorreu um erro");
+                        historico= new Historico(data,inforPlanta[0]+infoSensor[0],inforPlanta[1]+infoSensor[1],inforPlanta[2]+infoSensor[2]);
+                        historicoDAO= new HistoricoDAO(SensorPlanta.this);
+                        if(historicoDAO.addHistorico(historico,jardim)){
+                            Log.e("erro","salvado com sucesso!");
+                        }else{
+                            Log.e("erro","ocorreu um erro");
+                        }
+
                     }
+
 
 
                 }catch (Exception e){
@@ -163,8 +161,9 @@ public class SensorPlanta extends AppCompatActivity {
                 }
             }
         },delay,interval);
-    }
 
+
+    }
     private String retornaDadaHora(){
         SimpleDateFormat simpleDateFormat= new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss");
         Date date= new Date();
@@ -175,14 +174,6 @@ public class SensorPlanta extends AppCompatActivity {
         String dataCompleta= simpleDateFormat.format(dataAtual);
         return  dataCompleta;
     }
-
-
-    private void inicializarFirebase(){
-        FirebaseApp.initializeApp(SensorPlanta.this);
-        firebaseDatabase =  FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Sensor");
-    }
-
 
 
 

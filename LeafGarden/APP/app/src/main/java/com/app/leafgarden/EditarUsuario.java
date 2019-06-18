@@ -10,10 +10,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 import Classe.Usuario;
 import DAO.UsuarioDAO;
 
@@ -70,8 +66,7 @@ public class EditarUsuario extends AppCompatActivity {
                     Toast.makeText(EditarUsuario.this,"Selecione a região!",Toast.LENGTH_LONG).show();
 
                 }else{
-                    String senhaMD5= convertPassMd5(senhaUsuario.getText().toString().trim());
-
+                    String senhaMD5= usuario.convertPassMd5(senhaUsuario.getText().toString().trim());
                     usuario.setNome(nomeUsuario.getText().toString());
                     usuario.setSenha(senhaMD5);
                     usuario.setIdRegiao(posicao);
@@ -92,23 +87,5 @@ public class EditarUsuario extends AppCompatActivity {
             }
         });
     }
-
-    public static String convertPassMd5(String pass) {
-        String password = null;
-        MessageDigest mdEnc;
-        try {
-            mdEnc = MessageDigest.getInstance("MD5");
-            mdEnc.update(pass.getBytes(), 0, pass.length());
-            pass = new BigInteger(1, mdEnc.digest()).toString(16);
-            while (pass.length() < 32) {
-                pass = "0" + pass;
-            }
-            password = pass;
-        } catch (NoSuchAlgorithmException e1) {
-            e1.printStackTrace();
-        }
-        return password;
-    }
-
 
 }
