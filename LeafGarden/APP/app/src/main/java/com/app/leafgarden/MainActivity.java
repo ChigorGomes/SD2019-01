@@ -1,6 +1,7 @@
 package com.app.leafgarden;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     EditText email;
     EditText senha;
     Button buttonEntrar;
+    public static  final String PREFS_NAME="leafGardenFile";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.editTextEmailLoginEditar);
         senha = (EditText) findViewById(R.id.editTextSenhaLoginEditar);
         buttonEntrar= (Button) findViewById(R.id.buttonEntrar);
+        final SharedPreferences setting=  getSharedPreferences(PREFS_NAME,0);
+
+        email.setText(setting.getString("email",""));
+        senha.setText(setting.getString("senha",""));
 
         try{
             bancoDeDados= new BancoDeDados(this);
@@ -86,7 +93,13 @@ public class MainActivity extends AppCompatActivity {
                     UsuarioDAO usuarioDAO= new UsuarioDAO(MainActivity.this);
                     String senhaMD5= convertPassMd5(senha.getText().toString().trim());
                     Usuario usuario= usuarioDAO.getUsuario(email.getText().toString().trim(),senhaMD5);
+
+
                     if(usuario!=null){
+                        SharedPreferences.Editor editor= setting.edit();
+                        editor.putString("email",email.getText().toString().trim());
+                        editor.putString("senha",senha.getText().toString().trim());
+                        editor.commit();
                         Intent intent= new Intent(MainActivity.this, TelaMenu.class);
                         intent.putExtra("usuario",usuario);
 
