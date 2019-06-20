@@ -2,10 +2,8 @@ package com.app.leafgarden;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -51,19 +49,21 @@ public class MainActivity extends AppCompatActivity {
         email.setText(setting.getString("email",""));
         senha.setText(setting.getString("senha",""));
 
-        try{
-            bancoDeDados= new BancoDeDados(this);
-            database= bancoDeDados.getReadableDatabase();
-            AlertDialog.Builder builder= new AlertDialog.Builder(this);
-            builder.setMessage("Conexão realizada com sucesso!");
-            builder.setNeutralButton("Ok",null);
-            builder.show();
-        }catch (SQLException e){
-            AlertDialog.Builder builder= new AlertDialog.Builder(this);
-            builder.setMessage("Conexão não realizada!");
-            builder.setNeutralButton("Ok",null);
-            builder.show();
-        }
+
+        //Verifica se o banco de dados está funcionando
+//        try{
+//            bancoDeDados= new BancoDeDados(this);
+//            database= bancoDeDados.getReadableDatabase();
+//            AlertDialog.Builder builder= new AlertDialog.Builder(this);
+//            builder.setMessage("Conexão realizada com sucesso!");
+//            builder.setNeutralButton("Ok",null);
+//            builder.show();
+//        }catch (SQLException e){
+//            AlertDialog.Builder builder= new AlertDialog.Builder(this);
+//            builder.setMessage("Conexão não realizada!");
+//            builder.setNeutralButton("Ok",null);
+//            builder.show();
+//        }
 
 
 
