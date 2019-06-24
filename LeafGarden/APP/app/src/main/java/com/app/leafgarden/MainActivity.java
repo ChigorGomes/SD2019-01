@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
         public void updateDrawState(TextPaint textPaint) {
 //            textPaint.setColor(Color.BLACK);
-            textPaint.setUnderlineText(true);
+            //textPaint.setUnderlineText(true);
         }
     }
 

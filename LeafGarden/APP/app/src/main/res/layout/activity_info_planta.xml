@@ -24,9 +24,10 @@
         android:layout_height="40dp"
         android:layout_above="@+id/buttonAdcPlantaNoJardim"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="38dp"
         android:gravity="center"
+        android:textColor="@color/cardview_light_background"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -35,6 +36,9 @@
         android:id="@+id/textViewTemperaturaInfoPlanta"
         android:layout_width="200dp"
         android:layout_height="50dp"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
@@ -62,6 +66,9 @@
         android:id="@+id/textViewLocalAdequadoInfoPlant"
         android:layout_width="200dp"
         android:layout_height="50dp"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
         android:layout_above="@+id/textView8"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -89,6 +96,9 @@
         android:id="@+id/textViewDescricaoPlanta"
         android:layout_width="200dp"
         android:layout_height="50dp"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
         android:layout_above="@+id/textView10"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -137,6 +147,6 @@
         android:layout_marginStart="17dp"
         android:layout_marginEnd="221dp"
         android:layout_marginBottom="105dp"
-        android:background="@drawable/background_logo" />
+        android:background="@drawable/background_imagem" />
 
 </RelativeLayout>

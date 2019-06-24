@@ -5,24 +5,23 @@
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_background2"
+    android:background="@null"
     tools:context=".MeuJardim">
 
     <TextView
         android:id="@+id/textViewNamePlantaJardim"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_width="344dp"
+        android:layout_height="80dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/background_logo"
         android:gravity="center"
         android:text="Meu Jardim"
-        android:textAlignment="center"
-        android:textSize="35dp"
-        android:textColor="@color/cardview_light_background"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
