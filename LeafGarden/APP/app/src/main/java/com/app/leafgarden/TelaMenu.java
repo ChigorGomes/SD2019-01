@@ -22,7 +22,6 @@ public class TelaMenu extends AppCompatActivity {
         buttomMeuJardim= findViewById(R.id.buttonMeuJardim);
         buttonEditarConta = findViewById(R.id.buttonConta);
         buttonHistorico= findViewById(R.id.buttonHistorico);
-//        Log.e("erro",String.valueOf(usuario.getIdUsuario()));
 
         buttonPlanta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +72,10 @@ public class TelaMenu extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.end:
+                Intent intent= new Intent(TelaMenu.this, MainActivity.class);
+                startActivity(intent);
                 finish();
+
             default:
                 return super.onOptionsItemSelected(item);
         }

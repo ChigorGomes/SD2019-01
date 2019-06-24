@@ -2,6 +2,7 @@ package com.app.leafgarden;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -102,39 +103,37 @@ public class SensorPlanta extends AppCompatActivity {
                 listaItens.clear();
 
                 if(sensor[0].getLuminosidade() > LUMINOSIDADE){
-                    //sensorLuminosidade.setBackgroundColor(Color.RED);
-
+                    luminosidade.setTextColor(Color.RED);
                     inforPlanta[0] ="LUMINOSIDADE:\n Retire a planta do sol!\n";
                     infoSensor[0]= String.valueOf(sensor[0].getLuminosidade()+"%\n");
                     listaItens.add(inforPlanta[0]);
 
-                }else{
-                    //sensorLuminosidade.setBackgroundColor(Color.GREEN);
-                    //sensorUmidade.setBackground(Drawable.createFromPath("cor_sensores_green"));
-
-                }
-                if(sensor[0].getTemperaturaambiente()> TEMPERATURAAMBIENTE || sensor[0].temperaturasolo > TEMPERATURASOLO){
-                    //sensorTemperatura.setBackgroundColor(Color.RED);
-                    //sensorTemperatura.setBackground(Drawable.createFromPath("cor_sensores_red"));
+                }else
+                    luminosidade.setTextColor(Color.GREEN);
+                if(sensor[0].getTemperaturaambiente()> TEMPERATURAAMBIENTE){
+                    tempAmbiente.setTextColor(Color.RED);
                     inforPlanta[1] ="TEMPERATURA:\n O local que sua planta se encontra está com a temperatura muito acima do que ela suporta!\n";
                     infoSensor[1]= String.valueOf("A: "+sensor[0].getTemperaturaambiente()+"|S: "+sensor[0].getTemperaturasolo()+"\n");
                     listaItens.add(inforPlanta[1]);
-                }else{
-                    //sensorTemperatura.setBackgroundColor(Color.GREEN);
-                    //sensorTemperatura.setBackground(Drawable.createFromPath("cor_sensores_green"));
-
-                }
-                if(sensor[0].getUmidadeambiente()> UMIDADEAMBIENTE ||  sensor[0].getUmidadesolo() >UMIDADESOLO){
-                    //sensorUmidade.setBackground(Drawable.createFromPath("cor_sensores_red"));
-                    //sensorUmidade.setBackgroundColor(Color.RED);
+                }else
+                    tempAmbiente.setTextColor(Color.GREEN);
+                if (sensor[0].temperaturasolo > TEMPERATURASOLO){
+                    tempSolo.setTextColor(Color.RED);
+                }else
+                    tempSolo.setTextColor(Color.GREEN);
+                if(sensor[0].getUmidadeambiente()> UMIDADEAMBIENTE){
+                    umidadeAmbiente.setTextColor(Color.RED);
                     inforPlanta[2] ="UMIDADE:\n A umidade está muito alta!\n";
                     infoSensor[2]= String.valueOf("A: "+sensor[0].getUmidadeambiente()+"|S: "+sensor[0].getUmidadesolo()+"\n");
                     listaItens.add(inforPlanta[2]);
-                }else{
-                    //sensorUmidade.setBackgroundColor(Color.GREEN);
-                    //sensorUmidade.setBackground(Drawable.createFromPath("cor_sensores_green"));
+                }else
+                    umidadeAmbiente.setTextColor(Color.GREEN);
+                if( sensor[0].getUmidadesolo() >UMIDADESOLO){
+                    umidadeSolo.setTextColor(Color.RED);
+                }else
+                    umidadeSolo.setTextColor(Color.GREEN);
 
-                }
+
 
                 listViewDica.setAdapter(adapter);
             }
