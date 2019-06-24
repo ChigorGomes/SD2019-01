@@ -5,6 +5,7 @@
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_background2"
     tools:context=".MeuJardim">
 
     <TextView
@@ -15,9 +16,10 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
         android:gravity="center"
-        android:text="TextView"
+        android:text="Meu Jardim"
         android:textAlignment="center"
-        android:textSize="18sp"
+        android:textSize="35dp"
+        android:textColor="@color/cardview_light_background"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

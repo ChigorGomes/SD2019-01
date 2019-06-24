@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_background2"
     tools:context=".CadastraPlanta">
 
+
     <TextView
-        android:id="@+id/textView9"
-        android:layout_width="79dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/editTextDescricaoPlanta"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/descricao"
-        android:textAlignment="center" />
+        android:id="@+id/textViewTituloTelaCadastrarPlanta"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:text=" Cadastrar Planta"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="35dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextDescricaoPlanta"
@@ -26,126 +26,101 @@
         android:layout_above="@+id/buttonCadastrarPlanta"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/rounded_input_text"
         android:ems="10"
         android:gravity="start|top"
-        android:inputType="textMultiLine" />
+        android:hint="    Descricao"
+        android:inputType="textMultiLine"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editTextSensorTempAmbiente"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView9"
+        android:layout_width="193dp"
+        android:layout_height="53dp"
+        android:layout_above="@+id/editTextDescricaoPlanta"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="56dp"
+        android:layout_toStartOf="@+id/editTextSensorTempSolo"
+        android:background="@drawable/rounded_input_text"
         android:ems="10"
-        android:inputType="numberDecimal" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="130dp"
-        android:layout_height="35dp"
-        android:layout_above="@+id/editTextSensorTempAmbiente"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="87dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/tempAmbiente"
-        android:textAlignment="center" />
+        android:hint="@string/tempAmbiente"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextSensorTempSolo"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView9"
+        android:layout_width="166dp"
+        android:layout_height="59dp"
+        android:layout_above="@+id/editTextDescricaoPlanta"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="50dp"
+        android:autofillHints=""
+        android:background="@drawable/rounded_input_text"
         android:ems="10"
-        android:inputType="numberDecimal" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="130dp"
-        android:layout_height="35dp"
-        android:layout_above="@+id/editTextSensorTempSolo"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/tempSolo" />
+        android:hint="@string/tempSolo"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextSensorUmidadeSolo"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView13"
+        android:layout_width="180dp"
+        android:layout_height="46dp"
+        android:layout_above="@+id/editTextSensorTempAmbiente"
         android:layout_alignParentStart="true"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="55dp"
+        android:layout_toStartOf="@+id/editTextSensorUmidadeAmbiente"
+        android:background="@drawable/rounded_input_text"
         android:ems="10"
-        android:inputType="numberDecimal" />
+        android:hint="@string/umidadeSolo"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextSensorUmidadeAmbiente"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView15"
+        android:layout_width="155dp"
+        android:layout_height="54dp"
+        android:layout_above="@+id/editTextSensorTempSolo"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="50dp"
+        android:autofillHints=""
+        android:background="@drawable/rounded_input_text"
         android:ems="10"
-        android:inputType="numberDecimal" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="130dp"
-        android:layout_height="35dp"
-        android:layout_above="@+id/editTextSensorUmidadeSolo"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/umidadeSolo"
-        android:textAlignment="center" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="130dp"
-        android:layout_height="35dp"
-        android:layout_above="@+id/editTextSensorUmidadeAmbiente"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/umidadeAmbiente" />
+        android:hint="@string/umidadeAmbiente"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextLocAdequado"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView9"
+        android:layout_height="46dp"
+        android:layout_above="@+id/editTextDescricaoPlanta"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="210dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="258dp"
+        android:background="@drawable/rounded_input_text"
         android:ems="10"
         android:gravity="start|top"
-        android:inputType="textMultiLine" />
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/editTextLocAdequado"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/locAdequado"
-        android:textAlignment="center" />
+        android:hint="    Local\n    Adeaquado"
+        android:inputType="textMultiLine"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imageViewPlanta"
@@ -153,87 +128,74 @@
         android:layout_height="80dp"
         android:layout_above="@+id/buttonImagemPlanta"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="18dp"
-        android:layout_marginBottom="16dp"
-        app:srcCompat="@drawable/conta" />
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="25dp"
+        app:srcCompat="@drawable/conta1"
+        android:background="@drawable/background_logo"/>
 
     <EditText
         android:id="@+id/editTextLuminosidade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView18"
+        android:layout_width="275dp"
+        android:layout_height="46dp"
+        android:layout_above="@+id/editTextLocAdequado"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="46dp"
         android:layout_toEndOf="@+id/imageViewPlanta"
+        android:background="@drawable/rounded_input_text"
         android:ems="10"
-        android:inputType="numberDecimal" />
-
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/editTextLuminosidade"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_toEndOf="@+id/imageViewPlanta"
-        android:text="@string/lumi"
-        android:textAlignment="center" />
+        android:hint="@string/lumi"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextNomePlanta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView19"
+        android:layout_width="278dp"
+        android:layout_height="42dp"
+        android:layout_above="@+id/editTextLuminosidade"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="41dp"
         android:layout_toEndOf="@+id/imageViewPlanta"
+        android:background="@drawable/rounded_input_text"
         android:ems="10"
-        android:inputType="textPersonName" />
-
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="251dp"
-        android:layout_height="20dp"
-        android:layout_above="@+id/editTextNomePlanta"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="10dp"
-        android:layout_toEndOf="@+id/imageViewPlanta"
-        android:gravity="center"
-        android:text="@string/nomePlant"
-        android:textAlignment="center" />
+        android:hint="@string/nomePlant"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/buttonImagemPlanta"
-        android:layout_width="84dp"
-        android:layout_height="60dp"
-        android:layout_above="@+id/textView18"
+        android:layout_width="62dp"
+        android:layout_height="61dp"
+        android:layout_above="@+id/editTextLocAdequado"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="33dp"
         android:layout_toStartOf="@+id/editTextLuminosidade"
+        android:background="@drawable/background_logo"
         android:text="@string/adcFoto"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/buttonCadastrarPlanta"
-        android:layout_width="30dp"
-        android:layout_height="40dp"
+        android:layout_width="234dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="130dp"
-        android:layout_marginEnd="130dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginEnd="89dp"
+        android:layout_marginBottom="26dp"
         android:text="@string/cadastrarPlanta"
-        android:textSize="14sp" />
+        android:background="@drawable/rounded_buttom"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

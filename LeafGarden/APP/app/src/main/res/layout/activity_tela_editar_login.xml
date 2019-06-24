@@ -3,19 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_background2">
 
     <Button
         android:id="@+id/buttonEditarUsuario"
-        android:layout_width="wrap_content"
+        android:layout_width="306dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="107dp"
-        android:layout_marginEnd="107dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginEnd="51dp"
         android:layout_marginBottom="30dp"
-        android:text="@string/editar" />
+        android:text=" Editar"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:background="@drawable/rounded_buttom"
+        />
 
     <Spinner
         android:id="@+id/spinnerRegiaoEditar"
@@ -31,47 +36,56 @@
 
     <EditText
         android:id="@+id/editTextIdadeEditar"
-        android:layout_width="301dp"
-        android:layout_height="wrap_content"
+        android:layout_width="330dp"
+        android:layout_height="58dp"
         android:layout_above="@+id/spinnerRegiaoEditar"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="30dp"
+        android:background="@drawable/rounded_input_text"
         android:editable="false"
         android:ems="10"
-        android:hint="@string/idade"
-        android:inputType="number" />
+        android:hint="    Idade"
+        android:textStyle="bold"
+        android:inputType="number"
+        android:textColorHint="@color/colorPrimaryDark" />
 
     <EditText
         android:id="@+id/editTextSenhaLoginEditar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="58dp"
         android:layout_above="@+id/editTextIdadeEditar"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/rounded_input_text"
         android:ems="10"
-        android:hint="@string/senha"
-        android:inputType="textPassword" />
+        android:hint="    Senha"
+        android:inputType="textPassword"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextEmailLoginEditar"
-        android:layout_width="293dp"
-        android:layout_height="wrap_content"
+        android:layout_width="308dp"
+        android:layout_height="51dp"
         android:layout_above="@+id/editTextSenhaLoginEditar"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/rounded_input_text"
         android:editable="false"
         android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress" />
+        android:hint="    Email"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextNomeEditar"
@@ -80,25 +94,29 @@
         android:layout_above="@+id/editTextEmailLoginEditar"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/rounded_input_text"
         android:ems="10"
-        android:hint="@string/nome"
-        android:inputType="textPersonName" />
+        android:hint="     Nome"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
-        android:layout_height="199dp"
+        android:layout_height="151dp"
         android:layout_above="@+id/editTextNomeEditar"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="47dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="36dp"
-        app:srcCompat="@drawable/user" />
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="130dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/background_logo"
+        app:srcCompat="@drawable/ic_action_pearson" />
 
 </RelativeLayout>

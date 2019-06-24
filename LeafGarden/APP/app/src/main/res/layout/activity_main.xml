@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_background2"
     tools:context=".MainActivity" >
 
-    <TextView
+    <Button
         android:id="@+id/textViewNovaConta"
-        android:layout_width="100dp"
+        android:layout_width="298dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/rounded_buttom"
         android:gravity="center"
         android:text="@string/novaConta"
+        android:textColor="@color/colorPrimaryDark"
         android:textStyle="bold" />
 
     <TextView
@@ -25,64 +28,74 @@
         android:layout_above="@+id/textViewNovaConta"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="-48dp"
         android:gravity="center"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/buttonEntrar"
-        android:layout_width="200dp"
+        android:layout_width="297dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textViewCadastroPlanta"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="104dp"
-        android:layout_marginEnd="107dp"
-        android:layout_marginBottom="30dp"
-        android:text="@string/entrar" />
+        android:layout_marginStart="58dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="51dp"
+        android:background="@drawable/rounded_buttom"
+        android:textStyle="bold"
+        android:text="@string/entrar"
+        android:textColor="@color/colorPrimaryDark" />
 
     <EditText
         android:id="@+id/editTextSenhaLoginEditar"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonEntrar"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="24dp"
+        android:drawableLeft="@drawable/ic_action_password"
         android:ems="10"
         android:hint="@string/senha"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textColorHint="@color/cardview_light_background"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextEmailLoginEditar"
-        android:layout_width="300dp"
+        android:layout_width="302dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/editTextSenhaLoginEditar"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="23dp"
+        android:drawableLeft="@drawable/ic_action_email"
         android:ems="10"
         android:hint="@string/email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/cardview_light_background"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="339dp"
-        android:layout_height="235dp"
+        android:layout_width="wrap_content"
+        android:layout_height="261dp"
         android:layout_above="@+id/editTextEmailLoginEditar"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="118dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="39dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="69dp"
+        android:layout_marginBottom="92dp"
+        android:background="@drawable/background_logo"
         app:srcCompat="@drawable/leaf_garden"
         tools:srcCompat="@drawable/leaf_garden" />
 
@@ -91,11 +104,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-10dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="-219dp"
+        android:layout_marginBottom="37dp"
         android:layout_toStartOf="@+id/textViewNovaConta"
         android:gravity="center"
-        android:text="@string/nConta"
+        android:text="E"
         android:textAlignment="center"
+        android:textColor="@color/cardview_light_background"
         android:textStyle="bold" />
 </RelativeLayout>
