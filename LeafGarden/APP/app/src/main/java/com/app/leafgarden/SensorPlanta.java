@@ -39,18 +39,21 @@ public class SensorPlanta extends AppCompatActivity {
     HistoricoDAO historicoDAO;
     TextView nomePlanta,tempAmbiente, luminosidade,tempSolo,umidadeAmbiente,umidadeSolo;
     ImageView imageView;
-    int delay= 10000;
-    int interval= 100000;
-    Timer time= new Timer();
     ImageView sensorUmidade,sensorTemperatura,sensorLuminosidade;
     ListView listViewDica;
     final SensorNodeMCU[] sensor = {null};
-    int TEMPERATURASOLO,UMIDADESOLO,UMIDADEAMBIENTE,TEMPERATURAAMBIENTE,LUMINOSIDADE=0;
+    int TEMPERATURASOLO,UMIDADESOLO,UMIDADEAMBIENTE,TEMPERATURAAMBIENTE;
     private List<String> listaItens;
     private ArrayAdapter<String> adapter;
     final String[] inforPlanta = {"","",""};
     final String[] infoSensor= {"","",""};
     Firebase firebase;
+    final static int LOW_LIGHT=2500;
+    final static  int MEDIUM_LIGHT=10000;
+    final static int HIGH_LIGHT=20000;
+    static  final int delay= 10000;
+    static  final int intervalo= 100000;
+    Timer time= new Timer();
 
 
     @Override
@@ -75,7 +78,6 @@ public class SensorPlanta extends AppCompatActivity {
         imageView.setImageBitmap(bitmap);
         TEMPERATURAAMBIENTE = (int)jardim.getTempAmbiente();
         TEMPERATURASOLO = (int) jardim.getTempSolo();
-        LUMINOSIDADE = (int) jardim.getLuminosidade();
         UMIDADEAMBIENTE = (int) jardim.getUmidadeAmbiente();
         UMIDADESOLO = (int) jardim.getUmidadeSolo();
 
@@ -95,22 +97,38 @@ public class SensorPlanta extends AppCompatActivity {
                 inforPlanta[0]=inforPlanta[1]=inforPlanta[2]="";
                 infoSensor[0]=infoSensor[1]=infoSensor[2]="";
                 sensor[0] = dataSnapshot.getValue(SensorNodeMCU.class);
-                luminosidade.setText(String.valueOf(sensor[0].getLuminosidade()));
                 tempAmbiente.setText(String.valueOf(sensor[0].getTemperaturaambiente())+"°C A");
                 tempSolo.setText(String.valueOf(sensor[0].getTemperaturasolo())+"°C S");
                 umidadeAmbiente.setText(String.valueOf(sensor[0].getUmidadeambiente()+"% A"));
                 umidadeSolo.setText(String.valueOf(sensor[0].getUmidadesolo())+"% S");
                 listaItens.clear();
 
-                if(sensor[0].getLuminosidade() > LUMINOSIDADE){
+
+                if(sensor[0].getLuminosidade() < LOW_LIGHT){
+                    luminosidade.setText("BAIXA");
                     luminosidade.setTextColor(Color.RED);
-                    inforPlanta[0] ="LUMINOSIDADE:\n Retire a planta do sol!\n";
+                    inforPlanta[0] ="LUMINOSIDADE:\n coloque a planta em um local com luminosidade\n";
                     infoSensor[0]= String.valueOf(sensor[0].getLuminosidade()+"%\n");
                     listaItens.add(inforPlanta[0]);
 
+                }else if(sensor[0].getLuminosidade() >LOW_LIGHT && sensor[0].getLuminosidade() <MEDIUM_LIGHT){
+                    luminosidade.setText("MÉDIA");
+                    luminosidade.setTextColor(Color.YELLOW);
+                    inforPlanta[0] ="LUMINOSIDADE:\n está com a iluminação razoável\n";
+                    infoSensor[0]= String.valueOf(sensor[0].getLuminosidade()+"%\n");
+                    listaItens.add(inforPlanta[0]);
+                }else if(sensor[0].getLuminosidade() >MEDIUM_LIGHT && sensor[0].getLuminosidade() <HIGH_LIGHT){
+                    luminosidade.setText("BOA");
+                    luminosidade.setTextColor(Color.parseColor("#008000"));
+                    inforPlanta[0] ="LUMINOSIDADE:\n está com boa iluminação\n";
+                    infoSensor[0]= String.valueOf(sensor[0].getLuminosidade()+"%\n");
+                    listaItens.add(inforPlanta[0]);
                 }else{
-                    luminosidade.setTextColor(Color.GREEN);
-
+                    luminosidade.setText("ALTA");
+                    luminosidade.setTextColor(Color.parseColor("#d11507"));
+                    inforPlanta[0] ="LUMINOSIDADE:\n a planta está recebendo muita iluminação\n";
+                    infoSensor[0]= String.valueOf(sensor[0].getLuminosidade()+"%\n");
+                    listaItens.add(inforPlanta[0]);
                 }
                 if(sensor[0].getTemperaturaambiente()> TEMPERATURAAMBIENTE){
                     tempAmbiente.setTextColor(Color.RED);
@@ -118,13 +136,13 @@ public class SensorPlanta extends AppCompatActivity {
                     infoSensor[1]= String.valueOf("A: "+sensor[0].getTemperaturaambiente()+"|S: "+sensor[0].getTemperaturasolo()+"\n");
                     listaItens.add(inforPlanta[1]);
                 }else{
-                    tempAmbiente.setTextColor(Color.GREEN);
+                    tempAmbiente.setTextColor(Color.parseColor("#008000"));
 
                 }
                 if (sensor[0].temperaturasolo > TEMPERATURASOLO){
                     tempSolo.setTextColor(Color.RED);
                 }else{
-                    tempSolo.setTextColor(Color.GREEN);
+                    tempSolo.setTextColor(Color.parseColor("#008000"));
 
                 }
                 if(sensor[0].getUmidadeambiente()> UMIDADEAMBIENTE){
@@ -133,16 +151,15 @@ public class SensorPlanta extends AppCompatActivity {
                     infoSensor[2]= String.valueOf("A: "+sensor[0].getUmidadeambiente()+"|S: "+sensor[0].getUmidadesolo()+"\n");
                     listaItens.add(inforPlanta[2]);
                 }else{
-                    umidadeAmbiente.setTextColor(Color.GREEN);
+                    umidadeAmbiente.setTextColor(Color.parseColor("#008000"));
 
                 }
                 if( sensor[0].getUmidadesolo() >UMIDADESOLO){
                     umidadeSolo.setTextColor(Color.RED);
                 }else{
-                    umidadeSolo.setTextColor(Color.GREEN);
+                    umidadeSolo.setTextColor(Color.parseColor("#008000"));
 
                 }
-
 
 
                 listViewDica.setAdapter(adapter);
@@ -173,13 +190,11 @@ public class SensorPlanta extends AppCompatActivity {
 
                     }
 
-
-
                 }catch (Exception e){
                     Log.e("erro",e.getMessage());
                 }
             }
-        },delay,interval);
+        },delay,intervalo);
 
 
     }

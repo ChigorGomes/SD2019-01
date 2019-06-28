@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -66,7 +67,11 @@ public class TelaCadastroLogin extends AppCompatActivity {
                 }else if(email.getText().toString().equals("")){
                     Toast.makeText(TelaCadastroLogin.this,"Preencha o campo email!",Toast.LENGTH_SHORT).show();
 
-                }else if(posicao <=0){
+                }else if(isValidEmail(email.getText().toString().trim())==false){
+                    Toast.makeText(TelaCadastroLogin.this,"Formato inválido de e-mail!",Toast.LENGTH_SHORT).show();
+
+                }
+                else if(posicao <=0){
                     Toast.makeText(TelaCadastroLogin.this,"Selecione a região!",Toast.LENGTH_SHORT).show();
 
                 }
@@ -95,5 +100,10 @@ public class TelaCadastroLogin extends AppCompatActivity {
         });
 
 
+    }
+
+    private  boolean isValidEmail(String email) {
+        if (Patterns.EMAIL_ADDRESS.matcher(email).matches()){ return true;}
+         return  false;
     }
 }
