@@ -88,16 +88,16 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="243dp"
+        android:layout_height="302dp"
         android:layout_above="@+id/editTextEmailLoginEditar"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="69dp"
         android:layout_marginEnd="70dp"
         android:layout_marginBottom="28dp"
-        android:background="@drawable/background_logo"
+        android:background="@drawable/rounded_buttom"
         app:srcCompat="@drawable/leaf_garden"
         tools:srcCompat="@drawable/leaf_garden" />
 

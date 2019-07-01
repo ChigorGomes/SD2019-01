@@ -34,7 +34,7 @@
         android:layout_marginStart="87dp"
         android:layout_marginTop="19dp"
         android:layout_marginEnd="105dp"
-        android:background="@drawable/background_logo"
+        android:background="@drawable/rounded_buttom"
         app:srcCompat="@drawable/leafgarden" />
 
 
