@@ -16,25 +16,23 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="29dp"
+        android:layout_marginBottom="62dp"
         android:text=" Cadastrar Planta"
         android:textColor="@color/cardview_light_background"
         android:textSize="35dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewPlanta"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNomePlanta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextDescricaoPlanta"
-        android:layout_width="0dp"
+        android:layout_width="361dp"
         android:layout_height="0dp"
         android:layout_above="@+id/buttonCadastrarPlanta"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="30dp"
         android:autofillHints=""
         android:background="@drawable/rounded_border"
@@ -42,24 +40,23 @@
         android:gravity="center"
         android:hint="Descricao"
         android:inputType="textMultiLine"
+        android:scrollbars="vertical"
         android:textColorHint="@color/colorPrimaryDark"
         android:textStyle="bold"
-        android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/buttonCadastrarPlanta"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSensorTempSolo" />
+        app:layout_constraintEnd_toStartOf="@+id/editTextSensorTempSolo"
+        app:layout_constraintStart_toStartOf="@+id/editTextSensorTempSolo"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSensorTempAmbiente" />
 
     <EditText
         android:id="@+id/editTextSensorTempAmbiente"
-        android:layout_width="148dp"
-        android:layout_height="51dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_above="@+id/editTextDescricaoPlanta"
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="79dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="82dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="28dp"
         android:layout_toStartOf="@+id/editTextSensorTempSolo"
         android:background="@drawable/rounded_border"
         android:ems="10"
@@ -69,20 +66,18 @@
         android:textColorHint="@color/colorPrimaryDark"
         android:textSize="14dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextDescricaoPlanta"
+        app:layout_constraintBottom_toTopOf="@+id/editTextDescricaoPlanta"
         app:layout_constraintEnd_toStartOf="@+id/editTextSensorTempSolo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextSensorUmidadeSolo"
-        app:layout_constraintVertical_bias="0.346" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextSensorUmidadeAmbiente" />
 
     <EditText
         android:id="@+id/editTextSensorTempSolo"
-        android:layout_width="151dp"
+        android:layout_width="0dp"
         android:layout_height="49dp"
         android:layout_above="@+id/editTextDescricaoPlanta"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="33dp"
+        android:layout_marginEnd="46dp"
         android:background="@drawable/rounded_border"
         android:ems="10"
         android:gravity="center"
@@ -91,20 +86,20 @@
         android:textColorHint="@color/colorPrimaryDark"
         android:textSize="14dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editTextDescricaoPlanta"
-        app:layout_constraintStart_toEndOf="@+id/editTextSensorTempAmbiente"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSensorUmidadeAmbiente" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextSensorTempAmbiente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextSensorTempAmbiente" />
 
     <EditText
         android:id="@+id/editTextSensorUmidadeSolo"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_above="@+id/editTextSensorTempAmbiente"
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="85dp"
+        android:layout_marginTop="213dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginBottom="213dp"
         android:layout_toStartOf="@+id/editTextSensorUmidadeAmbiente"
         android:background="@drawable/rounded_border"
         android:ems="10"
@@ -113,21 +108,19 @@
         android:inputType="numberDecimal"
         android:textColorHint="@color/colorPrimaryDark"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextSensorTempSolo"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextDescricaoPlanta"
         app:layout_constraintEnd_toStartOf="@+id/editTextSensorUmidadeAmbiente"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextLocAdequado"
-        app:layout_constraintVertical_bias="0.518" />
+        app:layout_constraintTop_toTopOf="@+id/editTextLuminosidade" />
 
     <EditText
         android:id="@+id/editTextSensorUmidadeAmbiente"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_above="@+id/editTextSensorTempSolo"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="38dp"
         android:background="@drawable/rounded_border"
         android:ems="10"
         android:gravity="center"
@@ -136,8 +129,9 @@
         android:textColorHint="@color/colorPrimaryDark"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editTextSensorTempSolo"
+        app:layout_constraintBottom_toTopOf="@+id/editTextSensorTempAmbiente"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextSensorUmidadeSolo"
         app:layout_constraintTop_toBottomOf="@+id/editTextLocAdequado" />
 
     <EditText
@@ -155,37 +149,38 @@
         android:gravity="center"
         android:hint="Local Adeaquado"
         android:inputType="textMultiLine"
+        android:scrollbars="vertical"
         android:textColorHint="@color/colorPrimaryDark"
         android:textStyle="bold"
-        android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/editTextSensorUmidadeAmbiente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonImagemPlanta" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextLuminosidade" />
 
     <ImageView
         android:id="@+id/imageViewPlanta"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="80dp"
         android:layout_above="@+id/buttonImagemPlanta"
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="76dp"
         android:layout_marginEnd="23dp"
-        android:layout_marginBottom="27dp"
+        android:layout_marginBottom="75dp"
         android:background="@drawable/conta2"
-        app:layout_constraintBottom_toTopOf="@+id/buttonImagemPlanta"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextLuminosidade"
         app:layout_constraintEnd_toStartOf="@+id/editTextNomePlanta"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTituloTelaCadastrarPlanta" />
+        app:layout_constraintTop_toTopOf="@+id/textViewTituloTelaCadastrarPlanta" />
 
     <EditText
         android:id="@+id/editTextLuminosidade"
         android:layout_width="0dp"
-        android:layout_height="51dp"
+        android:layout_height="0dp"
         android:layout_above="@+id/editTextLocAdequado"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="59dp"
         android:layout_toEndOf="@+id/imageViewPlanta"
         android:background="@drawable/rounded_border"
         android:ems="10"
@@ -194,17 +189,17 @@
         android:inputType="numberDecimal"
         android:textColorHint="@color/colorPrimaryDark"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editTextLocAdequado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonImagemPlanta"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewPlanta" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNomePlanta" />
 
     <EditText
         android:id="@+id/editTextNomePlanta"
         android:layout_width="0dp"
-        android:layout_height="51dp"
+        android:layout_height="0dp"
         android:layout_above="@+id/editTextLuminosidade"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="20dp"
         android:layout_toEndOf="@+id/imageViewPlanta"
@@ -218,28 +213,28 @@
         app:layout_constraintBottom_toTopOf="@+id/editTextLuminosidade"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageViewPlanta"
-        app:layout_constraintTop_toTopOf="@+id/imageViewPlanta"
-        app:layout_constraintVertical_bias="0.903" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTituloTelaCadastrarPlanta" />
 
     <Button
         android:id="@+id/buttonImagemPlanta"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="80dp"
         android:layout_above="@+id/editTextLocAdequado"
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="27dp"
+        android:layout_marginTop="107dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="107dp"
         android:layout_toStartOf="@+id/editTextLuminosidade"
         android:background="@drawable/rounded_buttom"
         android:text="@string/adcFoto"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editTextLocAdequado"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextLocAdequado"
         app:layout_constraintEnd_toStartOf="@+id/editTextLuminosidade"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewPlanta" />
+        app:layout_constraintTop_toTopOf="@+id/imageViewPlanta" />
 
     <Button
         android:id="@+id/buttonCadastrarPlanta"

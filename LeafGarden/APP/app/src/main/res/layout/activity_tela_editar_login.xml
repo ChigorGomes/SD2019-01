@@ -15,7 +15,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="55dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/rounded_buttom"
         android:text="Editar"
         android:textColor="@color/colorPrimaryDark"
@@ -118,9 +118,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="109dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="107dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/rounded_buttom"
         app:srcCompat="@drawable/ic_action_pearson" />
 
