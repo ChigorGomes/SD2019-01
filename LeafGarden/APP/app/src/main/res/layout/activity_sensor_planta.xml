@@ -115,38 +115,41 @@
 
     <ImageView
         android:id="@+id/imageViewSensorLuminosidade"
-        android:layout_width="88dp"
-        android:layout_height="88dp"
+        android:layout_width="96dp"
+        android:layout_height="112dp"
         android:layout_above="@+id/textViewSensorLuminosidade"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="17dp"
+        android:layout_marginStart="22dp"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/hexagono"
         app:srcCompat="@drawable/light"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="165dp" />
 
     <ImageView
         android:id="@+id/imageViewSensorUmidade"
-        android:layout_width="88dp"
-        android:layout_height="88dp"
+        android:layout_width="95dp"
+        android:layout_height="111dp"
         android:layout_above="@+id/textViewSensorUmidadeSolo"
-        android:layout_marginStart="62dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="15dp"
         android:layout_toStartOf="@+id/imageViewSensorTemperatura"
         android:layout_toEndOf="@+id/imageViewSensorLuminosidade"
+        android:background="@drawable/hexagono"
         app:srcCompat="@drawable/gota"
         tools:layout_editor_absoluteX="170dp"
         tools:layout_editor_absoluteY="177dp" />
 
     <ImageView
         android:id="@+id/imageViewSensorTemperatura"
-        android:layout_width="88dp"
-        android:layout_height="88dp"
+        android:layout_width="91dp"
+        android:layout_height="109dp"
         android:layout_above="@+id/textViewSensorTempSolo"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/hexagono"
         app:srcCompat="@drawable/temperatura"
         tools:layout_editor_absoluteX="292dp"
         tools:layout_editor_absoluteY="167dp" />
