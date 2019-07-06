@@ -24,14 +24,14 @@
 
     <TextView
         android:id="@+id/textViewTemperaturaInfoPlanta"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="27dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="37dp"
         android:background="@drawable/rounded_border"
         android:gravity="center"
         android:text=""
@@ -45,28 +45,30 @@
         android:layout_above="@+id/textViewTemperaturaInfoPlanta"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="200dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/temperatura"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="201dp"
+        android:layout_marginBottom="10dp"
+        android:text="Temperatura e Umidade"
         android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewLocalAdequadoInfoPlant"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="104dp"
         android:layout_above="@+id/textView8"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="27dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_border"
-        android:text="" />
+        android:gravity="center"
+        android:padding="5dp"
+        android:scrollbars="vertical"
+        android:text=""
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView10"
@@ -85,15 +87,17 @@
     <TextView
         android:id="@+id/textViewDescricaoPlanta"
         android:layout_width="wrap_content"
-        android:layout_height="72dp"
+        android:layout_height="104dp"
         android:layout_above="@+id/textView10"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="27dp"
-        android:layout_marginEnd="23dp"
+        android:layout_marginEnd="22dp"
         android:layout_marginBottom="14dp"
         android:background="@drawable/rounded_border"
         android:gravity="center"
+        android:padding="5dp"
+        android:scrollbars="vertical"
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="bold" />
 
@@ -113,12 +117,12 @@
 
     <Button
         android:id="@+id/buttonAdcPlantaNoJardim"
-        android:layout_width="198dp"
-        android:layout_height="wrap_content"
+        android:layout_width="193dp"
+        android:layout_height="58dp"
         android:layout_above="@+id/textView12"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="53dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="43dp"
         android:background="@drawable/rounded_buttom"
         android:text="@string/adcJardim"
         android:textAlignment="center"
@@ -136,6 +140,7 @@
         android:layout_marginStart="19dp"
         android:layout_marginEnd="219dp"
         android:layout_marginBottom="61dp"
+
         android:background="@drawable/background_imagem" />
 
 </RelativeLayout>

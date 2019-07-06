@@ -5,7 +5,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -81,9 +83,10 @@ public class SensorPlanta extends AppCompatActivity {
         UMIDADEAMBIENTE = (int) jardim.getUmidadeAmbiente();
         UMIDADESOLO = (int) jardim.getUmidadeSolo();
 
-        sensorLuminosidade.setBackground(Drawable.createFromPath(""));
-        sensorUmidade.setBackground(Drawable.createFromPath(""));
-        sensorTemperatura.setBackground(Drawable.createFromPath(""));
+        sensorLuminosidade.setBackground(ContextCompat.getDrawable(this, R.drawable.hexagono));
+        sensorUmidade.setBackground(ContextCompat.getDrawable(this, R.drawable.hexagono));
+        sensorTemperatura.setBackground(ContextCompat.getDrawable(this, R.drawable.hexagono));
+
 
         listaItens = new ArrayList<>();
         adapter= new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listaItens);

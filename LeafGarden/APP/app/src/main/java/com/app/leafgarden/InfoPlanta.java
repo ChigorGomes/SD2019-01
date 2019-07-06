@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -37,6 +38,10 @@ public class InfoPlanta extends AppCompatActivity {
         temperaturasIdeais = findViewById(R.id.textViewTemperaturaInfoPlanta);
         imageView = findViewById(R.id.imageViewInfoPlanta);
         buttonCadastroJardim = findViewById(R.id.buttonAdcPlantaNoJardim);
+
+        //Adicionando scroll nos textViews
+        descricaoPlanta.setMovementMethod(new ScrollingMovementMethod());
+        localAdequado.setMovementMethod(new ScrollingMovementMethod());
 
         nomePlanta.setText(planta.getNomePlanta());
         descricaoPlanta.setText(planta.getDescricao());
