@@ -5,190 +5,68 @@
     android:id="@+id/linearLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_background2">
+    android:background="@drawable/ic_background2"
+    tools:context=".SensorPlanta" >
+
+    >
+
 
     <ListView
         android:id="@+id/listViewDica"
         android:layout_width="378dp"
         android:layout_height="150dp"
+        android:layout_below="@+id/emotionView"
         android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="569dp" />
+        tools:layout_editor_absoluteY="569dp"
 
-    <TextView
-        android:id="@+id/textViewDicas"
+        />
+
+    <com.dm.emotionrating.library.EmotionView
+        android:id="@+id/emotionView"
         android:layout_width="wrap_content"
-        android:layout_height="53dp"
-        android:layout_above="@+id/listViewDica"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/rounded_border"
-        android:gravity="center"
-        android:scrollbars="vertical"
-        android:text="@string/dica"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="506dp" />
-
-    <TextView
-        android:id="@+id/textViewSensorLuminosidade"
-        android:layout_width="106dp"
-        android:layout_height="43dp"
-        android:layout_above="@+id/textViewDicas"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginBottom="91dp"
-        android:background="@drawable/rounded_border"
-        android:gravity="center"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textViewSensorUmidadeSolo"
-        android:layout_width="106dp"
-        android:layout_height="43dp"
-        android:layout_above="@+id/textViewSensorUmidadeAmbiente"
-        android:layout_marginStart="29dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="22dp"
-        android:layout_toStartOf="@+id/textViewSensorTempSolo"
-        android:layout_toEndOf="@+id/imageViewSensorLuminosidade"
-        android:background="@drawable/rounded_border"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textViewSensorUmidadeAmbiente"
-        android:layout_width="106dp"
-        android:layout_height="43dp"
-        android:layout_above="@+id/textViewDicas"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="152dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="25dp"
-        android:layout_toStartOf="@+id/textViewSensorTempAmbiente"
-        android:background="@drawable/rounded_border"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textViewSensorTempSolo"
-        android:layout_width="106dp"
-        android:layout_height="43dp"
-        android:layout_above="@+id/textViewSensorTempAmbiente"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="22dp"
-        android:background="@drawable/rounded_border"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="288dp"
-        tools:layout_editor_absoluteY="301dp" />
-
-    <TextView
-        android:id="@+id/textViewSensorTempAmbiente"
-        android:layout_width="106dp"
-        android:layout_height="43dp"
-        android:layout_above="@+id/textViewDicas"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="25dp"
-        android:background="@drawable/rounded_border"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="345dp" />
-
-    <ImageView
-        android:id="@+id/imageViewSensorLuminosidade"
-        android:layout_width="96dp"
-        android:layout_height="112dp"
-        android:layout_above="@+id/textViewSensorLuminosidade"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/hexagono"
-        app:srcCompat="@drawable/light"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="165dp" />
-
-    <ImageView
-        android:id="@+id/imageViewSensorUmidade"
-        android:layout_width="95dp"
-        android:layout_height="111dp"
-        android:layout_above="@+id/textViewSensorUmidadeSolo"
-        android:layout_marginStart="44dp"
-        android:layout_marginEnd="43dp"
-        android:layout_marginBottom="15dp"
-        android:layout_toStartOf="@+id/imageViewSensorTemperatura"
-        android:layout_toEndOf="@+id/imageViewSensorLuminosidade"
-        android:background="@drawable/hexagono"
-        app:srcCompat="@drawable/gota"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="177dp" />
-
-    <ImageView
-        android:id="@+id/imageViewSensorTemperatura"
-        android:layout_width="91dp"
-        android:layout_height="109dp"
-        android:layout_above="@+id/textViewSensorTempSolo"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/hexagono"
-        app:srcCompat="@drawable/temperatura"
-        tools:layout_editor_absoluteX="292dp"
-        tools:layout_editor_absoluteY="167dp" />
-
-    <ImageView
-        android:id="@+id/imageViewSensorImg"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_above="@+id/imageViewSensorLuminosidade"
+        android:layout_height="250dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="129dp"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/background_imagem"
-        app:srcCompat="@drawable/buttonshape"
-        tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textViewNomePlantaSensor"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_above="@+id/imageViewSensorUmidade"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="13dp"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="21dp"
-        tools:layout_editor_absoluteY="345dp" />
+
+        <TextView
+            android:id="@+id/textViewPopUpEmoticons"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignStart="@+id/emotionView" />
+    </com.dm.emotionrating.library.EmotionView>
+
+
+    <!--<Button-->
+        <!--android:id="@+id/textViewListar"-->
+        <!--android:layout_width="298dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_marginStart="50dp"-->
+        <!--android:layout_marginEnd="50dp"-->
+        <!--android:layout_marginBottom="120dp"-->
+        <!--android:background="@drawable/rounded_buttom"-->
+        <!--android:gravity="center"-->
+        <!--android:text="@string/novaConta"-->
+        <!--android:textColor="@color/colorPrimaryDark"-->
+        <!--android:textStyle="bold" />-->
+
 
 </RelativeLayout>
