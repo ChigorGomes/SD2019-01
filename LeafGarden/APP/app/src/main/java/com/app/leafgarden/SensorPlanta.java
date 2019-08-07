@@ -8,6 +8,8 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -52,6 +54,9 @@ public class SensorPlanta extends AppCompatActivity {
     final static int HIGH_LIGHT=20000;
     EmotionView emotionView= null;
     View view;
+    ImageButton dicasInfo;
+    LinearLayout linearConteudo;
+    boolean show= false;
 
 
     static final int PESOMENOR=5;
@@ -79,7 +84,9 @@ public class SensorPlanta extends AppCompatActivity {
         buttonEmoticons.setText(spannableString);
         buttonEmoticons.setMovementMethod(LinkMovementMethod.getInstance());
         emotionView= (EmotionView) findViewById(R.id.emotionView);
-        view= findViewById(R.id.linearLayout4);
+        view= findViewById(R.id.linearViewEmoticons);
+        dicasInfo= findViewById(R.id.imageButtonInfoDicas);
+        linearConteudo = (LinearLayout) findViewById(R.id.linearLayoutDicas);
 
 
 
@@ -88,6 +95,20 @@ public class SensorPlanta extends AppCompatActivity {
         adapter= new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listaItens);
 
         firebase= new Firebase(SensorPlanta.this);
+
+
+        dicasInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(show){
+                    linearConteudo.setVisibility(View.INVISIBLE);
+                    show =false;
+                }else{
+                    linearConteudo.setVisibility(View.VISIBLE);
+                    show =true;
+                }
+            }
+        });
 
 
         firebase.getDatabaseReference().addValueEventListener(new ValueEventListener() {
@@ -109,7 +130,9 @@ public class SensorPlanta extends AppCompatActivity {
                     emotionView.setRating(1,2);
                     emotionView.setBackgroundColor(Color.parseColor("#ee3a1f"));
                     view.setBackgroundColor(Color.parseColor("#ee3a1f"));
-                    listViewDica.setBackgroundColor(Color.parseColor("#ff5232"));
+                    listViewDica.setBackgroundColor(Color.parseColor("#ee3a1f"));
+                    dicasInfo.setBackgroundColor(Color.parseColor("#ee3a1f"));
+                    dicasInfo.setVisibility(View.VISIBLE);
 
 
                 }
@@ -118,6 +141,12 @@ public class SensorPlanta extends AppCompatActivity {
                     inforPlanta[0] ="LUMINOSIDADE:\n está com a iluminação razoável\n";
                     infoSensor[0]= String.valueOf(sensor[0].getLuminosidade()+"%\n");
                     listaItens.add(inforPlanta[0]);
+                    emotionView.setRating(1,3);
+                    emotionView.setBackgroundColor(Color.GREEN);
+                    view.setBackgroundColor(Color.GREEN);
+                    dicasInfo.setVisibility(View.INVISIBLE);
+
+
                 }else if(sensor[0].getLuminosidade() >MEDIUM_LIGHT && sensor[0].getLuminosidade() <HIGH_LIGHT){
 
                     inforPlanta[0] ="LUMINOSIDADE:\n está com boa iluminação\n";

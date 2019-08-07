@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -15,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         /*Link para criar conta com o Google*/
-        SpannableString spannableString = new SpannableString("");
+        SpannableString spannableString = new SpannableString("CADASTRAR PLANTAS");
         spannableString.setSpan(new custonOnclickCadastroPlanta(), 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         cadastroPlanta.setText(spannableString);
         cadastroPlanta.setMovementMethod(LinkMovementMethod.getInstance());
@@ -129,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
         public void updateDrawState(TextPaint textPaint) {
 //            textPaint.setColor(Color.BLACK);
-            //textPaint.setUnderlineText(true);
+//            textPaint.setUnderlineText(true);
         }
     }
 
@@ -142,10 +143,10 @@ public class MainActivity extends AppCompatActivity {
 
         }
 //
-//        public void updateDrawState(TextPaint textPaint) {
+        public void updateDrawState(TextPaint textPaint) {
 //            textPaint.setColor(Color.BLUE);
 //            textPaint.setUnderlineText(true);
-//        }
+        }
     }
 
     public static String convertPassMd5(String pass) {
