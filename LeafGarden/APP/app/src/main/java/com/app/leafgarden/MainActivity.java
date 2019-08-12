@@ -14,20 +14,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView cadastroPlanta;
     TextView novaConta;
-    EditText email;
-    EditText senha;
+    EditText editTextemail;
+    EditText editTextsenha;
     Button buttonEntrar;
     public static  final String PREFS_NAME="leafGardenFile";
+    FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -36,15 +39,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         cadastroPlanta = (TextView) findViewById(R.id.textViewCadastroPlanta);
         novaConta = (TextView) findViewById(R.id.textViewNovaConta);
-        email = (EditText) findViewById(R.id.editTextEmailLoginEditar);
-        senha = (EditText) findViewById(R.id.editTextSenhaLoginEditar);
+        editTextemail = (EditText) findViewById(R.id.editTextEmailLoginEditar);
+        editTextsenha = (EditText) findViewById(R.id.editTextSenhaLoginEditar);
         buttonEntrar= (Button) findViewById(R.id.buttonEntrar);
         final SharedPreferences setting=  getSharedPreferences(PREFS_NAME,0);
 
-        email.setText(setting.getString("email",""));
-        senha.setText(setting.getString("senha",""));
+        editTextemail.setText(setting.getString("email",""));
+        editTextsenha.setText(setting.getString("senha",""));
 
 
+        firebaseAuth = FirebaseAuth.getInstance();
 
 
 
@@ -64,36 +68,8 @@ public class MainActivity extends AppCompatActivity {
         buttonEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(email.getText().toString().equals("")){
-                    Toast.makeText(MainActivity.this,"preencha o campo email", Toast.LENGTH_SHORT).show();
+                verificaUsuario();
 
-                }else if(senha.getText().toString().equals("")){
-                    Toast.makeText(MainActivity.this,"preencha o campo senha", Toast.LENGTH_SHORT).show();
-
-                }else{
-//                    UsuarioDAO usuarioDAO= new UsuarioDAO(MainActivity.this);
-//                    String senhaMD5= convertPassMd5(senha.getText().toString().trim());
-//                    Usuario usuario= usuarioDAO.getUsuario(email.getText().toString().trim(),senhaMD5);
-//
-//
-//                    if(usuario!=null){
-//                        SharedPreferences.Editor editor= setting.edit();
-//                        editor.putString("email",email.getText().toString().trim());
-//                        editor.putString("senha",senha.getText().toString().trim());
-//                        editor.commit();
-//                        Intent intent= new Intent(MainActivity.this, TelaMenu.class);
-//                        intent.putExtra("usuario",usuario);
-//
-//
-//                        startActivity(intent);
-//                        finish();
-//
-//
-//                    }else{
-//                        Toast.makeText(MainActivity.this,"Usuário e/ou Senha inválidos",Toast.LENGTH_SHORT).show();
-//
-//                    }
-                }
             }
         });
 
@@ -129,22 +105,35 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static String convertPassMd5(String pass) {
-        String password = null;
-        MessageDigest mdEnc;
-        try {
-            mdEnc = MessageDigest.getInstance("MD5");
-            mdEnc.update(pass.getBytes(), 0, pass.length());
-            pass = new BigInteger(1, mdEnc.digest()).toString(16);
-            while (pass.length() < 32) {
-                pass = "0" + pass;
-            }
-            password = pass;
-        } catch (NoSuchAlgorithmException e1) {
-            e1.printStackTrace();
+    private void verificaUsuario(){
+        String email = editTextemail.getText().toString().trim();
+        String senha = editTextsenha.getText().toString().trim();
+
+        if(email.isEmpty()){
+            editTextemail.setError("Preencha o campo Email!");
+            editTextemail.requestFocus();
+        }if(senha.isEmpty()){
+            editTextsenha.setError("Preencha o campo Senha!");
+            editTextsenha.requestFocus();
+        }else{
+            firebaseAuth.signInWithEmailAndPassword(email,senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        Intent intent = new Intent(MainActivity.this, TelaMenu.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
-        return password;
+
+
     }
+
+
 
 
 }
