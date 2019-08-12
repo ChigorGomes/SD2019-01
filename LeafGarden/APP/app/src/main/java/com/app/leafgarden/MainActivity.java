@@ -2,7 +2,6 @@ package com.app.leafgarden;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -21,20 +20,15 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import BD.BancoDeDados;
-import Classe.Usuario;
-import DAO.UsuarioDAO;
-
 public class MainActivity extends AppCompatActivity {
 
     TextView cadastroPlanta;
     TextView novaConta;
-    private BancoDeDados bancoDeDados;
-    private SQLiteDatabase database;
     EditText email;
     EditText senha;
     Button buttonEntrar;
     public static  final String PREFS_NAME="leafGardenFile";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,20 +45,6 @@ public class MainActivity extends AppCompatActivity {
         senha.setText(setting.getString("senha",""));
 
 
-        //Verifica se o banco de dados está funcionando
-//        try{
-//            bancoDeDados= new BancoDeDados(this);
-//            database= bancoDeDados.getReadableDatabase();
-//            AlertDialog.Builder builder= new AlertDialog.Builder(this);
-//            builder.setMessage("Conexão realizada com sucesso!");
-//            builder.setNeutralButton("Ok",null);
-//            builder.show();
-//        }catch (SQLException e){
-//            AlertDialog.Builder builder= new AlertDialog.Builder(this);
-//            builder.setMessage("Conexão não realizada!");
-//            builder.setNeutralButton("Ok",null);
-//            builder.show();
-//        }
 
 
 
@@ -91,28 +71,28 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this,"preencha o campo senha", Toast.LENGTH_SHORT).show();
 
                 }else{
-                    UsuarioDAO usuarioDAO= new UsuarioDAO(MainActivity.this);
-                    String senhaMD5= convertPassMd5(senha.getText().toString().trim());
-                    Usuario usuario= usuarioDAO.getUsuario(email.getText().toString().trim(),senhaMD5);
-
-
-                    if(usuario!=null){
-                        SharedPreferences.Editor editor= setting.edit();
-                        editor.putString("email",email.getText().toString().trim());
-                        editor.putString("senha",senha.getText().toString().trim());
-                        editor.commit();
-                        Intent intent= new Intent(MainActivity.this, TelaMenu.class);
-                        intent.putExtra("usuario",usuario);
-
-
-                        startActivity(intent);
-                        finish();
-
-
-                    }else{
-                        Toast.makeText(MainActivity.this,"Usuário e/ou Senha inválidos",Toast.LENGTH_SHORT).show();
-
-                    }
+//                    UsuarioDAO usuarioDAO= new UsuarioDAO(MainActivity.this);
+//                    String senhaMD5= convertPassMd5(senha.getText().toString().trim());
+//                    Usuario usuario= usuarioDAO.getUsuario(email.getText().toString().trim(),senhaMD5);
+//
+//
+//                    if(usuario!=null){
+//                        SharedPreferences.Editor editor= setting.edit();
+//                        editor.putString("email",email.getText().toString().trim());
+//                        editor.putString("senha",senha.getText().toString().trim());
+//                        editor.commit();
+//                        Intent intent= new Intent(MainActivity.this, TelaMenu.class);
+//                        intent.putExtra("usuario",usuario);
+//
+//
+//                        startActivity(intent);
+//                        finish();
+//
+//
+//                    }else{
+//                        Toast.makeText(MainActivity.this,"Usuário e/ou Senha inválidos",Toast.LENGTH_SHORT).show();
+//
+//                    }
                 }
             }
         });

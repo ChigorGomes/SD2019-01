@@ -2,11 +2,11 @@ package com.app.leafgarden;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import Classe.Usuario;
 
@@ -23,41 +23,41 @@ public class TelaMenu extends AppCompatActivity {
         buttonEditarConta = findViewById(R.id.buttonConta);
         buttonHistorico= findViewById(R.id.buttonHistorico);
 
-        buttonPlanta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(TelaMenu.this,Plantas.class);
-                intent.putExtra("usuario",usuario);
-                startActivity(intent);
-            }
-        });
-
-        buttomMeuJardim.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(TelaMenu.this, MeuJardim.class);
-                intent.putExtra("usuario",usuario);
-                startActivity(intent);
-
-            }
-        });
-        buttonEditarConta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(TelaMenu.this, EditarUsuario.class);
-                intent.putExtra("usuario",usuario);
-                startActivity(intent);
-            }
-        });
-
-        buttonHistorico.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(TelaMenu.this, HistoricoJardim.class);
-                intent.putExtra("usuario",usuario);
-                startActivity(intent);
-            }
-        });
+//        buttonPlanta.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent= new Intent(TelaMenu.this,Plantas.class);
+//                intent.putExtra("usuario",usuario);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        buttomMeuJardim.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent= new Intent(TelaMenu.this, MeuJardim.class);
+//                intent.putExtra("usuario",usuario);
+//                startActivity(intent);
+//
+//            }
+//        });
+//        buttonEditarConta.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent= new Intent(TelaMenu.this, EditarUsuario.class);
+//                intent.putExtra("usuario",usuario);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        buttonHistorico.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent= new Intent(TelaMenu.this, HistoricoJardim.class);
+//                intent.putExtra("usuario",usuario);
+//                startActivity(intent);
+//            }
+//        });
 
 
     }

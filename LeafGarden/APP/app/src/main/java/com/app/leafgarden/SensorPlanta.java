@@ -16,7 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.app.leafgarden.FirebaseServices.Firebase;
+import com.app.leafgarden.FirebaseServicesSensor.Firebase;
 import com.dm.emotionrating.library.EmotionView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,13 +32,11 @@ import Classe.Historico;
 import Classe.Jardim;
 import Classe.SensorNodeMCU;
 import Classe.Usuario;
-import DAO.HistoricoDAO;
 
 public class SensorPlanta extends AppCompatActivity {
     Usuario usuario;
     Jardim jardim;
     Historico historico;
-    HistoricoDAO historicoDAO;
     TextView buttonEmoticons;
 
     ListView listViewDica;

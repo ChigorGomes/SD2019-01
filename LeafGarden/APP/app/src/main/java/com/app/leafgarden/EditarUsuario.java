@@ -1,8 +1,6 @@
 package com.app.leafgarden;
 
-import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -10,8 +8,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import Classe.Usuario;
-import DAO.UsuarioDAO;
 
 
 public class EditarUsuario extends AppCompatActivity {
@@ -38,7 +37,7 @@ public class EditarUsuario extends AppCompatActivity {
         emailUsuario.setText(usuario.getEmail());
         idadeUsuario.setText(String.valueOf(usuario.getIdade()));
         idadeUsuario.setEnabled(false);
-        regiao.setSelection(usuario.getIdRegiao());
+//        regiao.setSelection(usuario.getIdRegiao());
         emailUsuario.setEnabled(false);
 
         regiao.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -66,22 +65,22 @@ public class EditarUsuario extends AppCompatActivity {
                     Toast.makeText(EditarUsuario.this,"Selecione a região!",Toast.LENGTH_LONG).show();
 
                 }else{
-                    String senhaMD5= usuario.convertPassMd5(senhaUsuario.getText().toString().trim());
-                    usuario.setNome(nomeUsuario.getText().toString());
-                    usuario.setSenha(senhaMD5);
-                    usuario.setIdRegiao(posicao);
-                    UsuarioDAO usuarioDAO= new UsuarioDAO(EditarUsuario.this);
-                    if(usuarioDAO.editarUsuario(usuario)){
-                        Toast.makeText(EditarUsuario.this,"Editar com sucesso!" +String.valueOf(usuario.getIdUsuario()) ,Toast.LENGTH_SHORT).show();
-                        Intent intent= new Intent(EditarUsuario.this,TelaMenu.class);
-                        intent.putExtra("usuario",usuario);
-                        finish();
-
-                        startActivity(intent);
-                    }else{
-                        Toast.makeText(EditarUsuario.this,"ocorreu um problema!",Toast.LENGTH_SHORT).show();
-
-                    }
+//                    String senhaMD5= usuario.convertPassMd5(senhaUsuario.getText().toString().trim());
+//                    usuario.setNome(nomeUsuario.getText().toString());
+//                    usuario.setSenha(senhaMD5);
+//                    usuario.setIdRegiao(posicao);
+//                    UsuarioDAO usuarioDAO= new UsuarioDAO(EditarUsuario.this);
+//                    if(usuarioDAO.editarUsuario(usuario)){
+//                        Toast.makeText(EditarUsuario.this,"Editar com sucesso!" +String.valueOf(usuario.getIdUsuario()) ,Toast.LENGTH_SHORT).show();
+//                        Intent intent= new Intent(EditarUsuario.this,TelaMenu.class);
+//                        intent.putExtra("usuario",usuario);
+//                        finish();
+//
+//                        startActivity(intent);
+//                    }else{
+//                        Toast.makeText(EditarUsuario.this,"ocorreu um problema!",Toast.LENGTH_SHORT).show();
+//
+//                    }
                 }
 
             }

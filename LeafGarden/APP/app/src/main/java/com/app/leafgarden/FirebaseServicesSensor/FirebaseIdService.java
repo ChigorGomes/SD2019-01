@@ -1,4 +1,4 @@
-package com.app.leafgarden.FirebaseServices;
+package com.app.leafgarden.FirebaseServicesSensor;
 
 import android.app.Notification;
 import android.app.NotificationChannel;

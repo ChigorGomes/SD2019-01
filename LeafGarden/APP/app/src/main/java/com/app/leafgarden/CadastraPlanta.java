@@ -9,17 +9,15 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import Classe.Planta;
-import DAO.PlantaDAO;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 public class CadastraPlanta extends AppCompatActivity {
 
@@ -110,25 +108,25 @@ public class CadastraPlanta extends AppCompatActivity {
                     float lumi=Float.parseFloat(luminosidade.getText().toString());
 
 
-                    Planta planta= new Planta(plantaAux,descAux,locAdequadoAux,tempAmbienteAux,umidadeAmb,tempSoloAux,umidadeSoloAux,lumi);
-                    PlantaDAO plantaDAO= new PlantaDAO(CadastraPlanta.this);
-
-                    if(plantaDAO.addPlanta(caminhoImagem,planta)){
-                        Toast.makeText(CadastraPlanta.this,"Cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
-                        nomePlanta.setText("");
-                        descricaoPlanta.setText("");
-                        localAdequado.setText("");
-                        tempAmbiente.setText("");
-                        umidadeAmbiente.setText(""); ;
-                        tempSolo.setText("");
-                        umidadeSolo.setText("");
-                        luminosidade.setText("");
-                        imagemPlanta.setImageBitmap(null);
-
-                    }else{
-                        Toast.makeText(CadastraPlanta.this,"erro ao cadastrar!",Toast.LENGTH_SHORT).show();
-
-                    }
+//                    Planta planta= new Planta(plantaAux,descAux,locAdequadoAux,tempAmbienteAux,umidadeAmb,tempSoloAux,umidadeSoloAux,lumi);
+//                    PlantaDAO plantaDAO= new PlantaDAO(CadastraPlanta.this);
+//
+//                    if(plantaDAO.addPlanta(caminhoImagem,planta)){
+//                        Toast.makeText(CadastraPlanta.this,"Cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
+//                        nomePlanta.setText("");
+//                        descricaoPlanta.setText("");
+//                        localAdequado.setText("");
+//                        tempAmbiente.setText("");
+//                        umidadeAmbiente.setText(""); ;
+//                        tempSolo.setText("");
+//                        umidadeSolo.setText("");
+//                        luminosidade.setText("");
+//                        imagemPlanta.setImageBitmap(null);
+//
+//                    }else{
+//                        Toast.makeText(CadastraPlanta.this,"erro ao cadastrar!",Toast.LENGTH_SHORT).show();
+//
+//                    }
                 }
             }
         });

@@ -1,48 +1,22 @@
 package Classe;
 
-import java.io.Serializable;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-public class Usuario  implements Serializable {
-    private int idUsuario;
+public class Usuario  {
     private String nome;
     private String email;
     private String senha;
-    private int idade;
-    private int idRegiao;
+    private String idade;
+    private String regiao;
 
-    public Usuario(int idUsuario, String nome, String senha, int idRegiao) {
-        this.idUsuario = idUsuario;
-        this.nome = nome;
-        this.senha = senha;
-        this.idRegiao = idRegiao;
-    }
 
-    public Usuario(int idUsuario, String nome, String email, String senha, int idade, int idRegiao) {
-        this.idUsuario = idUsuario;
+    public  Usuario(){}
+    public Usuario(String nome, String email, String idade, String regiao) {
         this.nome = nome;
         this.email = email;
-        this.senha = senha;
         this.idade = idade;
-        this.idRegiao = idRegiao;
-    }
-    public Usuario(String nome, String email, String senha, int idade, int idRegiao) {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.idade = idade;
-        this.idRegiao = idRegiao;
+        this.regiao = regiao;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
-    }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
 
     public String getNome() {
         return nome;
@@ -68,37 +42,19 @@ public class Usuario  implements Serializable {
         this.senha = senha;
     }
 
-    public int getIdade() {
+    public String getIdade() {
         return idade;
     }
 
-    public void setIdade(int idade) {
+    public void setIdade(String idade) {
         this.idade = idade;
     }
 
-    public int getIdRegiao() {
-        return idRegiao;
+    public String getRegiao() {
+        return regiao;
     }
 
-    public void setIdRegiao(int idRegiao) {
-        this.idRegiao = idRegiao;
+    public void setRegiao(String regiao) {
+        this.regiao = regiao;
     }
-
-    public static String convertPassMd5(String pass) {
-        String password = null;
-        MessageDigest mdEnc;
-        try {
-            mdEnc = MessageDigest.getInstance("MD5");
-            mdEnc.update(pass.getBytes(), 0, pass.length());
-            pass = new BigInteger(1, mdEnc.digest()).toString(16);
-            while (pass.length() < 32) {
-                pass = "0" + pass;
-            }
-            password = pass;
-        } catch (NoSuchAlgorithmException e1) {
-            e1.printStackTrace();
-        }
-        return password;
-    }
-
 }
