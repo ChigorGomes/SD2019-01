@@ -14,6 +14,7 @@ public class Planta implements Serializable {
     private float luminosidade;
     private byte[] foto;
 
+    public Planta(){}
     public Planta(int idPlanta, String nomePlanta, String descricao, String localAdequado, float tempAmbiente, float umidadeAmbiente, float tempSolo, float umidadeSolo, float luminosidade, byte[] foto) {
         this.idPlanta = idPlanta;
         this.nomePlanta = nomePlanta;
