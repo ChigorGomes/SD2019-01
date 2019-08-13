@@ -36,14 +36,13 @@ public class TelaMenu extends AppCompatActivity {
 
 
 
-//        buttonPlanta.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent= new Intent(TelaMenu.this,Plantas.class);
-//                intent.putExtra("usuario",usuario);
-//                startActivity(intent);
-//            }
-//        });
+        buttonPlanta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(TelaMenu.this,Plantas.class);
+                startActivity(intent);
+            }
+        });
 //
 //        buttomMeuJardim.setOnClickListener(new View.OnClickListener() {
 //            @Override
