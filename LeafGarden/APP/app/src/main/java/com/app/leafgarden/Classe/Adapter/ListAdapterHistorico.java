@@ -1,4 +1,4 @@
-package Classe;
+package com.app.leafgarden.Classe.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.app.leafgarden.R;
 
 import java.util.ArrayList;
+
+import com.app.leafgarden.Classe.Model.Historico;
 
 public class ListAdapterHistorico extends ArrayAdapter<Historico> {
     private Context mcontext;

@@ -1,4 +1,4 @@
-package com.app.leafgarden;
+package com.app.leafgarden.Activity;
 
 import android.Manifest;
 import android.content.Intent;
@@ -21,6 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.app.leafgarden.Classe.Model.Planta;
+import com.app.leafgarden.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,8 +36,6 @@ import com.google.firebase.storage.UploadTask;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
-
-import Classe.Planta;
 
 public class CadastraPlanta extends AppCompatActivity {
 
@@ -172,26 +172,26 @@ public class CadastraPlanta extends AppCompatActivity {
         if(nomePlanta.isEmpty()){
             editTextnomePlanta.setError("Preencha o campo nome!");
             editTextnomePlanta.requestFocus();
-        }if(descricao.isEmpty()){
+        }else if(descricao.isEmpty()){
             editTextdescricaoPlanta.setError("Preencha o campo descrição!");
             editTextdescricaoPlanta.requestFocus();
 
-        }if(localAdequado.isEmpty()){
+        }else if(localAdequado.isEmpty()){
             editTextlocalAdequado.setError("Preencha o campo local adequado!");
             editTextlocalAdequado.requestFocus();
-        }if(tempAmbiente.isEmpty()){
+        }else if(tempAmbiente.isEmpty()){
             editTexttempAmbiente.setError("Preencha o campo temperatura!");
             editTexttempAmbiente.requestFocus();
-        }if(umidadeAmbiente.isEmpty()){
+        }else if(umidadeAmbiente.isEmpty()){
             editTextumidadeAmbiente.setError("Preencha o campo umidade!");
             editTextumidadeAmbiente.requestFocus();
-        }if(tempSolo.isEmpty()){
+        }else if(tempSolo.isEmpty()){
             editTexttempSolo.setError("Preencha o campo temperatura!");
             editTexttempSolo.requestFocus();
-        }if(umidadeSolo.isEmpty()){
+        }else if(umidadeSolo.isEmpty()){
             editTextumidadeSolo.setError("Preencha o campo umidade!");
             editTextumidadeSolo.requestFocus();
-        }if(luminosidade.isEmpty()){
+        }else if(luminosidade.isEmpty()){
             editTextluminosidade.setError("Preencha o campo luminosidade!");
             editTextluminosidade.requestFocus();
         }else {
@@ -217,6 +217,8 @@ public class CadastraPlanta extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Toast.makeText(CadastraPlanta.this, "Cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+                            Intent intent= new Intent(CadastraPlanta.this,TelaCadastroLogin.class);
+                            startActivity(intent);
 
                         }
                     })
@@ -268,11 +270,11 @@ public class CadastraPlanta extends AppCompatActivity {
         String descricao= editTextdescricaoPlanta.getText().toString();
         String localAdequado= editTextlocalAdequado.getText().toString();
 
-        String tempAmbiente= editTexttempAmbiente.getText().toString().trim();
-        String umidadeAmbiente=editTextumidadeAmbiente.getText().toString().trim();
-        String tempSolo=editTexttempSolo.getText().toString().trim();
-        String umidadeSolo=editTextumidadeSolo.getText().toString().trim();
-        String luminosidade=editTextluminosidade.getText().toString().trim();
+        String tempAmbiente= editTexttempAmbiente.getText().toString();
+        String umidadeAmbiente=editTextumidadeAmbiente.getText().toString();
+        String tempSolo=editTexttempSolo.getText().toString();
+        String umidadeSolo=editTextumidadeSolo.getText().toString();
+        String luminosidade=editTextluminosidade.getText().toString();
         String chave=  String.valueOf(numRandomico.nextInt(1000000));
 
 
@@ -281,12 +283,20 @@ public class CadastraPlanta extends AppCompatActivity {
         planta.setIdPlanta(chave);
         planta.setDescricao(descricao);
         planta.setLocalAdequado(localAdequado);
-        planta.setTempAmbiente(Float.parseFloat(tempAmbiente));
-        planta.setUmidadeAmbiente(Float.parseFloat(umidadeAmbiente));
-        planta.setTempSolo(Float.parseFloat(tempSolo));
-        planta.setUmidadeSolo(Float.parseFloat(umidadeSolo));
-        planta.setLuminosidade(Float.parseFloat(luminosidade));
         planta.setImagemUrl(urlImagem);
+        float temperaturaAmbiente = Float.parseFloat(tempAmbiente);
+        float umidAmbiente = Float.parseFloat(umidadeAmbiente);
+        float temperaturaSolo=Float.parseFloat(tempSolo);
+        float umidSolo=Float.parseFloat(umidadeSolo);
+        float lumi=Float.parseFloat(luminosidade);
+        planta.setTempAmbiente(temperaturaAmbiente);
+        planta.setUmidadeAmbiente(umidAmbiente);
+        planta.setTempSolo(temperaturaSolo);
+        planta.setUmidadeSolo(umidSolo);
+        planta.setLuminosidade(lumi);
+
+
+
 
 
         FirebaseDatabase.getInstance().getReference().child("Plantas").
@@ -299,6 +309,8 @@ public class CadastraPlanta extends AppCompatActivity {
             }
         });
     }
+
+
 
 
 }

@@ -1,4 +1,4 @@
-package com.app.leafgarden;
+package com.app.leafgarden.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.app.leafgarden.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,7 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import Classe.Usuario;
+import com.app.leafgarden.Classe.Model.Usuario;
 
 public class TelaCadastroLogin extends AppCompatActivity  {
 

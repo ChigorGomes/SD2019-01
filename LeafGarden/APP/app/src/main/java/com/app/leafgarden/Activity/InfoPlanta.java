@@ -1,4 +1,4 @@
-package com.app.leafgarden;
+package com.app.leafgarden.Activity;
 
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.app.leafgarden.R;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,8 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Random;
 
-import Classe.Jardim;
-import Classe.Planta;
+import com.app.leafgarden.Classe.Model.Jardim;
+import com.app.leafgarden.Classe.Model.Planta;
 
 public class InfoPlanta extends AppCompatActivity {
     TextView textViewnomePlanta;

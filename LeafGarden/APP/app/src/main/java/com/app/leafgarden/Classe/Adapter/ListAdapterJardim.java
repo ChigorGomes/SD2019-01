@@ -1,4 +1,4 @@
-package Classe;
+package com.app.leafgarden.Classe.Adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -12,6 +12,8 @@ import com.app.leafgarden.R;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
+
+import com.app.leafgarden.Classe.Model.Jardim;
 
 public class ListAdapterJardim extends ArrayAdapter<Jardim> {
     private Activity context;

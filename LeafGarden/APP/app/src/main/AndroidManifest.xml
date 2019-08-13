@@ -15,18 +15,18 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CadastraPlanta"></activity>
-        <activity android:name=".SensorPlanta" />
-        <activity android:name=".HistoricoJardim"/>
-        <activity android:name=".MeuJardim" />
-        <activity android:name=".AdcPlanta" />
-        <activity android:name=".InfoPlanta" />
-        <activity android:name=".Plantas" />
-        <activity android:name=".TelaMenu" />
-        <activity android:name=".EditarUsuario" />
+        <activity android:name=".Activity.CadastraPlanta"></activity>
+        <activity android:name=".Activity.SensorPlanta" />
+        <activity android:name=".Activity.HistoricoJardim"/>
+        <activity android:name=".Activity.MeuJardim" />
+        <activity android:name=".Activity.AdcPlanta" />
+        <activity android:name=".Activity.InfoPlanta" />
+        <activity android:name=".Activity.Plantas" />
+        <activity android:name=".Activity.TelaMenu" />
+        <activity android:name=".Activity.EditarUsuario" />
 
-        <activity android:name=".TelaCadastroLogin" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activity.TelaCadastroLogin" />
+        <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

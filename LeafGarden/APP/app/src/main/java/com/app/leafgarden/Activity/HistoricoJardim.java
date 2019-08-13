@@ -1,14 +1,15 @@
-package com.app.leafgarden;
+package com.app.leafgarden.Activity;
 
 import android.os.Bundle;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
+import com.app.leafgarden.Classe.Model.Historico;
+import com.app.leafgarden.Classe.Model.Usuario;
+import com.app.leafgarden.R;
 
-import Classe.Historico;
-import Classe.Usuario;
+import java.util.ArrayList;
 
 public class HistoricoJardim extends AppCompatActivity {
     ListView listView;

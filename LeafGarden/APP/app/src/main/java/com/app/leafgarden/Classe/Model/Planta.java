@@ -1,10 +1,8 @@
-package Classe;
+package com.app.leafgarden.Classe.Model;
 
 import java.io.Serializable;
 
-public class Jardim implements Serializable {
-    private String idJardim;
-    private String idUsuario;
+public class Planta implements Serializable {
     private String idPlanta;
     private String nomePlanta;
     private String descricao;
@@ -14,15 +12,16 @@ public class Jardim implements Serializable {
     private float tempSolo;
     private float umidadeSolo;
     private float luminosidade;
-    private String imagemCaminho;
     private String imagemUrl;
 
-    public String getImagemUrl() {
-        return imagemUrl;
+    public Planta(){}
+
+    public String getIdPlanta() {
+        return idPlanta;
     }
 
-    public void setImagemUrl(String imagemUrl) {
-        this.imagemUrl = imagemUrl;
+    public void setIdPlanta(String idPlanta) {
+        this.idPlanta = idPlanta;
     }
 
     public String getNomePlanta() {
@@ -89,37 +88,12 @@ public class Jardim implements Serializable {
         this.luminosidade = luminosidade;
     }
 
-    public String getImagemCaminho() {
-        return imagemCaminho;
+
+    public String getImagemUrl() {
+        return imagemUrl;
     }
 
-    public void setImagemCaminho(String imagemCaminho) {
-        this.imagemCaminho = imagemCaminho;
-    }
-
-    public  Jardim(){}
-
-    public String getIdJardim() {
-        return idJardim;
-    }
-
-    public void setIdJardim(String idJardim) {
-        this.idJardim = idJardim;
-    }
-
-    public String getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(String idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getIdPlanta() {
-        return idPlanta;
-    }
-
-    public void setIdPlanta(String idPlanta) {
-        this.idPlanta = idPlanta;
+    public void setImagemUrl(String imagemUrl) {
+        this.imagemUrl = imagemUrl;
     }
 }

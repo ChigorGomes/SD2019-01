@@ -1,7 +1,10 @@
-package com.app.leafgarden;
+package com.app.leafgarden.Activity;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
+
+import com.app.leafgarden.R;
 
 public class AdcPlanta extends AppCompatActivity {
 

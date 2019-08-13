@@ -1,4 +1,4 @@
-package Classe;
+package com.app.leafgarden.Classe.Model;
 
 public class Usuario  {
     private String nome;

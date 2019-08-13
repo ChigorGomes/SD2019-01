@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/ic_background2"
-    tools:context=".TelaCadastroLogin">
+    tools:context=".Activity.TelaCadastroLogin">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -125,7 +125,7 @@
                     android:ems="10"
                     android:gravity="center"
                     android:hint="@string/umidadeAmbiente"
-                    android:inputType="numberDecimal"
+                    android:inputType="number"
                     android:padding="5dp"
                     android:textColorHint="@color/colorPrimaryDark"
                     android:textSize="10sp"
@@ -181,7 +181,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:hint="@string/lumi"
-                android:inputType="numberDecimal"
+                android:inputType="number"
                 android:padding="5dp"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:textSize="10sp"
@@ -202,7 +202,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:hint="@string/umidadeSolo"
-                android:inputType="numberDecimal"
+                android:inputType="number"
                 android:padding="5dp"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:textSize="10sp"
@@ -228,7 +228,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:hint="@string/tempSolo"
-                android:inputType="numberDecimal"
+                android:inputType="number"
                 android:padding="5dp"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:textSize="10sp"
@@ -252,7 +252,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:hint="@string/tempAmbiente"
-                android:inputType="numberDecimal"
+                android:inputType="number"
                 android:padding="5dp"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:textSize="10sp"

@@ -1,4 +1,4 @@
-package com.app.leafgarden;
+package com.app.leafgarden.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +9,11 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.app.leafgarden.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import Classe.Usuario;
+import com.app.leafgarden.Classe.Model.Usuario;
 
 public class TelaMenu extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.app.leafgarden;
+package com.app.leafgarden.Activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -13,7 +13,8 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import Classe.SensorNodeMCU;
+import com.app.leafgarden.Classe.Model.SensorNodeMCU;
+import com.app.leafgarden.R;
 
 public class DialogSensor extends AppCompatDialogFragment {
     TextView textViewLuminosidade, textViewTemperaturaAmbiente,textViewTemperaturaSolo,textViewUmidadeAmbiente,textViewUmidadeSolo;

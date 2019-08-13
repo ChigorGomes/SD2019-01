@@ -1,4 +1,4 @@
-package com.app.leafgarden;
+package com.app.leafgarden.Activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.leafgarden.FirebaseServicesSensor.Firebase;
+import com.app.leafgarden.R;
 import com.dm.emotionrating.library.EmotionView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,8 +30,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import Classe.Jardim;
-import Classe.SensorNodeMCU;
+import com.app.leafgarden.Classe.Model.Jardim;
+import com.app.leafgarden.Classe.Model.SensorNodeMCU;
 
 public class SensorPlanta extends AppCompatActivity {
     Jardim jardim;

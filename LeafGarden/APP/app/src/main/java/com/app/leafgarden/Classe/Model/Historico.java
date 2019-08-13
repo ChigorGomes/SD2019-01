@@ -1,4 +1,4 @@
-package Classe;
+package com.app.leafgarden.Classe.Model;
 
 import java.io.Serializable;
 
