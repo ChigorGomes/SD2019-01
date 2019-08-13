@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Random;
@@ -33,6 +34,7 @@ public class InfoPlanta extends AppCompatActivity {
     Button buttonCadastroJardim;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    DatabaseReference databaseReference;
     final Random numRandomico = new Random();
 
 
@@ -81,13 +83,26 @@ public class InfoPlanta extends AppCompatActivity {
 
     public void cadastroJardim(){
         Jardim jardim= new Jardim();
-        String chave=  String.valueOf(numRandomico.nextInt(1000000));
 
+        String chave=  String.valueOf(numRandomico.nextInt(1000000));
         jardim.setIdJardim(chave);
         jardim.setIdPlanta(planta.getIdPlanta());
         jardim.setIdUsuario(firebaseAuth.getUid());
+        jardim.setNomePlanta(planta.getNomePlanta());
+        jardim.setDescricao(planta.getDescricao());
+        jardim.setLocalAdequado(planta.getLocalAdequado());
+        jardim.setTempAmbiente(planta.getTempAmbiente());
+        jardim.setUmidadeAmbiente(planta.getUmidadeAmbiente());
+        jardim.setTempSolo(planta.getUmidadeSolo());
+        jardim.setLuminosidade(planta.getLuminosidade());
+        jardim.setImagemUrl(planta.getImagemUrl());
+
+
+
+
+
         FirebaseDatabase.getInstance().getReference().child("Jardim").
-                child(chave).setValue(jardim).addOnCompleteListener(new OnCompleteListener<Void>() {
+                child(firebaseUser.getUid()).child(chave).setValue(jardim).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){

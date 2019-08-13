@@ -1,51 +1,46 @@
 package Classe;
 
-import android.content.Context;
+import android.app.Activity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.app.leafgarden.R;
+import com.bumptech.glide.Glide;
+
+import java.util.List;
 
 public class ListAdapterJardim extends ArrayAdapter<Jardim> {
-    private Context mcontext;
-    int mresource;
+    private Activity context;
+    List<Jardim> jardimList;
 
-    private static class ViewHolder {
-        ImageView imageView;
-        TextView textView;
+    public ListAdapterJardim(Activity context, List<Jardim> jardimList) {
+        super(context,  R.layout.activity_plantas, jardimList);
+        this.context= context;
+        this.jardimList= jardimList;
     }
 
-    public ListAdapterJardim(Context context, int resource, ArrayList<Jardim> obJardim) {
-        super(context, resource, obJardim);
-        mcontext = context;
-        mresource = resource;
-    }
 
-//    @Override
-//    public View getView(int position, View convertView, ViewGroup parent) {
-//        byte[] img = getItem(position).getFoto();
-//        String nome = getItem(position).getNomePlanta();
-//        Planta planta = new Planta(nome, img);
-//        View result;
-//        ViewHolder holder;
-//        if (convertView == null) {
-//            LayoutInflater layoutInflater = LayoutInflater.from(mcontext);
-//            convertView = layoutInflater.inflate(mresource, parent, false);
-//            holder = new ViewHolder();
-//            holder.imageView = (ImageView) convertView.findViewById(R.id.imageViewPlantas);
-//            holder.textView = (TextView) convertView.findViewById(R.id.textViewNPlants);
-//            result = convertView;
-//            convertView.setTag(holder);
-//
-//        } else {
-//            holder = (ViewHolder) convertView.getTag();
-//            result = convertView;
-//        }
-//        holder.imageView.setImageBitmap(BitmapFactory.decodeByteArray(planta.getFoto(), 0, planta.getFoto().length));
-//        holder.textView.setText(planta.getNomePlanta());
-//        return convertView;
-//
-//
-//    }
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        LayoutInflater inflater=  context.getLayoutInflater();
+        View view= inflater.inflate(R.layout.activity_plantas,null,true);
+
+
+        ImageView imageView= view.findViewById(R.id.imageViewPlantas);
+        TextView textViewNome = view.findViewById(R.id.textViewNPlants);
+
+        Jardim jardim= jardimList.get(position);
+        Glide.with(context).load(jardim.getImagemUrl()).into(imageView);
+        textViewNome.setText(jardim.getNomePlanta());
+
+
+        return view;
+
+
+
+    }
 }

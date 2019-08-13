@@ -286,7 +286,6 @@ public class CadastraPlanta extends AppCompatActivity {
         planta.setTempSolo(Float.parseFloat(tempSolo));
         planta.setUmidadeSolo(Float.parseFloat(umidadeSolo));
         planta.setLuminosidade(Float.parseFloat(luminosidade));
-        planta.setImagemCaminho(lclImagem);
         planta.setImagemUrl(urlImagem);
 
 

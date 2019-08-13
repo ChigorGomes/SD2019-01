@@ -12,7 +12,6 @@ public class Planta implements Serializable {
     private float tempSolo;
     private float umidadeSolo;
     private float luminosidade;
-    private String imagemCaminho;
     private String imagemUrl;
 
     public Planta(){}
@@ -89,13 +88,6 @@ public class Planta implements Serializable {
         this.luminosidade = luminosidade;
     }
 
-    public String getImagemCaminho() {
-        return imagemCaminho;
-    }
-
-    public void setImagemCaminho(String imagemCaminho) {
-        this.imagemCaminho = imagemCaminho;
-    }
 
     public String getImagemUrl() {
         return imagemUrl;
