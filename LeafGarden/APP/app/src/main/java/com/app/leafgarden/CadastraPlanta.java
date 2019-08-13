@@ -21,10 +21,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 import Classe.Planta;
@@ -44,6 +52,14 @@ public class CadastraPlanta extends AppCompatActivity {
     Button adcImagemPlanta;
     private final int GALERIA_IMAGENS=1;
     private final int PERMISSAO_REQUEST=2;
+    private Uri fiUri;
+    private FirebaseStorage storage;
+    private StorageReference reference;
+    private String lclImagem;
+    private String urlImagem;
+
+
+
     String caminhoImagem="";
     final Random numRandomico = new Random();
 
@@ -66,6 +82,11 @@ public class CadastraPlanta extends AppCompatActivity {
         cadastrarPlanta = (Button) findViewById(R.id.buttonCadastrarPlanta);
         imagemPlanta = (ImageView) findViewById(R.id.imageViewPlanta);
         adcImagemPlanta = (Button) findViewById(R.id.buttonImagemPlanta);
+
+        storage = FirebaseStorage.getInstance();
+        reference = storage.getReference();
+
+
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.READ_EXTERNAL_STORAGE)){
@@ -100,9 +121,9 @@ public class CadastraPlanta extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK && requestCode== GALERIA_IMAGENS){
-            Uri uri= data.getData();
+            fiUri= data.getData();
             String[] filePath={MediaStore.Images.Media.DATA};
-            Cursor cursor= getContentResolver().query(uri,filePath,null,null,null);
+            Cursor cursor= getContentResolver().query(fiUri,filePath,null,null,null);
             cursor.moveToFirst();
             int columnIndex= cursor.getColumnIndex(filePath[0]);
             String picturePath= cursor.getString(columnIndex);
@@ -146,11 +167,7 @@ public class CadastraPlanta extends AppCompatActivity {
 
 
 
-//        float tempAmbiente= Float.parseFloat(editTexttempAmbiente.getText().toString()) ;
-//        float umidadeAmbiente=Float.parseFloat(editTextumidadeAmbiente.getText().toString());
-//        float tempSolo=Float.parseFloat(editTexttempSolo.getText().toString());
-//        float umidadeSolo=Float.parseFloat(editTextumidadeSolo.getText().toString());
-//        float luminosidade=Float.parseFloat(editTextluminosidade.getText().toString());
+
 
         if(nomePlanta.isEmpty()){
             editTextnomePlanta.setError("Preencha o campo nome!");
@@ -177,8 +194,85 @@ public class CadastraPlanta extends AppCompatActivity {
         }if(luminosidade.isEmpty()){
             editTextluminosidade.setError("Preencha o campo luminosidade!");
             editTextluminosidade.requestFocus();
+        }else {
+            uploadImage();
         }
 
+
+
+    }
+
+    private void uploadImage() {
+        UploadTask uploadTask = null;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+        String nomeImagem = dateFormat.format(new Date()).trim();
+        lclImagem = "images/plantas/" + nomeImagem + ".jpg";
+        final StorageReference ref = reference.child(lclImagem);
+
+        if(fiUri != null){
+
+
+            uploadTask = (UploadTask) ref.putFile(fiUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Toast.makeText(CadastraPlanta.this, "Cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(CadastraPlanta.this, "Falha ao enviar!" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+//                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+//                            double progress = (100.0 * taskSnapshot.getBytesTransferred()/taskSnapshot.getTotalByteCount());
+//                        }
+//                    });
+
+
+        }
+
+        Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            @Override
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if(!task.isSuccessful()) throw task.getException();
+                return ref.getDownloadUrl();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if(task.isSuccessful()){
+                    Uri downloadUri = task.getResult();
+                    urlImagem = downloadUri.toString();
+                    Log.d("msg", "URL 2: "+ lclImagem);
+                    addPlanta();
+
+                }
+                else{
+                    try {
+                        throw task.getException();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
+    public void addPlanta(){
+        String nomePlanta= editTextnomePlanta.getText().toString();
+        String descricao= editTextdescricaoPlanta.getText().toString();
+        String localAdequado= editTextlocalAdequado.getText().toString();
+
+        String tempAmbiente= editTexttempAmbiente.getText().toString().trim();
+        String umidadeAmbiente=editTextumidadeAmbiente.getText().toString().trim();
+        String tempSolo=editTexttempSolo.getText().toString().trim();
+        String umidadeSolo=editTextumidadeSolo.getText().toString().trim();
+        String luminosidade=editTextluminosidade.getText().toString().trim();
         String chave=  String.valueOf(numRandomico.nextInt(1000000));
 
 
@@ -192,8 +286,8 @@ public class CadastraPlanta extends AppCompatActivity {
         planta.setTempSolo(Float.parseFloat(tempSolo));
         planta.setUmidadeSolo(Float.parseFloat(umidadeSolo));
         planta.setLuminosidade(Float.parseFloat(luminosidade));
-
-
+        planta.setImagemCaminho(lclImagem);
+        planta.setImagemUrl(urlImagem);
 
 
         FirebaseDatabase.getInstance().getReference().child("Plantas").
@@ -205,9 +299,7 @@ public class CadastraPlanta extends AppCompatActivity {
                 }
             }
         });
-
     }
-
 
 
 }

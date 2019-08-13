@@ -12,47 +12,10 @@ public class Planta implements Serializable {
     private float tempSolo;
     private float umidadeSolo;
     private float luminosidade;
-    private byte[] foto;
+    private String imagemCaminho;
+    private String imagemUrl;
 
     public Planta(){}
-    public Planta(int idPlanta, String nomePlanta, String descricao, String localAdequado, float tempAmbiente, float umidadeAmbiente, float tempSolo, float umidadeSolo, float luminosidade, byte[] foto) {
-        this.idPlanta = idPlanta;
-        this.nomePlanta = nomePlanta;
-        this.descricao = descricao;
-        this.localAdequado = localAdequado;
-        this.tempAmbiente = tempAmbiente;
-        this.umidadeAmbiente = umidadeAmbiente;
-        this.tempSolo = tempSolo;
-        this.umidadeSolo = umidadeSolo;
-        this.luminosidade = luminosidade;
-        this.foto = foto;
-    }
-
-
-
-    public Planta(String nomePlanta, String descricao, String localAdequado, float tempAmbiente, float umidadeAmbiente, float tempSolo, float umidadeSolo, float luminosidade) {
-        this.nomePlanta = nomePlanta;
-        this.descricao = descricao;
-        this.localAdequado = localAdequado;
-        this.tempAmbiente = tempAmbiente;
-        this.umidadeAmbiente = umidadeAmbiente;
-        this.tempSolo = tempSolo;
-        this.umidadeSolo = umidadeSolo;
-        this.luminosidade = luminosidade;
-    }
-
-    public Planta(String nomePlanta, byte[] foto) {
-        this.nomePlanta = nomePlanta;
-        this.foto = foto;
-    }
-
-    public byte[] getFoto() {
-        return foto;
-    }
-
-    public void setFoto(byte[] foto) {
-        this.foto = foto;
-    }
 
     public int getIdPlanta() {
         return idPlanta;
@@ -124,5 +87,21 @@ public class Planta implements Serializable {
 
     public void setLuminosidade(float luminosidade) {
         this.luminosidade = luminosidade;
+    }
+
+    public String getImagemCaminho() {
+        return imagemCaminho;
+    }
+
+    public void setImagemCaminho(String imagemCaminho) {
+        this.imagemCaminho = imagemCaminho;
+    }
+
+    public String getImagemUrl() {
+        return imagemUrl;
+    }
+
+    public void setImagemUrl(String imagemUrl) {
+        this.imagemUrl = imagemUrl;
     }
 }

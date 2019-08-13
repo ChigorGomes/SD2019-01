@@ -1,7 +1,5 @@
 package com.app.leafgarden;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.widget.Button;
@@ -42,11 +40,11 @@ public class InfoPlanta extends AppCompatActivity {
         nomePlanta.setText(planta.getNomePlanta());
         descricaoPlanta.setText(planta.getDescricao());
         localAdequado.setText(planta.getLocalAdequado());
-        Bitmap bitmap= (Bitmap) BitmapFactory.decodeByteArray(planta.getFoto(),0,planta.getFoto().length);
+//        Bitmap bitmap= (Bitmap) BitmapFactory.decodeByteArray(planta.getFoto(),0,planta.getFoto().length);
         String temp="Umidade: "+"Solo: "+planta.getUmidadeSolo()+" | Ambiente: "+planta.getUmidadeAmbiente()+"\n"+
                 "Temperatura: "+"Solo: " +planta.getTempSolo()+" |Ambiente: "+planta.getTempAmbiente();
         temperaturasIdeais.setText(temp);
-        imageView.setImageBitmap(bitmap);
+//        imageView.setImageBitmap(bitmap);
 //        buttonCadastroJardim.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
