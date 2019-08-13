@@ -278,7 +278,7 @@ public class CadastraPlanta extends AppCompatActivity {
 
         Planta planta= new Planta();
         planta.setNomePlanta(nomePlanta);
-        planta.setIdPlanta(Integer.parseInt(chave));
+        planta.setIdPlanta(chave);
         planta.setDescricao(descricao);
         planta.setLocalAdequado(localAdequado);
         planta.setTempAmbiente(Float.parseFloat(tempAmbiente));

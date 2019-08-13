@@ -2,21 +2,39 @@ package com.app.leafgarden;
 
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Random;
+
+import Classe.Jardim;
 import Classe.Planta;
-import Classe.Usuario;
 
 public class InfoPlanta extends AppCompatActivity {
-    TextView nomePlanta,descricaoPlanta,localAdequado,temperaturasIdeais;
+    TextView textViewnomePlanta;
+    TextView textViewdescricaoPlanta;
+    TextView textViewlocalAdequado;
+    TextView textViewtemperaturasIdeais;
     ImageView imageView;
     Planta planta;
     Button buttonCadastroJardim;
-    Usuario usuario;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+    final Random numRandomico = new Random();
+
 
 
     @Override
@@ -24,45 +42,58 @@ public class InfoPlanta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_planta);
 
-        planta= (Planta) getIntent().getSerializableExtra("planta");
-        usuario= (Usuario) getIntent().getSerializableExtra("usuario");
-        nomePlanta =  findViewById(R.id.textViewNomeInfoPlanta);
-        descricaoPlanta = findViewById(R.id.textViewDescricaoPlanta);
-        localAdequado = findViewById(R.id.textViewLocalAdequadoInfoPlant);
-        temperaturasIdeais = findViewById(R.id.textViewTemperaturaInfoPlanta);
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        textViewnomePlanta =  findViewById(R.id.textViewNomeInfoPlanta);
+        textViewdescricaoPlanta = findViewById(R.id.textViewDescricaoPlanta);
+        textViewlocalAdequado = findViewById(R.id.textViewLocalAdequadoInfoPlant);
+        textViewtemperaturasIdeais = findViewById(R.id.textViewTemperaturaInfoPlanta);
         imageView = findViewById(R.id.imageViewInfoPlanta);
         buttonCadastroJardim = findViewById(R.id.buttonAdcPlantaNoJardim);
 
         //Adicionando scroll nos textViews
-        descricaoPlanta.setMovementMethod(new ScrollingMovementMethod());
-        localAdequado.setMovementMethod(new ScrollingMovementMethod());
+        textViewdescricaoPlanta.setMovementMethod(new ScrollingMovementMethod());
+        textViewlocalAdequado.setMovementMethod(new ScrollingMovementMethod());
+        planta = (Planta) getIntent().getSerializableExtra("planta");
 
-        nomePlanta.setText(planta.getNomePlanta());
-        descricaoPlanta.setText(planta.getDescricao());
-        localAdequado.setText(planta.getLocalAdequado());
-//        Bitmap bitmap= (Bitmap) BitmapFactory.decodeByteArray(planta.getFoto(),0,planta.getFoto().length);
-        String temp="Umidade: "+"Solo: "+planta.getUmidadeSolo()+" | Ambiente: "+planta.getUmidadeAmbiente()+"\n"+
-                "Temperatura: "+"Solo: " +planta.getTempSolo()+" |Ambiente: "+planta.getTempAmbiente();
-        temperaturasIdeais.setText(temp);
-//        imageView.setImageBitmap(bitmap);
-//        buttonCadastroJardim.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Jardim jardim= new Jardim(usuario.getIdUsuario(),planta.getIdPlanta());
-//                JardimDAO jardimDAO =  new JardimDAO(InfoPlanta.this);
-//                if(jardimDAO.addJardim(jardim,usuario)){
-//                    Toast.makeText(InfoPlanta.this,"Cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
-//                    Intent intent= new Intent(InfoPlanta.this,TelaMenu.class);
-//                    intent.putExtra("usuario",usuario);
-//                    startActivity(intent);
-//                    finish();
-//
-//
-//                }else{
-//                    Toast.makeText(InfoPlanta.this,"Erro",Toast.LENGTH_SHORT).show();
-//                }
-//
-//            }
-//        });
+        textViewnomePlanta.setText(planta.getNomePlanta());
+        textViewdescricaoPlanta.setText(planta.getDescricao());
+        textViewlocalAdequado.setText(planta.getLocalAdequado());
+        Glide.with(getApplicationContext()).load(planta.getImagemUrl()).into(imageView);
+
+
+        buttonCadastroJardim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cadastroJardim();
+
+            }
+        });
+
+
+
+
+
+
+
+    }
+
+
+    public void cadastroJardim(){
+        Jardim jardim= new Jardim();
+        String chave=  String.valueOf(numRandomico.nextInt(1000000));
+
+        jardim.setIdJardim(chave);
+        jardim.setIdPlanta(planta.getIdPlanta());
+        jardim.setIdUsuario(firebaseAuth.getUid());
+        FirebaseDatabase.getInstance().getReference().child("Jardim").
+                child(chave).setValue(jardim).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Log.e("msg","deu certo");
+                }
+            }
+        });
     }
 }

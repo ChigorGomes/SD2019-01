@@ -1,6 +1,9 @@
 package com.app.leafgarden;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -27,6 +30,7 @@ public class Plantas extends AppCompatActivity{
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    Planta plantaAux;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,15 @@ public class Plantas extends AppCompatActivity{
         firebaseUser = firebaseAuth.getCurrentUser();
 
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent= new Intent(Plantas.this,InfoPlanta.class);
+                intent.putExtra("planta",plantaList.get(position));
+
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -52,13 +65,14 @@ public class Plantas extends AppCompatActivity{
                 if(dataSnapshot.getChildrenCount() != 0){
                     for(DataSnapshot postSnapShot : dataSnapshot.getChildren()){
                         Planta planta= postSnapShot.getValue(Planta.class);
+                        plantaAux = planta;
                         plantaList.add(planta);
                     }
 
                     ListAdapterPlantas listAdapterPlantas= new ListAdapterPlantas(Plantas.this,plantaList);
                     listView.setAdapter(listAdapterPlantas);
 
-                    
+
                 }
             }
 

@@ -72,10 +72,10 @@ public class SensorPlanta extends AppCompatActivity {
         jardim= (Jardim)getIntent().getSerializableExtra("jardim");
 
         listViewDica = findViewById(R.id.listViewDica);
-        TEMPERATURAAMBIENTE = (int)jardim.getTempAmbiente();
-        TEMPERATURASOLO = (int) jardim.getTempSolo();
-        UMIDADEAMBIENTE = (int) jardim.getUmidadeAmbiente();
-        UMIDADESOLO = (int) jardim.getUmidadeSolo();
+//        TEMPERATURAAMBIENTE = (int)jardim.getTempAmbiente();
+//        TEMPERATURASOLO = (int) jardim.getTempSolo();
+//        UMIDADEAMBIENTE = (int) jardim.getUmidadeAmbiente();
+//        UMIDADESOLO = (int) jardim.getUmidadeSolo();
         buttonEmoticons = findViewById(R.id.textViewPopUpEmoticons);
         SpannableString spannableString =  new SpannableString("");
         spannableString.setSpan(new buttonOnclickEmoticons(),0,spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

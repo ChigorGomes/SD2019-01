@@ -3,7 +3,7 @@ package Classe;
 import java.io.Serializable;
 
 public class Planta implements Serializable {
-    private int idPlanta;
+    private String idPlanta;
     private String nomePlanta;
     private String descricao;
     private String localAdequado;
@@ -17,11 +17,11 @@ public class Planta implements Serializable {
 
     public Planta(){}
 
-    public int getIdPlanta() {
+    public String getIdPlanta() {
         return idPlanta;
     }
 
-    public void setIdPlanta(int idPlanta) {
+    public void setIdPlanta(String idPlanta) {
         this.idPlanta = idPlanta;
     }
 
