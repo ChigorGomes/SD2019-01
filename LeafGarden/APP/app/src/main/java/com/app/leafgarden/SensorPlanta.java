@@ -8,7 +8,6 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.leafgarden.FirebaseServicesSensor.Firebase;
 import com.dm.emotionrating.library.EmotionView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -28,20 +29,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import Classe.Historico;
 import Classe.Jardim;
 import Classe.SensorNodeMCU;
-import Classe.Usuario;
 
 public class SensorPlanta extends AppCompatActivity {
-    Usuario usuario;
     Jardim jardim;
-    Historico historico;
     TextView buttonEmoticons;
 
     ListView listViewDica;
     final SensorNodeMCU[] sensor = {null};
-    int TEMPERATURASOLO,UMIDADESOLO,UMIDADEAMBIENTE,TEMPERATURAAMBIENTE;
     private List<String> listaItens;
     private ArrayAdapter<String> adapter;
     final String[] inforPlanta = {"","",""};
@@ -52,24 +48,21 @@ public class SensorPlanta extends AppCompatActivity {
     final static int HIGH_LIGHT=20000;
     EmotionView emotionView= null;
     View view;
-    ImageButton dicasInfo;
     LinearLayout linearConteudo;
-    boolean show= false;
+
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
 
-    static final int PESOMENOR=5;
-    static final int PESOMAIOR=10;
-//    Timer time= new Timer();
-//    static  final int delay= 10000;
-//    static  final int intervalo= 100000;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sensor_planta);
-        usuario= (Usuario)getIntent().getSerializableExtra("usuario");
-        jardim= (Jardim)getIntent().getSerializableExtra("jardim");
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        jardim= (Jardim)getIntent().getSerializableExtra("planta");
 
         listViewDica = findViewById(R.id.listViewDica);
 //        TEMPERATURAAMBIENTE = (int)jardim.getTempAmbiente();
@@ -83,7 +76,6 @@ public class SensorPlanta extends AppCompatActivity {
         buttonEmoticons.setMovementMethod(LinkMovementMethod.getInstance());
         emotionView= (EmotionView) findViewById(R.id.emotionView);
         view= findViewById(R.id.linearViewEmoticons);
-        dicasInfo= findViewById(R.id.imageButtonInfoDicas);
         linearConteudo = (LinearLayout) findViewById(R.id.linearLayoutDicas);
 
 
@@ -95,18 +87,6 @@ public class SensorPlanta extends AppCompatActivity {
         firebase= new Firebase(SensorPlanta.this);
 
 
-        dicasInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(show){
-                    linearConteudo.setVisibility(View.INVISIBLE);
-                    show =false;
-                }else{
-                    linearConteudo.setVisibility(View.VISIBLE);
-                    show =true;
-                }
-            }
-        });
 
 
         firebase.getDatabaseReference().addValueEventListener(new ValueEventListener() {
@@ -128,9 +108,8 @@ public class SensorPlanta extends AppCompatActivity {
                     emotionView.setRating(1,2);
                     emotionView.setBackgroundColor(Color.parseColor("#ee3a1f"));
                     view.setBackgroundColor(Color.parseColor("#ee3a1f"));
-                    listViewDica.setBackgroundColor(Color.parseColor("#ee3a1f"));
-                    dicasInfo.setBackgroundColor(Color.parseColor("#ee3a1f"));
-                    dicasInfo.setVisibility(View.VISIBLE);
+                    linearConteudo.setVisibility(View.VISIBLE);
+
 
 
                 }
@@ -142,7 +121,6 @@ public class SensorPlanta extends AppCompatActivity {
                     emotionView.setRating(1,3);
                     emotionView.setBackgroundColor(Color.GREEN);
                     view.setBackgroundColor(Color.GREEN);
-                    dicasInfo.setVisibility(View.INVISIBLE);
 
 
                 }else if(sensor[0].getLuminosidade() >MEDIUM_LIGHT && sensor[0].getLuminosidade() <HIGH_LIGHT){
