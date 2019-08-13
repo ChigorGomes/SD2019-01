@@ -1,5 +1,6 @@
 package com.app.leafgarden;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -97,28 +98,32 @@ public class TelaCadastroLogin extends AppCompatActivity  {
             editTextnome.setError("Preencha o campo nome!");
             editTextnome.requestFocus();
 
-        } if(email.isEmpty()){
+        }else if(email.isEmpty()){
             editTextemail.setError("Preencha o campo email!");
             editTextemail.requestFocus();
             if(isValidEmail(email)==false){
                 editTextemail.setError("verifique o email!");
                 editTextemail.requestFocus();
             }
-        }  if(senha.isEmpty()){
+        }else  if(senha.isEmpty()){
             editTextsenha.setError("Preencha o campo senha");
             editTextsenha.requestFocus();
 
-        }  if(idade.isEmpty()){
+        }else  if(idade.isEmpty()){
             editTextidade.setError("Preencha o campo idade");
             editTextidade.requestFocus();
 
-        } if(nome.isEmpty()){
+        }else if(nome.isEmpty()){
             editTextnome.setError("Preencha o campo nome");
             editTextnome.requestFocus();
             return;
-        } if(posicao <=0){
+        }else if(posicao <=0){
             Toast.makeText(TelaCadastroLogin.this,"Selecione a região!",Toast.LENGTH_SHORT).show();
             spinner.requestFocus();
+
+        }else if(senha.length()<8){
+            editTextsenha.setError("Minimo de caracteres é 8");
+            editTextsenha.requestFocus();
 
         }
             firebaseAuth.createUserWithEmailAndPassword(email, senha)
@@ -133,8 +138,9 @@ public class TelaCadastroLogin extends AppCompatActivity  {
                                         .setValue(usuario).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
-                                        Toast.makeText(TelaCadastroLogin.this,"Deu certo",Toast.LENGTH_SHORT).show();
-
+                                        Toast.makeText(TelaCadastroLogin.this,"Cadastrado com sucesso",Toast.LENGTH_SHORT).show();
+                                        Intent intent= new Intent(TelaCadastroLogin.this,TelaMenu.class);
+                                        startActivity(intent);
 
                                     }
                                 });
