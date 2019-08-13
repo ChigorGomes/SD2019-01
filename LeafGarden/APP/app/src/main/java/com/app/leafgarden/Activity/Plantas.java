@@ -9,6 +9,8 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.app.leafgarden.Classe.Adapter.ListAdapterPlantas;
+import com.app.leafgarden.Classe.Model.Planta;
 import com.app.leafgarden.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -20,9 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.app.leafgarden.Classe.Adapter.ListAdapterPlantas;
-import com.app.leafgarden.Classe.Model.Planta;
 
 public class Plantas extends AppCompatActivity{
 
@@ -67,6 +66,7 @@ public class Plantas extends AppCompatActivity{
                     for(DataSnapshot postSnapShot : dataSnapshot.getChildren()){
                         Planta planta= postSnapShot.getValue(Planta.class);
                         plantaAux = planta;
+
                         plantaList.add(planta);
                     }
 

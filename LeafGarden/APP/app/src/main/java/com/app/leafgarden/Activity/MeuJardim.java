@@ -5,11 +5,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.app.leafgarden.Classe.Adapter.ListAdapterJardim;
+import com.app.leafgarden.Classe.Model.Jardim;
 import com.app.leafgarden.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,9 +25,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.app.leafgarden.Classe.Model.Jardim;
-import com.app.leafgarden.Classe.Adapter.ListAdapterJardim;
 
 public class MeuJardim extends AppCompatActivity {
 
@@ -49,8 +51,26 @@ public class MeuJardim extends AppCompatActivity {
                 Intent intent= new Intent(MeuJardim.this,SensorPlanta.class);
                 intent.putExtra("planta",jardimArrayList.get(position));
                 startActivity(intent);
+
+
+            }
+
+        });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                databaseReference = FirebaseDatabase.getInstance().getReference();
+                databaseReference.child("Jardim").child(firebaseAuth.getUid()).child(jardimArrayList.get(position).getIdJardim()).setValue(null).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(MeuJardim.this,"Excluído com sucesso!",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                return false;
             }
         });
+
 
 
 
