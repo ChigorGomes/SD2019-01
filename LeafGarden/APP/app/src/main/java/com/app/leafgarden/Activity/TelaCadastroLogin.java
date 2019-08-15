@@ -126,7 +126,7 @@ public class TelaCadastroLogin extends AppCompatActivity  {
             editTextsenha.setError("Minimo de caracteres é 8");
             editTextsenha.requestFocus();
 
-        }
+        }else{
             firebaseAuth.createUserWithEmailAndPassword(email, senha)
                     .addOnCompleteListener(TelaCadastroLogin.this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -159,6 +159,8 @@ public class TelaCadastroLogin extends AppCompatActivity  {
 
                         }
                     });
+        }
+
 
 
 

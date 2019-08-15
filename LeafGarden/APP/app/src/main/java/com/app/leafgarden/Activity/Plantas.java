@@ -64,10 +64,12 @@ public class Plantas extends AppCompatActivity{
                 plantaList.clear();
                 if(dataSnapshot.getChildrenCount() != 0){
                     for(DataSnapshot postSnapShot : dataSnapshot.getChildren()){
-                        Planta planta= postSnapShot.getValue(Planta.class);
+                        final Planta planta= postSnapShot.getValue(Planta.class);
                         plantaAux = planta;
-
                         plantaList.add(planta);
+
+
+
                     }
 
                     ListAdapterPlantas listAdapterPlantas= new ListAdapterPlantas(Plantas.this,plantaList);

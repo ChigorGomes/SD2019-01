@@ -74,8 +74,8 @@ public class CadastraPlanta extends AppCompatActivity {
         editTextnomePlanta = (EditText) findViewById(R.id.editTextNomePlanta);
         editTextdescricaoPlanta = (EditText) findViewById(R.id.editTextDescricaoPlanta);
         editTextlocalAdequado = (EditText) findViewById(R.id.editTextLocAdequado);
-        editTexttempAmbiente = (EditText) findViewById(R.id.editTextSensorTempAmbiente);
-        editTextumidadeAmbiente = (EditText) findViewById(R.id.editTextSensorUmidadeAmbiente);
+        editTexttempAmbiente = (EditText) findViewById(R.id.editTextSensorUmidadeAmbiente);
+        editTextumidadeAmbiente = (EditText) findViewById(R.id.editTextLuminosidade);
         editTexttempSolo = (EditText) findViewById(R.id.editTextSensorTempSolo);
         editTextumidadeSolo = (EditText) findViewById(R.id.editTextSensorUmidadeSolo);
         editTextluminosidade = (EditText) findViewById(R.id.editTextLuminosidade);
@@ -172,19 +172,15 @@ public class CadastraPlanta extends AppCompatActivity {
         if(nomePlanta.isEmpty()){
             editTextnomePlanta.setError("Preencha o campo nome!");
             editTextnomePlanta.requestFocus();
-        }else if(descricao.isEmpty()){
-            editTextdescricaoPlanta.setError("Preencha o campo descrição!");
-            editTextdescricaoPlanta.requestFocus();
-
-        }else if(localAdequado.isEmpty()){
+        }else if(umidadeAmbiente.isEmpty()){
+            editTextumidadeAmbiente.setError("Preencha o campo umidade!");
+            editTextumidadeAmbiente.requestFocus();
+        }else if(localAdequado.isEmpty()) {
             editTextlocalAdequado.setError("Preencha o campo local adequado!");
             editTextlocalAdequado.requestFocus();
         }else if(tempAmbiente.isEmpty()){
             editTexttempAmbiente.setError("Preencha o campo temperatura!");
             editTexttempAmbiente.requestFocus();
-        }else if(umidadeAmbiente.isEmpty()){
-            editTextumidadeAmbiente.setError("Preencha o campo umidade!");
-            editTextumidadeAmbiente.requestFocus();
         }else if(tempSolo.isEmpty()){
             editTexttempSolo.setError("Preencha o campo temperatura!");
             editTexttempSolo.requestFocus();
@@ -194,6 +190,10 @@ public class CadastraPlanta extends AppCompatActivity {
         }else if(luminosidade.isEmpty()){
             editTextluminosidade.setError("Preencha o campo luminosidade!");
             editTextluminosidade.requestFocus();
+        } else if(descricao.isEmpty()){
+            editTextdescricaoPlanta.setError("Preencha o campo descrição!");
+            editTextdescricaoPlanta.requestFocus();
+
         }else {
             uploadImage();
         }
