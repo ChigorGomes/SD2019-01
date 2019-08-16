@@ -61,7 +61,7 @@ public class MeuJardim extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 databaseReference = FirebaseDatabase.getInstance().getReference();
-                databaseReference.child("Jardim").child(firebaseAuth.getUid()).child(jardimArrayList.get(position).getIdJardim()).setValue(null).addOnCompleteListener(new OnCompleteListener<Void>() {
+                databaseReference.child("Jardim").child(firebaseAuth.getUid()).child(jardimArrayList.get(position).getIdSensor()).child(jardimArrayList.get(position).getIdJardim()).setValue(null).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(MeuJardim.this,"Excluído com sucesso!",Toast.LENGTH_SHORT).show();
@@ -89,9 +89,11 @@ public class MeuJardim extends AppCompatActivity {
                 if(dataSnapshot.getChildrenCount()!=0){
 
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                        Jardim jardim= snapshot.getValue(Jardim.class);
-                        jardimArrayList.add(jardim);
-                        jardimAux = jardim;
+                        for(DataSnapshot sno : snapshot.getChildren()){
+                            Jardim jardim= sno.getValue(Jardim.class);
+                            jardimArrayList.add(jardim);
+                            jardimAux = jardim;
+                        }
                     }
 
                     ListAdapterJardim listAdapterJardim= new ListAdapterJardim(MeuJardim.this,jardimArrayList);

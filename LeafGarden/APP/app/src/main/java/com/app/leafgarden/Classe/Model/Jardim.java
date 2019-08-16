@@ -16,6 +16,15 @@ public class Jardim implements Serializable {
     private float luminosidade;
     private String imagemCaminho;
     private String imagemUrl;
+    String idSensor;
+
+    public String getIdSensor() {
+        return idSensor;
+    }
+
+    public void setIdSensor(String idSensor) {
+        this.idSensor = idSensor;
+    }
 
     public String getImagemUrl() {
         return imagemUrl;
