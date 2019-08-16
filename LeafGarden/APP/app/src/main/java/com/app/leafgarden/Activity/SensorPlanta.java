@@ -15,6 +15,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.app.leafgarden.Classe.Model.Jardim;
+import com.app.leafgarden.Classe.Model.SensorNodeMCU;
 import com.app.leafgarden.FirebaseServicesSensor.Firebase;
 import com.app.leafgarden.R;
 import com.dm.emotionrating.library.EmotionView;
@@ -29,9 +31,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import com.app.leafgarden.Classe.Model.Jardim;
-import com.app.leafgarden.Classe.Model.SensorNodeMCU;
 
 public class SensorPlanta extends AppCompatActivity {
     Jardim jardim;
@@ -89,8 +88,7 @@ public class SensorPlanta extends AppCompatActivity {
 
 
 
-
-        firebase.getDatabaseReference().addValueEventListener(new ValueEventListener() {
+        firebase.getDatabaseReference().child(jardim.getIdSensor()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 inforPlanta[0]=inforPlanta[1]=inforPlanta[2]="";
