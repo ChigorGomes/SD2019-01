@@ -117,7 +117,6 @@ public class TelaCadastroLogin extends AppCompatActivity  {
         }else if(nome.isEmpty()){
             editTextnome.setError("Preencha o campo nome");
             editTextnome.requestFocus();
-            return;
         }else if(posicao <=0){
             Toast.makeText(TelaCadastroLogin.this,"Selecione a região!",Toast.LENGTH_SHORT).show();
             spinner.requestFocus();

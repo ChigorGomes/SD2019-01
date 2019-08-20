@@ -1,14 +1,18 @@
 package com.app.leafgarden.Activity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.leafgarden.Classe.Model.Jardim;
@@ -39,6 +43,7 @@ public class InfoPlanta extends AppCompatActivity {
     FirebaseUser firebaseUser;
     DatabaseReference databaseReference;
     final Random numRandomico = new Random();
+    Boolean flag = false;
 
 
 
@@ -70,7 +75,7 @@ public class InfoPlanta extends AppCompatActivity {
         buttonCadastroJardim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cadastroJardim();
+                dialogSensor();
 
             }
         });
@@ -84,53 +89,115 @@ public class InfoPlanta extends AppCompatActivity {
     }
 
 
-    public void cadastroJardim(){
+    public void dialogSensor(){
+
+
+        AlertDialog.Builder msg= new AlertDialog.Builder(InfoPlanta.this);
+        msg.setTitle("Código do sensor");
+        msg.setMessage("Digite o código do sensor");
+
+        final EditText editText= new EditText(InfoPlanta.this);
+        msg.setView(editText);
 
 
 
-         FirebaseDatabase.getInstance().getReference().child("Sensor").addValueEventListener(new ValueEventListener() {
+
+        msg.setPositiveButton("Enviar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(editText.getText().toString().trim().isEmpty()){
+                    Toast.makeText(InfoPlanta.this,"Preencha o campo".toString().trim(),Toast.LENGTH_SHORT).show();
+
+                }else{
+                    verificaJardim(editText.getText().toString());
+                    flag = true;
+
+                }
+
+            }
+        });
+
+        msg.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+            }
+        });
+
+
+        msg.show();
+
+
+    }
+
+
+
+    public void verificaJardim(final String codigo){
+        FirebaseDatabase.getInstance().getReference().child("Sensor").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.getChildrenCount()!=0 ){
-                    for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                        if(snapshot.getKey().equals("B4:E6:2D:09:5D:A0")){
-                            Jardim jardim= new Jardim();
+                if (dataSnapshot.getChildrenCount() != 0) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        if (snapshot.getKey().equals(codigo)) {
+                                cadastrarJardim(snapshot.getKey());
 
-                            String chave=  String.valueOf(numRandomico.nextInt(1000000));
-                            jardim.setIdJardim(chave);
-                            jardim.setIdPlanta(planta.getIdPlanta());
-                            jardim.setIdUsuario(firebaseAuth.getUid());
-                            jardim.setNomePlanta(planta.getNomePlanta());
-                            jardim.setDescricao(planta.getDescricao());
-                            jardim.setLocalAdequado(planta.getLocalAdequado());
-                            jardim.setTempAmbiente(planta.getTempAmbiente());
-                            jardim.setUmidadeAmbiente(planta.getUmidadeAmbiente());
-                            jardim.setTempSolo(planta.getUmidadeSolo());
-                            jardim.setLuminosidade(planta.getLuminosidade());
-                            jardim.setImagemUrl(planta.getImagemUrl());
-                            jardim.setIdSensor(snapshot.getKey());
 
-                            FirebaseDatabase.getInstance().getReference().child("Jardim").
-                                    child(firebaseUser.getUid()).child(snapshot.getKey()).child(chave).setValue(jardim).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Log.e("msg","deu certo");
-                                    }
-                                }
-                            });
 
                         }
-                    }
                 }
             }
+        }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+        }
+    });
+}
 
+
+    public void cadastrarJardim(String idSensor){
+        Jardim jardim = new Jardim();
+
+        String chave = String.valueOf(numRandomico.nextInt(1000000));
+        jardim.setIdJardim(chave);
+        jardim.setIdPlanta(planta.getIdPlanta());
+        jardim.setIdUsuario(firebaseAuth.getUid());
+        jardim.setNomePlanta(planta.getNomePlanta());
+        jardim.setDescricao(planta.getDescricao());
+        jardim.setLocalAdequado(planta.getLocalAdequado());
+        jardim.setTempAmbiente(planta.getTempAmbiente());
+        jardim.setUmidadeAmbiente(planta.getUmidadeAmbiente());
+        jardim.setTempSolo(planta.getUmidadeSolo());
+        jardim.setLuminosidade(planta.getLuminosidade());
+        jardim.setImagemUrl(planta.getImagemUrl());
+        jardim.setIdSensor(idSensor);
+
+
+
+        if(flag){
+            databaseReference = FirebaseDatabase.getInstance().getReference();
+
+            databaseReference.child("Jardim").
+                    child(firebaseUser.getUid()).child(idSensor).child(chave).setValue(jardim).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        flag=false;
+                        Toast.makeText(InfoPlanta.this,"Cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
+
+                        Intent intent= new Intent(InfoPlanta.this,Plantas.class);
+                        startActivity(intent);
+
+
+                    }
+                }
+            });
+        }
 
     }
+
+
+
 }
