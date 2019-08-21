@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.app.leafgarden.Classe.Model.Usuario;
 import com.app.leafgarden.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,8 +22,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import com.app.leafgarden.Classe.Model.Usuario;
 
 
 public class EditarUsuario extends AppCompatActivity {
@@ -120,7 +119,10 @@ public class EditarUsuario extends AppCompatActivity {
         }else if(posicao <=0){
             Toast.makeText(EditarUsuario.this,"Selecione a região",Toast.LENGTH_SHORT).show();
             regiao.requestFocus();
-        }else{
+        }
+
+
+        else{
             Usuario user= new Usuario();
 
             user.setEmail(usuarioAux.getEmail());
@@ -128,6 +130,8 @@ public class EditarUsuario extends AppCompatActivity {
             user.setIdade(idade);
             user.setRegiao(regiaoStr);
             user.setNome(nome);
+
+
 
             databaseReference.getReference().child("Usuario").child(firebaseAuth.getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
@@ -137,6 +141,7 @@ public class EditarUsuario extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+
         }
 
 

@@ -103,7 +103,7 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="19dp"
                     android:layout_marginBottom="72dp"
-                    android:background="@drawable/conta2"
+                    android:background="@color/accent"
                     app:layout_constraintStart_toStartOf="parent" />
 
 
