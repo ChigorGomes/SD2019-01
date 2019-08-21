@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_background2">
+    android:background="@color/accent">
 
     <Button
         android:id="@+id/buttonEditarUsuario"
@@ -14,26 +14,13 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="50dp"
-        android:layout_marginEnd="55dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginBottom="60dp"
-        android:background="@drawable/rounded_buttom"
+        android:background="@drawable/rounded_border"
+        android:backgroundTint="@color/primary_light"
         android:text="Editar"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/primary_text"
         android:textStyle="bold" />
-
-    <Spinner
-        android:id="@+id/spinnerRegiaoEditar"
-        android:layout_width="wrap_content"
-        android:layout_height="49dp"
-        android:layout_above="@+id/buttonEditarUsuario"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/background_cor_verde"
-        android:entries="@array/regiao"
-        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/editTextIdadeEditar"
@@ -43,15 +30,15 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="24dp"
-        android:layout_marginEnd="33dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/background_cor_verde"
         android:editable="false"
         android:ems="10"
         android:gravity="center"
         android:hint="Idade"
         android:inputType="number"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="@color/primary_text"
+        android:textColorHint="@color/primary_light"
         android:textStyle="bold" />
 
     <EditText
@@ -62,14 +49,14 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="24dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/background_cor_verde"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
         android:gravity="center"
         android:hint="Senha"
         android:inputType="textPassword"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="@color/primary_text"
+        android:textColorHint="@color/primary_light"
         android:textStyle="bold" />
 
     <EditText
@@ -80,15 +67,15 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="24dp"
-        android:layout_marginEnd="33dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/rounded_border"
         android:editable="false"
         android:ems="10"
         android:gravity="center"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="@color/primary_text"
+        android:textColorHint="@color/primary_light"
         android:textStyle="bold" />
 
     <EditText
@@ -99,29 +86,41 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="24dp"
-        android:layout_marginEnd="33dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/rounded_border"
         android:ems="10"
         android:gravity="center"
         android:hint="Nome"
         android:inputType="textPersonName"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="@color/primary_text"
+        android:textColorHint="@color/primary_light"
         android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="195dp"
-        android:layout_height="205dp"
+        android:layout_width="wrap_content"
+        android:layout_height="104dp"
         android:layout_above="@+id/editTextNomeEditar"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="109dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="107dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/rounded_buttom"
-        app:srcCompat="@drawable/ic_action_pearson" />
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="31dp"
+        app:srcCompat="@drawable/ic_003_boy" />
+
+    <Spinner
+        android:id="@+id/spinnerRegiaoEditar"
+        android:layout_width="wrap_content"
+        android:layout_height="49dp"
+        android:layout_above="@+id/buttonEditarUsuario"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
+        android:entries="@array/regiao"
+        android:textAlignment="center" />
 
 </RelativeLayout>

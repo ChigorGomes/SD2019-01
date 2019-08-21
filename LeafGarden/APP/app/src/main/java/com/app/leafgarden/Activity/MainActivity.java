@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         if(email.isEmpty()){
             editTextemail.setError("Preencha o campo Email!");
             editTextemail.requestFocus();
-        }if(senha.isEmpty()){
+        }else if(senha.isEmpty()){
             editTextsenha.setError("Preencha o campo Senha!");
             editTextsenha.requestFocus();
         }else{

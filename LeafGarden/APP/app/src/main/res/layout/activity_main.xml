@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_background2"
-    tools:context=".Activity.MainActivity" >
+    android:background="@color/accent"
+    tools:context=".Activity.MainActivity">
 
     <Button
         android:id="@+id/textViewNovaConta"
@@ -17,26 +17,11 @@
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="120dp"
-        android:background="@drawable/rounded_buttom"
+        android:background="@drawable/rounded_border"
+        android:backgroundTint="@color/primary_light"
         android:gravity="center"
         android:text="@string/novaConta"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textViewCadastroPlanta"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="52dp"
-        android:layout_marginEnd="47dp"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/rounded_buttom"
-        android:gravity="center"
-        android:text="@string/cadastrarPlanta"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/primary_text"
         android:textStyle="bold" />
 
     <Button
@@ -49,26 +34,27 @@
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="19dp"
-        android:background="@drawable/rounded_buttom"
+        android:background="@drawable/rounded_border"
+        android:backgroundTint="@color/primary_light"
         android:text="@string/entrar"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/primary_text"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/editTextSenhaLoginEditar"
+    <Button
+        android:id="@+id/textViewCadastroPlanta"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonEntrar"
+        android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="24dp"
-        android:drawableLeft="@drawable/ic_action_password"
-        android:ems="10"
-        android:hint="@string/senha"
-        android:inputType="textPassword"
-        android:textColorHint="@color/cardview_light_background"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/rounded_border"
+        android:backgroundTint="@color/primary_light"
+        android:gravity="center"
+        android:text="@string/cadastrarPlanta"
+        android:textColor="@color/primary_text"
         android:textStyle="bold" />
 
     <EditText
@@ -88,18 +74,36 @@
         android:textColorHint="@color/cardview_light_background"
         android:textStyle="bold" />
 
+    <EditText
+        android:id="@+id/editTextSenhaLoginEditar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonEntrar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="24dp"
+        android:drawableLeft="@drawable/ic_action_password"
+        android:ems="10"
+        android:hint="@string/senha"
+        android:inputType="textPassword"
+        android:textColorHint="@color/cardview_light_background"
+        android:textStyle="bold" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="302dp"
+        android:layout_height="157dp"
         android:layout_above="@+id/editTextEmailLoginEditar"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="109dp"
+        android:layout_marginTop="66dp"
+        android:layout_marginEnd="115dp"
+        android:layout_marginBottom="44dp"
         android:background="@drawable/rounded_buttom"
         app:srcCompat="@drawable/leaf_garden"
         tools:srcCompat="@drawable/leaf_garden" />

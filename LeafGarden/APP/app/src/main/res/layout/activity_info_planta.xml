@@ -4,39 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_background2"
+    android:background="@color/accent"
     tools:context=".Activity.InfoPlanta">
 
-
-    <TextView
-        android:id="@+id/textViewNomeInfoPlanta"
-        android:layout_width="154dp"
-        android:layout_height="40dp"
-        android:layout_above="@+id/buttonAdcPlantaNoJardim"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="37dp"
-        android:layout_marginBottom="20dp"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textViewTemperaturaInfoPlanta"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="27dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="37dp"
-        android:background="@drawable/rounded_border"
-        android:gravity="center"
-        android:text=""
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView8"
@@ -44,30 +14,43 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/textViewTemperaturaInfoPlanta"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="201dp"
-        android:layout_marginBottom="10dp"
-        android:text="Temperatura e Umidade"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/temperatura"
+        android:textColor="@color/primary_light"
         android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewTemperaturaInfoPlanta"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/textView10"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:capitalize="characters"
+        android:text=""
+        android:textColor="@color/primary_text"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewLocalAdequadoInfoPlant"
         android:layout_width="wrap_content"
-        android:layout_height="90dp"
-        android:layout_above="@+id/textView8"
+        android:layout_height="50dp"
+        android:layout_above="@+id/textView12"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="27dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_border"
-        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:capitalize="characters"
         android:padding="5dp"
         android:scrollbars="vertical"
         android:text=""
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/primary_text"
         android:textStyle="bold" />
 
     <TextView
@@ -77,28 +60,59 @@
         android:layout_above="@+id/textViewLocalAdequadoInfoPlant"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="10dp"
         android:layout_marginEnd="200dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/local"
+        android:textColor="@color/primary_light"
         android:textSize="18sp"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/buttonAdcPlantaNoJardim"
+        android:layout_width="80dp"
+        android:layout_height="58dp"
+        android:layout_above="@+id/textView6"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/rounded_border"
+        android:backgroundTint="@color/primary_light"
+        android:text="@string/adcJardim"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imageViewInfoPlanta"
+        android:layout_width="180dp"
+        android:layout_height="141dp"
+        android:layout_above="@+id/textView8"
+        android:layout_alignParentStart="true"
+
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="70dp"
+        android:layout_toStartOf="@+id/textViewNomeInfoPlanta"
+        android:background="@drawable/background_imagem" />
 
     <TextView
         android:id="@+id/textViewDescricaoPlanta"
         android:layout_width="wrap_content"
         android:layout_height="90dp"
-        android:layout_above="@+id/textView10"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="27dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="14dp"
-        android:background="@drawable/rounded_border"
-        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:capitalize="characters"
         android:padding="5dp"
         android:scrollbars="vertical"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/primary_text"
         android:textStyle="bold" />
 
     <TextView
@@ -108,39 +122,78 @@
         android:layout_above="@+id/textViewDescricaoPlanta"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="10dp"
         android:layout_marginEnd="200dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/desc"
+        android:textColor="@color/primary_light"
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/buttonAdcPlantaNoJardim"
-        android:layout_width="193dp"
-        android:layout_height="58dp"
-        android:layout_above="@+id/textView12"
+    <TextView
+        android:id="@+id/textViewNomeInfoPlanta"
+        android:layout_width="120dp"
+        android:layout_height="41dp"
+        android:layout_above="@+id/buttonAdcPlantaNoJardim"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/rounded_buttom"
-        android:text="@string/adcJardim"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="14sp"
+        android:textColor="@color/primary_text"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/imageViewInfoPlanta"
-        android:layout_width="wrap_content"
-        android:layout_height="173dp"
-        android:layout_above="@+id/textViewDescricaoPlanta"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="19dp"
-        android:layout_marginEnd="219dp"
-        android:layout_marginBottom="61dp"
+    <TextView
+        android:id="@+id/textViewInfoUmidade"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/textView10"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toStartOf="@+id/textViewInfoLuminosidade"
+        android:layout_toEndOf="@+id/textViewTemperaturaInfoPlanta"
+        android:textColor="@color/primary_text"
+        android:textStyle="bold" />
 
-        android:background="@drawable/background_imagem" />
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textViewInfoUmidade"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="29dp"
+        android:layout_toStartOf="@+id/textView6"
+        android:layout_toEndOf="@+id/textView8"
+        android:text="@string/umidade"
+        android:textColor="@color/primary_light"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewInfoLuminosidade"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/textView10"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/primary_text"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textViewInfoLuminosidade"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/lumi"
+        android:textColor="@color/primary_light"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

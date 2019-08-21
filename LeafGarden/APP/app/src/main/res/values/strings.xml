@@ -21,6 +21,7 @@
     <string name="adc">Adicionar planta</string>
     <string name="plus">+</string>
     <string name="minhasPlantas">Minhas Plantas</string>
+    <string name="umidade">Umidade</string>
     <string-array name="regiao">
         <item>Selecione sua Região</item>
         <item>Norte</item>

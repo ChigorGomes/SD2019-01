@@ -36,6 +36,8 @@ public class InfoPlanta extends AppCompatActivity {
     TextView textViewdescricaoPlanta;
     TextView textViewlocalAdequado;
     TextView textViewtemperaturasIdeais;
+    TextView textViewUmidadesIdeais;
+    TextView textViewLuminosidade;
     ImageView imageView;
     Planta planta;
     Button buttonCadastroJardim;
@@ -58,6 +60,8 @@ public class InfoPlanta extends AppCompatActivity {
         textViewdescricaoPlanta = findViewById(R.id.textViewDescricaoPlanta);
         textViewlocalAdequado = findViewById(R.id.textViewLocalAdequadoInfoPlant);
         textViewtemperaturasIdeais = findViewById(R.id.textViewTemperaturaInfoPlanta);
+        textViewUmidadesIdeais = findViewById(R.id.textViewInfoUmidade);
+        textViewLuminosidade = findViewById(R.id.textViewInfoLuminosidade);
         imageView = findViewById(R.id.imageViewInfoPlanta);
         buttonCadastroJardim = findViewById(R.id.buttonAdcPlantaNoJardim);
 
@@ -69,6 +73,9 @@ public class InfoPlanta extends AppCompatActivity {
         textViewnomePlanta.setText(planta.getNomePlanta());
         textViewdescricaoPlanta.setText(planta.getDescricao());
         textViewlocalAdequado.setText(planta.getLocalAdequado());
+        textViewtemperaturasIdeais.setText("Solo: "+ planta.getTempAmbiente()+"\nAmbiente: "+ planta.getTempAmbiente());
+        textViewUmidadesIdeais.setText("Solo: "+ planta.getUmidadeSolo()+"\nAmbiente: "+planta.getUmidadeAmbiente());
+        textViewLuminosidade.setText(planta.getLuminosidade() + "%");
         Glide.with(getApplicationContext()).load(planta.getImagemUrl()).into(imageView);
 
 

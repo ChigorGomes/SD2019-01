@@ -5,16 +5,15 @@
     android:id="@+id/linearViewEmoticons"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_background2"
-    tools:context=".Activity.SensorPlanta" >
+    tools:context=".Activity.SensorPlanta"
+    android:background="@color/accent">
 
     >
 
     <LinearLayout
         android:id="@+id/linearLayoutDicas"
-        android:visibility="invisible"
-
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -22,7 +21,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="0dp"
-        android:background="@android:color/holo_red_light">
+        android:visibility="invisible">
 
         <ListView
             android:id="@+id/listViewDica"
@@ -33,35 +32,56 @@
             android:layout_alignParentBottom="true"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="569dp"
-
             />
 
 
     </LinearLayout>
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-
-    <com.dm.emotionrating.library.EmotionView
-        android:id="@+id/emotionView"
-        android:layout_width="wrap_content"
-        android:layout_height="256dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <TextView
-            android:id="@+id/textViewPopUpEmoticons"
+        <ImageView
+            android:id="@+id/imageView9"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignStart="@+id/emotionView" />
-    </com.dm.emotionrating.library.EmotionView>
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/linearLayoutDicas"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="207dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/plant"
+
+
+            />
+
+        <com.dm.emotionrating.library.EmotionView
+            android:id="@+id/emotionView"
+            android:layout_width="116dp"
+            android:layout_height="80dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="123dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="#66350d"
+
+            >
+
+
+            <TextView
+                android:id="@+id/textViewPopUpEmoticons"
+                android:layout_width="match_parent"
+                android:layout_height="87dp"
+                android:layout_alignStart="@+id/emotionView" />
+        </com.dm.emotionrating.library.EmotionView>
+
+    </FrameLayout>
 
 
 

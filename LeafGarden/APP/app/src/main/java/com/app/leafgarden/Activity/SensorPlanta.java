@@ -101,12 +101,12 @@ public class SensorPlanta extends AppCompatActivity {
 
                 if(sensor[0].getLuminosidade() < LOW_LIGHT){
 
-                    inforPlanta[0] ="LUMINOSIDADE:\n coloque a planta em um local com luminosidade\n";
+                    inforPlanta[0] ="Coloque a planta em um local com luminosidade";
                     infoSensor[0]= String.valueOf(sensor[0].getLuminosidade()+"%\n");
                     listaItens.add(inforPlanta[0]);
                     emotionView.setRating(1,2);
-                    emotionView.setBackgroundColor(Color.parseColor("#ee3a1f"));
-                    view.setBackgroundColor(Color.parseColor("#ee3a1f"));
+                    emotionView.setBackgroundColor(Color.parseColor("#ae350d"));
+//                    view.setBackgroundColor(Color.parseColor("#ee3a1f"));
                     linearConteudo.setVisibility(View.VISIBLE);
 
 
@@ -119,7 +119,7 @@ public class SensorPlanta extends AppCompatActivity {
                     listaItens.add(inforPlanta[0]);
                     emotionView.setRating(1,3);
                     emotionView.setBackgroundColor(Color.GREEN);
-                    view.setBackgroundColor(Color.GREEN);
+//                    view.setBackgroundColor(Color.GREEN);
 
 
                 }else if(sensor[0].getLuminosidade() >MEDIUM_LIGHT && sensor[0].getLuminosidade() <HIGH_LIGHT){
