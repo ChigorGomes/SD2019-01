@@ -34,7 +34,7 @@ public class ListAdapterPlantas extends ArrayAdapter<Planta> {
 
 
         ImageView imageView= view.findViewById(R.id.imageViewPlantas);
-        TextView textViewNome = view.findViewById(R.id.textViewNPlants);
+        TextView textViewNome = view.findViewById(R.id.textViewDicas);
 
         Planta planta= plantaList.get(position);
         Glide.with(context).load(planta.getImagemUrl()).into(imageView);

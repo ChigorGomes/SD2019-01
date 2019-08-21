@@ -2,29 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.app.leafgarden">
 
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.WITE_EXTERNAL_STORAGE"></uses-permission>
-
-
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.CadastraPlanta"></activity>
+        <activity android:name=".Activity.ResetarSenha"></activity>
+        <activity android:name=".Activity.CadastraPlanta" />
         <activity android:name=".Activity.SensorPlanta" />
-        <activity android:name=".Activity.HistoricoJardim"/>
+        <activity android:name=".Activity.HistoricoJardim" />
         <activity android:name=".Activity.MeuJardim" />
         <activity android:name=".Activity.AdcPlanta" />
         <activity android:name=".Activity.InfoPlanta" />
         <activity android:name=".Activity.Plantas" />
         <activity android:name=".Activity.TelaMenu" />
         <activity android:name=".Activity.EditarUsuario" />
-
         <activity android:name=".Activity.TelaCadastroLogin" />
         <activity android:name=".Activity.MainActivity">
             <intent-filter>
@@ -33,12 +26,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
-
-
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WITE_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

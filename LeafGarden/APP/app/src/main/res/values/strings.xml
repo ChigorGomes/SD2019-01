@@ -3,7 +3,7 @@
     <string name="google">Entrar com o Google</string>
     <string name="entrar">Entrar</string>
     <string name="novaConta">Cadastre-se</string>
-    <string name="email">Email</string>
+    <string name="email">E-mail</string>
     <string name="senha">Senha</string>
     <string name="nome">Nome</string>
     <string name="idade">Idade</string>
@@ -22,17 +22,11 @@
     <string name="plus">+</string>
     <string name="minhasPlantas">Minhas Plantas</string>
     <string name="umidade">Umidade</string>
-    <string-array name="regiao">
-        <item>Selecione sua Região</item>
-        <item>Norte</item>
-        <item>Nordeste</item>
-        <item>Centro-Oeste</item>
-        <item>Sudeste</item>
-        <item>Sul</item>
-    </string-array>
-
-    <!--PLANTA -->
     <string name="nomePlant">Nome da Planta</string>
+    <string name="esqueci">Resetar senha</string>
+    <string name="esqueciSenha">Esqueci minha senha!</string>
+    <string name="enviar">Enviar</string>
+    <!--PLANTA -->
     <string name="descricao">Descrição</string>
     <string name="locAdequado">Local Adequado</string>
     <string name="tempAmbiente">Temperatura Ambiente</string>
@@ -47,5 +41,15 @@
     <string name="nConta">Não tem uma conta?</string>
     <string name="sair">Sair</string>
     <string name="sobre">Sobre</string>
+    <string name="bemV">Bem-Vindo!</string>
+    <string name="cadP">Cadastrar planta</string>
+    <string-array name="regiao">
+        <item>Selecione sua Região</item>
+        <item>Norte</item>
+        <item>Nordeste</item>
+        <item>Centro-Oeste</item>
+        <item>Sudeste</item>
+        <item>Sul</item>
+    </string-array>
 
 </resources>

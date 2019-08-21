@@ -8,12 +8,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.app.leafgarden.Classe.Model.Jardim;
 import com.app.leafgarden.R;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
-
-import com.app.leafgarden.Classe.Model.Jardim;
 
 public class ListAdapterJardim extends ArrayAdapter<Jardim> {
     private Activity context;
@@ -33,7 +32,7 @@ public class ListAdapterJardim extends ArrayAdapter<Jardim> {
 
 
         ImageView imageView= view.findViewById(R.id.imageViewPlantas);
-        TextView textViewNome = view.findViewById(R.id.textViewNPlants);
+        TextView textViewNome = view.findViewById(R.id.textViewDicas);
 
         Jardim jardim= jardimList.get(position);
         Glide.with(context).load(jardim.getImagemUrl()).into(imageView);

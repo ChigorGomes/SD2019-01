@@ -15,6 +15,7 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
+            android:id="@+id/telaActivityPlant"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -109,132 +110,153 @@
 
             </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/Relativelayout2"
-            android:layout_width="match_parent"
-            android:layout_height="291dp"
-            android:layout_below="@+id/Relativelayout1"
-            android:layout_marginTop="0dp">
+            <RelativeLayout
+                android:id="@+id/Relativelayout2"
+                android:layout_width="match_parent"
+                android:layout_height="291dp"
+                android:layout_below="@+id/Relativelayout1"
+                android:layout_marginTop="0dp">
 
-            <EditText
-                android:id="@+id/editTextLocAdequado"
-                android:layout_width="wrap_content"
-                android:layout_height="68dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="26dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="19dp"
-                android:ems="10"
-                android:gravity="center"
-                android:hint="Local Adeaquado"
-                android:inputType="textMultiLine"
-                android:padding="5dp"
-                android:scrollbars="vertical"
-                android:textColorHint="@color/primary_light"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                <EditText
+                    android:id="@+id/editTextLocAdequado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="68dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="19dp"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Local Adeaquado"
+                    android:inputType="textMultiLine"
+                    android:padding="5dp"
+                    android:scrollbars="vertical"
+                    android:textColorHint="@color/primary_light"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-            <EditText
-                android:id="@+id/editTextLuminosidade"
-                android:layout_width="136dp"
-                android:layout_height="60dp"
-                android:layout_below="@+id/editTextLocAdequado"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="13dp"
-                android:layout_marginEnd="24dp"
-                android:ems="10"
-                android:gravity="center"
-                android:hint="@string/lumi"
-                android:inputType="number"
-                android:padding="5dp"
-                android:textColorHint="@color/primary_light"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextLocAdequado" />
-
-
-            <EditText
-                android:id="@+id/editTextSensorUmidadeSolo"
-                android:layout_width="125dp"
-                android:layout_height="58dp"
-                android:layout_below="@+id/editTextLocAdequado"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="13dp"
-                android:ems="10"
-                android:gravity="center"
-                android:hint="@string/umidadeSolo"
-                android:inputType="number"
-                android:padding="5dp"
-                android:textColorHint="@color/primary_light"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/editTextLuminosidade"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextLocAdequado" />
-
-            <EditText
-                android:id="@+id/editTextSensorTempSolo"
-                android:layout_width="136dp"
-                android:layout_height="61dp"
-                android:layout_below="@+id/editTextLuminosidade"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="28dp"
-                android:ems="10"
-                android:gravity="center"
-                android:hint="@string/tempSolo"
-                android:inputType="number"
-                android:padding="5dp"
-                android:textColorHint="@color/primary_light"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextSensorUmidadeSolo" />
-
-            <EditText
-                android:id="@+id/editTextSensorTempAmbiente"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_below="@+id/editTextSensorUmidadeSolo"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="209dp"
-                android:layout_marginBottom="27dp"
-                android:ems="10"
-                android:gravity="center"
-                android:hint="@string/tempAmbiente"
-                android:inputType="number"
-                android:padding="5dp"
-                android:textColorHint="@color/primary_light"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextLuminosidade" />
+                <EditText
+                    android:id="@+id/editTextLuminosidade"
+                    android:layout_width="136dp"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/editTextLocAdequado"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="24dp"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="@string/lumi"
+                    android:inputType="number"
+                    android:padding="5dp"
+                    android:textColorHint="@color/primary_light"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextLocAdequado" />
 
 
-        </RelativeLayout>
+                <EditText
+                    android:id="@+id/editTextSensorUmidadeSolo"
+                    android:layout_width="125dp"
+                    android:layout_height="58dp"
+                    android:layout_below="@+id/editTextLocAdequado"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="13dp"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="@string/umidadeSolo"
+                    android:inputType="number"
+                    android:padding="5dp"
+                    android:textColorHint="@color/primary_light"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/editTextLuminosidade"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextLocAdequado" />
+
+                <EditText
+                    android:id="@+id/editTextSensorTempSolo"
+                    android:layout_width="136dp"
+                    android:layout_height="61dp"
+                    android:layout_below="@+id/editTextLuminosidade"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="28dp"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="@string/tempSolo"
+                    android:inputType="number"
+                    android:padding="5dp"
+                    android:textColorHint="@color/primary_light"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextSensorUmidadeSolo" />
+
+                <EditText
+                    android:id="@+id/editTextSensorTempAmbiente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/editTextSensorUmidadeSolo"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="209dp"
+                    android:layout_marginBottom="27dp"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="@string/tempAmbiente"
+                    android:inputType="number"
+                    android:padding="5dp"
+                    android:textColorHint="@color/primary_light"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextLuminosidade" />
+
+
+            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="159dp"
                 android:layout_below="@id/Relativelayout2"
                 android:layout_marginTop="3dp">
+
+                <Button
+                    android:id="@+id/buttonCadastrarPlanta"
+                    android:layout_width="234dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="88dp"
+                    android:layout_marginEnd="88dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/rounded_border"
+                    android:backgroundTint="@color/primary_light"
+                    android:text="@string/cadastrarPlanta"
+                    android:textColor="@color/primary_text"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextDescricaoPlanta" />
 
                 <EditText
                     android:id="@+id/editTextDescricaoPlanta"
@@ -261,27 +283,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent" />
-
-                <Button
-                    android:id="@+id/buttonCadastrarPlanta"
-                    android:layout_width="234dp"
-                    android:layout_height="48dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="88dp"
-                    android:layout_marginEnd="88dp"
-                    android:layout_marginBottom="30dp"
-                    android:background="@drawable/rounded_border"
-                    android:backgroundTint="@color/primary_light"
-                    android:text="@string/cadastrarPlanta"
-                    android:textColor="@color/primary_text"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextDescricaoPlanta" />
 
 
             </RelativeLayout>

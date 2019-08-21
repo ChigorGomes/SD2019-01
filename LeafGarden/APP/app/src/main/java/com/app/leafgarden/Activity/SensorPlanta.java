@@ -6,6 +6,7 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.app.leafgarden.Classe.Adapter.ListAdapterDicas;
 import com.app.leafgarden.Classe.Model.Jardim;
 import com.app.leafgarden.Classe.Model.SensorNodeMCU;
 import com.app.leafgarden.FirebaseServicesSensor.Firebase;
@@ -111,10 +113,9 @@ public class SensorPlanta extends AppCompatActivity {
 
 
 
-                }
-                else if(sensor[0].getLuminosidade() >LOW_LIGHT && sensor[0].getLuminosidade() <MEDIUM_LIGHT){
+                }if(sensor[0].getLuminosidade()>10){
 
-                    inforPlanta[0] ="LUMINOSIDADE:\n está com a iluminação razoável\n";
+                    inforPlanta[0] ="Iluminação muito alta\n";
                     infoSensor[0]= String.valueOf(sensor[0].getLuminosidade()+"%\n");
                     listaItens.add(inforPlanta[0]);
                     emotionView.setRating(1,3);
@@ -122,21 +123,12 @@ public class SensorPlanta extends AppCompatActivity {
 //                    view.setBackgroundColor(Color.GREEN);
 
 
-                }else if(sensor[0].getLuminosidade() >MEDIUM_LIGHT && sensor[0].getLuminosidade() <HIGH_LIGHT){
-
-                    inforPlanta[0] ="LUMINOSIDADE:\n está com boa iluminação\n";
-                    infoSensor[0]= String.valueOf(sensor[0].getLuminosidade()+"%\n");
-                    listaItens.add(inforPlanta[0]);
-                }else{
-
-                    inforPlanta[0] ="LUMINOSIDADE:\n a planta está recebendo muita iluminação\n";
-                    infoSensor[0]= String.valueOf(sensor[0].getLuminosidade()+"%\n");
-                    listaItens.add(inforPlanta[0]);
                 }
 
 
-
-                listViewDica.setAdapter(adapter);
+                ListAdapterDicas listAdapterDicas = new ListAdapterDicas(SensorPlanta.this,R.layout.activity_dicas,listaItens);
+                Log.e("msg",String.valueOf(listaItens.size()));
+                listViewDica.setAdapter(listAdapterDicas);
             }
 
             @Override
@@ -150,30 +142,6 @@ public class SensorPlanta extends AppCompatActivity {
 
 
 
-
-        /*Código que executa a thread*/
-//        time.scheduleAtFixedRate(new TimerTask() {
-//            @Override
-//            public void run() {
-//                try {
-//                    if((! inforPlanta[0].equals(""))||(!inforPlanta[1].equals("")) || (!inforPlanta[2].equals("")) ){
-//                        String data= retornaDadaHora();
-//
-//                        historico= new Historico(data,inforPlanta[0]+infoSensor[0],inforPlanta[1]+infoSensor[1],inforPlanta[2]+infoSensor[2]);
-//                        historicoDAO= new HistoricoDAO(SensorPlanta.this);
-//                        if(historicoDAO.addHistorico(historico,jardim)){
-//                            Log.e("erro","salvado com sucesso!");
-//                        }else{
-//                            Log.e("erro","ocorreu um erro");
-//                        }
-//
-//                    }
-//
-//                }catch (Exception e){
-//                    Log.e("erro",e.getMessage());
-//                }
-//            }
-//        },delay,intervalo);
 
 
     }

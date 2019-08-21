@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class EditarUsuario extends AppCompatActivity {
     TextView  textViewnomeUsuario;
-    TextView    textViewsenhaUsuario;
+//    TextView    textViewsenhaUsuario;
     TextView    textViewemailUsuario;
     TextView     textViewidadeUsuario;
     Spinner regiao;
@@ -48,14 +48,14 @@ public class EditarUsuario extends AppCompatActivity {
         textViewidadeUsuario = findViewById(R.id.editTextIdadeEditar);
         regiao = findViewById(R.id.spinnerRegiaoEditar);
         buttonEditar = findViewById(R.id.buttonEditarUsuario);
-        textViewsenhaUsuario = findViewById(R.id.editTextSenhaLoginEditar);
+//        textViewsenhaUsuario = findViewById(R.id.editTextSenhaLoginEditar);
 
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance();
         textViewemailUsuario.setEnabled(false);
-        textViewsenhaUsuario.setEnabled(false);
+//        textViewsenhaUsuario.setEnabled(false);
 
 
 

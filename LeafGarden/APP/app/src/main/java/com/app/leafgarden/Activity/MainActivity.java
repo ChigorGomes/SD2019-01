@@ -2,10 +2,18 @@ package com.app.leafgarden.Activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,7 +27,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button buttonCadastroPlanta;
+    TextView editTextresetSenha;
     Button buttonNovaConta;
     EditText editTextemail;
     EditText editTextsenha;
@@ -34,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        buttonCadastroPlanta = findViewById(R.id.textViewCadastroPlanta);
+        editTextresetSenha = findViewById(R.id.textViewResetSenha);
         buttonNovaConta =  findViewById(R.id.textViewNovaConta);
         editTextemail = (EditText) findViewById(R.id.editTextEmailLoginEditar);
         editTextsenha = (EditText) findViewById(R.id.editTextSenhaLoginEditar);
@@ -47,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+        /*Link para criar conta com o Google*/
+        SpannableString spannableString = new SpannableString("Esqueci minha senha");
+        spannableString.setSpan(new custonOnclickResetSenha(), 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        editTextresetSenha.setText(spannableString);
+        editTextresetSenha.setMovementMethod(LinkMovementMethod.getInstance());
+
+
 
         buttonEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,13 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        buttonCadastroPlanta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(MainActivity.this,CadastraPlanta.class);
-                startActivity(intent);
-            }
-        });
+
 
         buttonNovaConta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +93,10 @@ public class MainActivity extends AppCompatActivity {
         String senha = editTextsenha.getText().toString().trim();
 
         if(email.isEmpty()){
-            editTextemail.setError("Preencha o campo Email!");
+            editTextemail.setError("Preencha o campo E-mail!");
+            editTextemail.requestFocus();
+        }else if(isValidEmail(email)==false){
+            editTextemail.setError("Formato de e-mail inválido!");
             editTextemail.requestFocus();
         }else if(senha.isEmpty()){
             editTextsenha.setError("Preencha o campo Senha!");
@@ -107,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }else{
-                        Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,"Usuário/senha não encntrado",Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -116,6 +128,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    class custonOnclickResetSenha extends ClickableSpan {
+        @Override
+        public void onClick(View texView) {
+            Intent intent= new Intent(MainActivity.this,ResetarSenha.class);
+            startActivity(intent);
+
+        }
+
+        public void updateDrawState(TextPaint textPaint) {
+            textPaint.setColor(Color.BLACK);
+            textPaint.setUnderlineText(true);
+        }
+    }
+
+    private  boolean isValidEmail(String email) {
+        if (Patterns.EMAIL_ADDRESS.matcher(email).matches()){ return true;}
+        return  false;
+    }
 
 
 

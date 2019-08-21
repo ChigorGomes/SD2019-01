@@ -28,7 +28,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/rounded_buttom"
-        android:drawableTop="@drawable/ic_034_watering" />
+        android:drawableTop="@drawable/ic_009_sprout" />
 
 
     <Button
@@ -51,7 +51,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/rounded_buttom"
-        android:drawableTop="@drawable/ic_009_sprout" />
+        android:drawableBottom="@drawable/ic_004_sprout" />
 
 
     <TextView
@@ -100,16 +100,17 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/textViewBemV"
         android:layout_width="355dp"
         android:layout_height="40dp"
         android:layout_above="@+id/textViewEmoticonTemperaturaSolo"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="30dp"
-        android:layout_marginEnd="27dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="219dp"
         android:gravity="center"
-        android:text="Bem Vindo!"
+        android:textAlignment="center"
         android:textColor="@color/primary_light"
         android:textSize="35dp" />
 

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/telaActivityPlant" android:title="@string/cadastrarPlanta"/>
+
     <item android:id="@+id/end" android:title="@string/sair"/>
-    <!--<item android:id="" android:title="@string/sobre"/>-->
 
 
 </menu>

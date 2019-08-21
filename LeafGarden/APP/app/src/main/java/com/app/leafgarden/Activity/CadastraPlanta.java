@@ -28,6 +28,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -57,7 +59,8 @@ public class CadastraPlanta extends AppCompatActivity {
     private StorageReference reference;
     private String lclImagem;
     private String urlImagem;
-
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
 
     String caminhoImagem="";
@@ -82,6 +85,9 @@ public class CadastraPlanta extends AppCompatActivity {
         cadastrarPlanta = (Button) findViewById(R.id.buttonCadastrarPlanta);
         imagemPlanta = (ImageView) findViewById(R.id.imageViewPlanta);
         adcImagemPlanta = (Button) findViewById(R.id.buttonImagemPlanta);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
 
         storage = FirebaseStorage.getInstance();
         reference = storage.getReference();
