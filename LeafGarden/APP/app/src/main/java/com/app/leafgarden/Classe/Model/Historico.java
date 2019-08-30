@@ -1,85 +1,61 @@
 package com.app.leafgarden.Classe.Model;
 
-import java.io.Serializable;
-
-public class Historico  implements Serializable {
-    private int idHistorico;
-    private String dataHorario;
-    private String infoTemperatura;
-    private String infoUmidade;
-    private String infoLuminosidade;
-    private String nomePlanta;
+public class Historico   {
+    private String horario;
+    private float luminosidade;
+    private float temperaturaambiente;
+    private float temperaturasolo;
+    private float umidadeambiente;
+    private float umidadesolo;
 
     public Historico() {
     }
 
-    public Historico(String dataHorario, String nomePlanta) {
-        this.dataHorario = dataHorario;
-        this.nomePlanta = nomePlanta;
+    public String getHorario() {
+        return horario;
     }
 
-    public Historico(int idHistorico, String dataHorario, String infoTemperatura, String infoUmidade, String infoLuminosidade, String nomePlanta) {
-        this.idHistorico = idHistorico;
-        this.dataHorario = dataHorario;
-        this.infoTemperatura = infoTemperatura;
-        this.infoUmidade = infoUmidade;
-        this.infoLuminosidade = infoLuminosidade;
-        this.nomePlanta = nomePlanta;
+    public void setHorario(String horario) {
+        this.horario = horario;
     }
 
-    public Historico(String dataHorario, String infoTemperatura, String infoUmidade, String infoLuminosidade) {
-        this.dataHorario = dataHorario;
-        this.infoTemperatura = infoTemperatura;
-        this.infoUmidade = infoUmidade;
-        this.infoLuminosidade = infoLuminosidade;
+    public float getLuminosidade() {
+        return luminosidade;
     }
 
-    public int getIdHistorico() {
-        return idHistorico;
+    public void setLuminosidade(float luminosidade) {
+        this.luminosidade = luminosidade;
     }
 
-    public void setIdHistorico(int idHistorico) {
-        this.idHistorico = idHistorico;
+    public float getTemperaturaambiente() {
+        return temperaturaambiente;
     }
 
-    public String getDataHorario() {
-        return dataHorario;
+    public void setTemperaturaambiente(float temperaturaambiente) {
+        this.temperaturaambiente = temperaturaambiente;
     }
 
-    public void setDataHorario(String dataHorario) {
-        this.dataHorario = dataHorario;
+    public float getTemperaturasolo() {
+        return temperaturasolo;
     }
 
-    public String getInfoTemperatura() {
-        return infoTemperatura;
+    public void setTemperaturasolo(float temperaturasolo) {
+        this.temperaturasolo = temperaturasolo;
     }
 
-    public void setInfoTemperatura(String infoTemperatura) {
-        this.infoTemperatura = infoTemperatura;
+    public float getUmidadeambiente() {
+        return umidadeambiente;
     }
 
-    public String getInfoUmidade() {
-        return infoUmidade;
+    public void setUmidadeambiente(float umidadeambiente) {
+        this.umidadeambiente = umidadeambiente;
     }
 
-    public void setInfoUmidade(String infoUmidade) {
-        this.infoUmidade = infoUmidade;
+    public float getUmidadesolo() {
+        return umidadesolo;
     }
 
-    public String getInfoLuminosidade() {
-        return infoLuminosidade;
+    public void setUmidadesolo(float umidadesolo) {
+        this.umidadesolo = umidadesolo;
     }
-
-    public void setInfoLuminosidade(String infoLuminosidade) {
-        this.infoLuminosidade = infoLuminosidade;
-    }
-    public String getNomePlanta() {
-        return nomePlanta;
-    }
-
-    public void setNomePlanta(String nomePlanta) {
-        this.nomePlanta = nomePlanta;
-    }
-
-
 }

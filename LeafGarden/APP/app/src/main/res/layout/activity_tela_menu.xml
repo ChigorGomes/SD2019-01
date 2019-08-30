@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/accent"
+    android:background="@color/colorWhite"
     tools:context=".Activity.TelaMenu">
 
 
@@ -111,7 +111,7 @@
         android:layout_marginBottom="219dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:textColor="@color/primary_light"
+        android:textColor="@color/primary_text"
         android:textSize="35dp" />
 
 

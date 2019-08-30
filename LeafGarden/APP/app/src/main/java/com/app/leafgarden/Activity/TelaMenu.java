@@ -49,7 +49,7 @@ public class TelaMenu extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Usuario usuario = dataSnapshot.getValue(Usuario.class);
-                textViewBemV.setText("Bem-vindo "+usuario.getNome().substring(0, usuario.getNome().indexOf(" "))+"!");
+                textViewBemV.setText("Bem-vindo, "+usuario.getNome().substring(0, usuario.getNome().indexOf(" "))+"!");
 
 
             }
@@ -88,15 +88,14 @@ public class TelaMenu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//
-//        buttonHistorico.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent= new Intent(TelaMenu.this, HistoricoJardim.class);
-//                intent.putExtra("usuario",usuario);
-//                startActivity(intent);
-//            }
-//        });
+
+        buttonHistorico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(TelaMenu.this, HistoricoJardim.class);
+                startActivity(intent);
+            }
+        });
 
 
     }

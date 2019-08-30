@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/accent"
+    android:background="@color/colorWhite"
     tools:context=".Activity.MainActivity">
 
     <Button
@@ -19,6 +19,7 @@
         android:layout_marginBottom="120dp"
         android:background="@drawable/rounded_border"
         android:backgroundTint="@color/primary_light"
+        android:focusable="false"
         android:gravity="center"
         android:text="@string/novaConta"
         android:textColor="@color/primary_text"
@@ -40,22 +41,6 @@
         android:textColor="@color/primary_text"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textViewResetSenha"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="52dp"
-        android:layout_marginEnd="47dp"
-        android:layout_marginBottom="50dp"
-        android:backgroundTint="@color/primary_light"
-        android:gravity="center"
-        android:text="@string/esqueciSenha"
-        android:textColor="@color/primary_text"
-        android:textStyle="bold" />
-
     <EditText
         android:id="@+id/editTextEmailLoginEditar"
         android:layout_width="302dp"
@@ -66,11 +51,13 @@
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="23dp"
+        android:backgroundTint="@color/primary_light"
         android:drawableLeft="@drawable/ic_action_email"
         android:ems="10"
+        android:focusable="true"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:textColorHint="@color/cardview_light_background"
+        android:textColorHint="@color/secondary_text"
         android:textStyle="bold" />
 
     <EditText
@@ -83,11 +70,12 @@
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/primary_light"
         android:drawableLeft="@drawable/ic_action_password"
         android:ems="10"
         android:hint="@string/senha"
         android:inputType="textPassword"
-        android:textColorHint="@color/cardview_light_background"
+        android:textColorHint="@color/secondary_text"
         android:textStyle="bold" />
 
     <ImageView
@@ -105,5 +93,21 @@
         android:layout_marginBottom="44dp"
         app:srcCompat="@drawable/leaf_garden"
         tools:srcCompat="@drawable/leaf_garden" />
+
+    <TextView
+        android:id="@+id/textViewResetSenha"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="@color/primary"
+        android:gravity="center"
+        android:text="@string/esqueciSenha"
+        android:textColor="@color/primary_text"
+        android:textStyle="bold" />
 
 </RelativeLayout>

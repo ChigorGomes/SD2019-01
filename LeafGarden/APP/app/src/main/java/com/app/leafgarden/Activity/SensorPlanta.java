@@ -1,6 +1,7 @@
 package com.app.leafgarden.Activity;
 
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -51,9 +52,10 @@ public class SensorPlanta extends AppCompatActivity {
     EmotionView emotionView= null;
     View view;
     LinearLayout linearConteudo;
-
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    final static String verde= "#12fa35";
+    final static String vermelho = "#FA2A2A";
 
 
 
@@ -107,8 +109,7 @@ public class SensorPlanta extends AppCompatActivity {
                     infoSensor[0]= String.valueOf(sensor[0].getLuminosidade()+"%\n");
                     listaItens.add(inforPlanta[0]);
                     emotionView.setRating(1,2);
-                    emotionView.setBackgroundColor(Color.parseColor("#ae350d"));
-//                    view.setBackgroundColor(Color.parseColor("#ee3a1f"));
+                    emotionView.setBackground(ColorDrawable.createFromPath(verde));
                     linearConteudo.setVisibility(View.VISIBLE);
 
 
@@ -119,8 +120,7 @@ public class SensorPlanta extends AppCompatActivity {
                     infoSensor[0]= String.valueOf(sensor[0].getLuminosidade()+"%\n");
                     listaItens.add(inforPlanta[0]);
                     emotionView.setRating(1,3);
-                    emotionView.setBackgroundColor(Color.GREEN);
-//                    view.setBackgroundColor(Color.GREEN);
+                    emotionView.setBackgroundColor (Color.parseColor(verde));
 
 
                 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/accent"
+    android:background="@color/colorWhite"
     tools:context=".Activity.TelaCadastroLogin">
 
     <Button
@@ -32,12 +32,14 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/primary_light"
         android:ems="10"
+        android:focusable="auto"
         android:gravity="center"
         android:hint="Idade"
         android:inputType="number"
         android:textColor="@color/primary_text"
-        android:textColorHint="@color/cardview_light_background"
+        android:textColorHint="@color/secondary_text"
         android:textStyle="bold" />
 
     <EditText
@@ -50,12 +52,13 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/primary_light"
         android:ems="10"
         android:gravity="center"
         android:hint="Senha"
         android:inputType="textPassword"
         android:textColor="@color/primary_text"
-        android:textColorHint="@color/cardview_light_background"
+        android:textColorHint="@color/secondary_text"
         android:textStyle="bold" />
 
 
@@ -69,12 +72,13 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/primary_light"
         android:ems="10"
         android:gravity="center"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:textColor="@color/primary_text"
-        android:textColorHint="@color/cardview_light_background"
+        android:textColorHint="@color/secondary_text"
         android:textStyle="bold" />
 
 
@@ -88,12 +92,16 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/primary_light"
         android:ems="10"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:focusedByDefault="true"
         android:gravity="center"
         android:hint="Nome"
         android:inputType="textPersonName"
         android:textColor="@color/primary_text"
-        android:textColorHint="@color/cardview_light_background"
+        android:textColorHint="@color/secondary_text"
         android:textStyle="bold" />
 
     <ImageView
@@ -120,11 +128,11 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/divider"
+        android:backgroundTint="@color/secondary_text"
         android:entries="@array/regiao"
-        android:gravity="center"
-        android:textAlignment="center"
 
-        />
+        android:focusable="auto"
+        android:gravity="center"
+        android:textAlignment="center" />
 
 </RelativeLayout>
