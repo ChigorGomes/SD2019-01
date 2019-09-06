@@ -1,6 +1,7 @@
 package com.app.leafgarden.Classe.Model;
 
 public class Historico   {
+    private String idsensor;
     private String horario;
     private float luminosidade;
     private float temperaturaambiente;
@@ -8,7 +9,16 @@ public class Historico   {
     private float umidadeambiente;
     private float umidadesolo;
 
+
     public Historico() {
+    }
+
+    public String getIdsensor() {
+        return idsensor;
+    }
+
+    public void setIdsensor(String idsensor) {
+        this.idsensor = idsensor;
     }
 
     public String getHorario() {

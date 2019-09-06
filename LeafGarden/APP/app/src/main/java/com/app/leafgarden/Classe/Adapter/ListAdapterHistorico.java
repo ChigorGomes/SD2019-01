@@ -17,7 +17,7 @@ public class ListAdapterHistorico extends ArrayAdapter<Historico> {
     List<Historico> historicoList;
 
     public ListAdapterHistorico(Activity context, List<Historico> historicoList) {
-        super(context, R.layout.activity_dicas, historicoList);
+        super(context, R.layout.activity_horario, historicoList);
         this.context = context;
         this.historicoList = historicoList;
     }
@@ -28,10 +28,10 @@ public class ListAdapterHistorico extends ArrayAdapter<Historico> {
 
 
         LayoutInflater inflater=  context.getLayoutInflater();
-        View view= inflater.inflate(R.layout.activity_dicas,null,true);
+        View view= inflater.inflate(R.layout.activity_horario,null,true);
 
 
-        TextView textViewNome = view.findViewById(R.id.textViewDicas);
+        TextView textViewNome = view.findViewById(R.id.textViewHorario);
 
         Historico historico= historicoList.get(position);
 

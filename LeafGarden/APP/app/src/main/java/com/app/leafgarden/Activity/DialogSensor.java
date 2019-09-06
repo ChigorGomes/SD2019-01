@@ -10,11 +10,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import com.app.leafgarden.Classe.Model.SensorNodeMCU;
 import com.app.leafgarden.R;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class DialogSensor extends AppCompatDialogFragment {
     TextView textViewLuminosidade, textViewTemperaturaAmbiente,textViewTemperaturaSolo,textViewUmidadeAmbiente,textViewUmidadeSolo;
@@ -24,7 +24,6 @@ public class DialogSensor extends AppCompatDialogFragment {
     static  final int intervalo= 100;
     static int LOW_LIGHT=2500;
     static  int MEDIUM_LIGHT=10000;
-    static int HIGH_LIGHT=20000;
    String auxLuminosidade="";
 
 
@@ -52,22 +51,15 @@ public class DialogSensor extends AppCompatDialogFragment {
                         if(sensor[0].getLuminosidade() < LOW_LIGHT){
                             auxLuminosidade="BAIXA";
 
-
-                        }
-                        else if(sensor[0].getLuminosidade() >LOW_LIGHT && sensor[0].getLuminosidade() <MEDIUM_LIGHT){
-                            auxLuminosidade="MÉDIA";
-
-
-                        }else if(sensor[0].getLuminosidade() >MEDIUM_LIGHT && sensor[0].getLuminosidade() <HIGH_LIGHT){
+                        }else if(sensor[0].getLuminosidade() >MEDIUM_LIGHT ){
                             auxLuminosidade="ALTA";
 
 
                         }else{
-                            auxLuminosidade="ALTÍSSIMA ";
+                            auxLuminosidade="IDEAL";
 
                         }
 
-//                        textViewLuminosidade.setText(String.valueOf(sensor[0].getLuminosidade()));
                         textViewLuminosidade.setText(auxLuminosidade);
                         textViewTemperaturaAmbiente.setText("Ambiente: "+ String.valueOf(sensor[0].getTemperaturaambiente())+" °C");
                         textViewTemperaturaSolo.setText("Solo: "+String.valueOf(sensor[0].getTemperaturasolo())+" °C");

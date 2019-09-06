@@ -223,7 +223,7 @@ public class CadastraPlanta extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Toast.makeText(CadastraPlanta.this, "Cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
-                            Intent intent= new Intent(CadastraPlanta.this,TelaCadastroLogin.class);
+                            Intent intent= new Intent(CadastraPlanta.this,TelaMenu.class);
                             startActivity(intent);
 
                         }
