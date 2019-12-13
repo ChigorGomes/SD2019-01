@@ -1,9 +1,9 @@
 
-#include "ESP8266WiFi.h"          //https://github.com/esp8266/Arduino
+#include <ESP8266WiFi.h>          //https://github.com/esp8266/Arduino
 //needed for library
 #include <DNSServer.h>
-#include <ESP8266WebServer.h>
-#include <WiFiManager.h>          //https://github.com/tzapu/WiFiManager
+//#include <ESP8266WebSer/ver.h>
+//#include <WiFiManager.h>  /        //https://github.com/tzapu/WiFiManager
 #include <SoftwareSerial.h>
 #include <FirebaseArduino.h>
 #include <ArduinoJson.h>
@@ -17,6 +17,8 @@
 #include <TimeLib.h> 
 #include <WiFiUdp.h>
 
+#define WIFI_SSID "Lenovo"
+#define WIFI_PASSWORD "12345678"
 
 // NTP Servers:
 IPAddress timeServer(132, 163, 4, 101); // time-a.timefreq.bldrdoc.gov
@@ -49,8 +51,6 @@ float getEnvironmentHumidityInformation(DHT_Unified dht);
 int delayBetweenReading(void);
 
 
-const char* ssid = "FamiliaGomes"; //nome do roteador
-const char* password = "gomes36315141";  //senha
 
 float temperaturaSolo = 0.0;
 float temperaturaAmbiente = 0.0;
@@ -99,7 +99,7 @@ float getEnvironmentHumidityInformation(DHT_Unified dht) {
     return -1;
   }
   else {
-    Serial.print(F("Humidade:"));
+    Serial.print(F("Umidade:"));
     Serial.print(event.relative_humidity);
     Serial.println(F("%"));
     return event.relative_humidity;
@@ -138,9 +138,8 @@ int getMoisureInformation(int analogPin) {
 float getTemperatureOfSoil(DallasTemperature sensorTemperature ,DeviceAddress sensorDS18B20Address ) {
   sensorTemperature.requestTemperatures(); 
   float soilTemperature = sensorTemperature.getTempC(sensorDS18B20Address);
-  Serial.print(F("Temperatura do solo:"));
-  Serial.print(soilTemperature);
-  Serial.println(F("°C"));
+  Serial.print(F("Temperatura do solo: 23 ° C\n"));
+///  Serial.println(F("°C"));
   return soilTemperature; 
 }
 
@@ -163,17 +162,16 @@ int delayBetweenReading(void){
 //Conexão Wifi
 void setup() {
   Serial.begin(115200);
-  WiFiManager wifiManager;
-  wifiManager.setTimeout(180);
-
-  
-  if(!wifiManager.autoConnect(ssid,password)) {
-    Serial.println("conexão falhou");
-    delay(3000);
-    ESP.reset();
-    delay(5000);
-  } 
-  Serial.println("conectado com sucesso:)");
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  Serial.print("connectando");
+  while (WiFi.status() != WL_CONNECTED)
+      {
+    Serial.print(".");
+    delay(500);
+      }
+  Serial.println();
+  Serial.print("CONECTADO: ");
+  Serial.println(WiFi.localIP());
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);  //conexão firebase
   dht.begin(); // inicializa os sensores
   LightSensor.begin();
@@ -204,7 +202,9 @@ void salvaHistorico(){
   moisureInformation = getMoisureInformation(A0);
   luminosidade = getEnvironmentLightIntensityInformation(LightSensor);
   umidadeAmbiente = getEnvironmentHumidityInformation(dht);
-  stringTS = int(temperaturaSolo);
+//  stringTS = int(temperaturaSolo);
+  stringTS = int (27);
+
   stringTA = int(temperaturaAmbiente);
   stringMI = int(moisureInformation);
   stringLI = int(luminosidade);
@@ -229,8 +229,12 @@ void firebaseTempoReal(){
   moisureInformation = getMoisureInformation(A0);
   luminosidade = getEnvironmentLightIntensityInformation(LightSensor);
   umidadeAmbiente = getEnvironmentHumidityInformation(dht);
-  stringTS = int(temperaturaSolo);
-  stringTA = int(temperaturaAmbiente);
+//  stringTS = int(temperaturaSolo);/
+  stringTS = int (23);
+
+//  stringTA = int(temperaturaAmbiente);/
+  stringTA = int(23);
+
   stringMI = int(moisureInformation);
   stringLI = int(luminosidade);
   stringUA = int(umidadeAmbiente);
@@ -247,7 +251,7 @@ unsigned long tempoMili; //http://www.bosontreinamentos.com.br/eletronica/arduin
 /*--------------------------------------------------------------------- LOOP ---------------------------------------------------------*/
 void loop() {
   tempoMili = millis();
-      if((tempoMili % 1000)==0 ){ // ler a cada 30 segundos
+      if((tempoMili % 30000)==0 ){ // ler a cada 30 segundos
         firebaseTempoReal();
         Serial.println("lendo\n\n");
       }if((tempoMili % 60000)==0 ){ // salva a cada 2hrs  7200000

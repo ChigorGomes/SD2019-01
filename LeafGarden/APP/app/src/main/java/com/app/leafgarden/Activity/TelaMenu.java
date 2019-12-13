@@ -49,7 +49,13 @@ public class TelaMenu extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Usuario usuario = dataSnapshot.getValue(Usuario.class);
-                textViewBemV.setText("Bem-vindo, "+usuario.getNome().substring(0, usuario.getNome().indexOf(" "))+"!");
+                if(usuario.getNome().indexOf(" ")==-1){
+                    textViewBemV.setText("Bem-vindo, "+usuario.getNome()+"!");
+
+                }else{
+                    textViewBemV.setText("Bem-vindo, "+usuario.getNome().substring(0, usuario.getNome().indexOf(" "))+"!");
+
+                }
 
 
             }

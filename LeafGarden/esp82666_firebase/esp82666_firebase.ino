@@ -13,8 +13,8 @@
 // Set these to run example.
 #define FIREBASE_HOST "leafgarden-8f8cc.firebaseio.com"
 #define FIREBASE_AUTH "MEXm6JjNobiIBaOSF55qqSFdiml9oind9QJg2UPP"
-#define WIFI_SSID "Lenovo"
-#define WIFI_PASSWORD "12345678"
+#define WIFI_SSID "ICOMP"
+#define WIFI_PASSWORD ""
 
 #define CAYENNE_PRINT Serial
 #define DHTPIN D4     // Digital pin connected to the DHT sensor 
